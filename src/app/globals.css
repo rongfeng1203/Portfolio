@@ -1,0 +1,44 @@
+/* ============================================================
+   src/app/globals.css   —   minimal / pre-design
+   Tailwind v4 + brand tokens stored for later, but NO visual
+   styles applied yet. Brand colors are available as Tailwind
+   utilities (bg-ink, text-teal, font-display) if you opt in,
+   but the page renders plain by default.
+   ============================================================ */
+
+@import "tailwindcss";
+
+
+/* ----- BRAND TOKENS (available, not applied) ----- */
+@theme {
+  /* palette */
+  --color-ink:        #0A0A0F;
+  --color-ink-2:      #14141C;
+  --color-paper:      #ECE6D2;
+  --color-bone:       #D9D2BC;
+  --color-teal:       #00E5C7;
+  --color-riso-red:   #FF2D4A;
+  --color-riso-blue:  #1E3DFF;
+  --color-acid:       #D7FF00;
+
+  /* fonts — these reference next/font CSS variables from fonts.ts */
+  --font-display:     var(--font-anton), system-ui, sans-serif;
+  --font-display-cn:  var(--font-noto-serif-sc), serif;
+  --font-body:        var(--font-inter), system-ui, sans-serif;
+  --font-body-cn:     var(--font-noto-sans-sc), sans-serif;
+  --font-mono:        var(--font-space-mono), ui-monospace, monospace;
+  --font-y2k:         var(--font-bungee), sans-serif;
+  --font-y2k-cn:      var(--font-zcool), sans-serif;
+  --font-term:        var(--font-vt323), monospace;
+}
+
+
+/* ----- minimal reset, nothing else ----- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  /* deliberately no background, no color, no overlays. */
+}
