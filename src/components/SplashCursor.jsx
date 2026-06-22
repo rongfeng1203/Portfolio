@@ -17,7 +17,7 @@ function SplashCursor({
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
   TRANSPARENT = true,
   RAINBOW_MODE = true,
-  COLOR = '#ff0000',
+  COLOR = 'var(--riso-blue)',
   Z_INDEX = 20,
   OPACITY = 0.82
 }) {
@@ -888,7 +888,16 @@ function SplashCursor({
       return delta;
     }
 
-    function hexToRGB(hex) {
+    function hexToRGB(input) {
+      let hex = input;
+      if (hex.startsWith('var(')) {
+        const token = hex.slice(4, -1).trim();
+        const resolved = getComputedStyle(document.documentElement)
+          .getPropertyValue(token)
+          .trim();
+        if (resolved) hex = resolved;
+      }
+
       let val = hex.replace('#', '');
       if (val.length === 3) val = val[0] + val[0] + val[1] + val[1] + val[2] + val[2];
       const r = parseInt(val.slice(0, 2), 16) / 255;

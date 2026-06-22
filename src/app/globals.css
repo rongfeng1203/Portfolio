@@ -14,14 +14,14 @@
 /* ----- BRAND TOKENS (available, not applied) ----- */
 @theme {
   /* palette */
-  --color-ink:        #0A0A0F;
-  --color-ink-2:      #14141C;
-  --color-paper:      #ECE6D2;
-  --color-bone:       #D9D2BC;
-  --color-teal:       #00E5C7;
-  --color-riso-red:   #FF2D4A;
-  --color-riso-blue:  #1E3DFF;
-  --color-acid:       #D7FF00;
+  --color-ink:        var(--ink);
+  --color-ink-2:      var(--ink-2);
+  --color-paper:      var(--paper);
+  --color-bone:       var(--bone);
+  --color-teal:       var(--teal);
+  --color-riso-red:   var(--riso-red);
+  --color-riso-blue:  var(--riso-blue);
+  --color-acid:       var(--acid);
 
   /* fonts — these reference next/font CSS variables from fonts.ts */
   --font-display:     var(--font-anton), system-ui, sans-serif;
@@ -34,6 +34,27 @@
   --font-term:        var(--font-vt323), monospace;
 }
 
+:root {
+  --ink: #0A0A0F;
+  --ink-2: #14141C;
+  --paper: #d2e2ec;
+  --bone: #D9D2BC;
+  --teal: #00E5C7;
+  --riso-red: #FF2D4A;
+  --riso-blue: #1E3DFF;
+  --acid: #D7FF00;
+  --paper-2: #F5EFD9;
+  --smoke: #4A4A55;
+  --font-anton: "Arial Narrow Bold", "Franklin Gothic Condensed", "Impact", sans-serif;
+  --font-inter: Inter, "Helvetica Neue", Arial, sans-serif;
+  --font-space-mono: "SFMono-Regular", "SF Mono", Consolas, monospace;
+  --font-bungee: "Arial Black", Impact, sans-serif;
+  --font-vt323: "Courier New", Courier, monospace;
+  --font-noto-serif-sc: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  --font-noto-sans-sc: "PingFang SC", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  --font-zcool: "Kaiti SC", "STKaiti", "Songti SC", serif;
+}
+
 /* ----- base reset ----- */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -41,8 +62,8 @@ html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  background: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--font-body);
   text-rendering: geometricPrecision;
 }
@@ -133,24 +154,24 @@ a {
 }
 
 :root {
-  --background:        #ECE6D2;
-  --foreground:        #0A0A0F;
-  --card:        #F5EFD9;
-  --card-foreground:        #0A0A0F;
-  --popover:        #ECE6D2;
-  --popover-foreground:        #0A0A0F;
-  --primary:        #0A0A0F;
-  --primary-foreground:        #ECE6D2;
-  --secondary:        #D9D2BC;
-  --secondary-foreground:        #0A0A0F;
-  --muted:        #D9D2BC;
-  --muted-foreground:        #4A4A55;
-  --accent:        #FF2D4A;
-  --accent-foreground:        #0A0A0F;
+  --background:        var(--paper);
+  --foreground:        var(--ink);
+  --card:        var(--paper-2);
+  --card-foreground:        var(--ink);
+  --popover:        var(--paper);
+  --popover-foreground:        var(--ink);
+  --primary:        var(--ink);
+  --primary-foreground:        var(--paper);
+  --secondary:        var(--bone);
+  --secondary-foreground:        var(--ink);
+  --muted:        var(--bone);
+  --muted-foreground:        var(--smoke);
+  --accent:        var(--riso-red);
+  --accent-foreground:        var(--ink);
   --destructive:        oklch(0.577 0.245 27.325);
   --border:        rgb(10 10 15 / 28%);
   --input:        rgb(10 10 15 / 28%);
-  --ring:        #1E3DFF;
+  --ring:        var(--riso-blue);
   --chart-1:        oklch(0.87 0 0);
   --chart-2:        oklch(0.556 0 0);
   --chart-3:        oklch(0.439 0 0);
@@ -168,20 +189,20 @@ a {
 }
 
 .dark {
-  --background:        oklch(0.145 0 0);
-  --foreground:        oklch(0.985 0 0);
-  --card:        oklch(0.205 0 0);
-  --card-foreground:        oklch(0.985 0 0);
-  --popover:        oklch(0.205 0 0);
-  --popover-foreground:        oklch(0.985 0 0);
-  --primary:        oklch(0.922 0 0);
-  --primary-foreground:        oklch(0.205 0 0);
-  --secondary:        oklch(0.269 0 0);
-  --secondary-foreground:        oklch(0.985 0 0);
-  --muted:        oklch(0.269 0 0);
-  --muted-foreground:        oklch(0.708 0 0);
-  --accent:        oklch(0.269 0 0);
-  --accent-foreground:        oklch(0.985 0 0);
+  --background:        var(--ink);
+  --foreground:        var(--paper);
+  --card:        var(--ink-2);
+  --card-foreground:        var(--paper);
+  --popover:        var(--ink-2);
+  --popover-foreground:        var(--paper);
+  --primary:        var(--paper);
+  --primary-foreground:        var(--ink);
+  --secondary:        var(--ink-2);
+  --secondary-foreground:        var(--paper);
+  --muted:        var(--ink-2);
+  --muted-foreground:        var(--paper);
+  --accent:        var(--ink-2);
+  --accent-foreground:        var(--paper);
   --destructive:        oklch(0.704 0.191 22.216);
   --border:        oklch(1 0 0 / 10%);
   --input:        oklch(1 0 0 / 15%);

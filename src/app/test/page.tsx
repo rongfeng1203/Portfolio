@@ -58,7 +58,10 @@ export default function TestPage() {
   const [mounted, setMounted] = useState(false);
   const gsapBtnRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const id = window.requestAnimationFrame(() => setMounted(true));
+    return () => window.cancelAnimationFrame(id);
+  }, []);
 
   return (
     <main
@@ -69,11 +72,11 @@ export default function TestPage() {
         fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
         fontSize: 14,
         lineHeight: 1.6,
-        color: "#222",
+        color: "var(--ink)",
       }}
     >
       <h1 style={{ fontSize: 22, marginBottom: 4 }}>Stack diagnostic</h1>
-      <p style={{ color: "#666", marginTop: 0 }}>
+      <p style={{ color: "var(--smoke)", marginTop: 0 }}>
         Five smoke tests. If every line below has a ✓, the environment is
         wired and you can move on.
       </p>
@@ -87,8 +90,8 @@ export default function TestPage() {
               style={{
                 width: 140,
                 height: 80,
-                border: "1px solid #ccc",
-                background: "#000",
+                border: "1px solid var(--bone)",
+                background: "var(--ink)",
               }}
             >
               {mounted && (
@@ -151,19 +154,30 @@ export default function TestPage() {
         {/* 5 */}
         <li style={rowStyle}>
           <span style={labelStyle}>[5] tailwind v4</span>
-          <span className="ml-2 inline-block rounded bg-blue-600 px-2 py-1 text-xs font-bold text-white">
+          <span
+            style={{
+              marginLeft: 8,
+              display: "inline-block",
+              borderRadius: 4,
+              padding: "4px 8px",
+              background: "var(--riso-blue)",
+              color: "var(--paper)",
+              fontWeight: 700,
+              fontSize: 12,
+            }}
+          >
             this badge is tailwind-styled
           </span>
           <span style={hintStyle}>
-            ↑ should be a small blue pill. if it's plain unstyled text,
-            Tailwind isn't compiling.
+            ↑ should be a small blue pill. if it&apos;s plain unstyled text,
+            Tailwind isn&apos;t compiling.
           </span>
         </li>
       </ol>
 
-      <p style={{ marginTop: 32, color: "#666" }}>
+      <p style={{ marginTop: 32, color: "var(--smoke)" }}>
         All five green? Environment OK. You can delete this route any time —
-        it's not referenced from anywhere else.
+        it&apos;s not referenced from anywhere else.
       </p>
     </main>
   );
@@ -172,18 +186,18 @@ export default function TestPage() {
 /* ---------- shared inline styles (plain, no brand) ---------- */
 const rowStyle: React.CSSProperties = {
   padding: "10px 0",
-  borderBottom: "1px dashed #ddd",
+  borderBottom: "1px dashed var(--bone)",
 };
 const labelStyle: React.CSSProperties = {
   display: "inline-block",
   minWidth: 200,
-  color: "#0070f3",
+  color: "var(--riso-blue)",
   fontWeight: 700,
 };
 const btnStyle: React.CSSProperties = {
   padding: "4px 12px",
-  border: "1px solid #ccc",
-  background: "#fff",
+  border: "1px solid var(--bone)",
+  background: "var(--paper)",
   cursor: "pointer",
   borderRadius: 4,
   fontFamily: "inherit",
@@ -192,6 +206,6 @@ const btnStyle: React.CSSProperties = {
 const hintStyle: React.CSSProperties = {
   display: "block",
   fontSize: 11,
-  color: "#888",
+  color: "var(--smoke)",
   marginTop: 4,
 };

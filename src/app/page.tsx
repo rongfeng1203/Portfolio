@@ -17,7 +17,7 @@ export default function Home() {
       <header className="sticky top-5 z-40 flex items-start justify-between gap-4">
         <Link
           href="/"
-          className="group grid size-14 place-items-center border border-ink bg-riso-red font-display-cn text-3xl leading-none text-paper shadow-[5px_5px_0_#0A0A0F] transition-transform hover:-translate-y-0.5"
+          className="group grid size-14 place-items-center border border-ink bg-riso-red font-display-cn text-3xl leading-none text-paper shadow-[5px_5px_0_var(--ink)] transition-transform hover:-translate-y-0.5"
           aria-label="Rong Feng home"
         >
           冯
@@ -32,7 +32,7 @@ export default function Home() {
               <Link
                 key={item}
                 href={item === "photo" ? "/photography" : `/${item}`}
-                className="border border-ink/40 bg-paper/85 px-2 py-1 shadow-[2px_2px_0_rgb(10_10_15_/_0.22)] backdrop-blur-sm transition-colors hover:bg-acid"
+                className="border border-ink/40 bg-paper/85 px-2 py-1 shadow-[2px_2px_0_var(--ink)] backdrop-blur-sm transition-colors hover:bg-acid"
               >
                 {item}
               </Link>
@@ -52,7 +52,7 @@ export default function Home() {
             Feng
           </h1>
           <div className="mt-5 flex items-end gap-4">
-            <span className="font-display-cn text-[clamp(4rem,11vw,10rem)] font-black leading-none text-riso-red [text-shadow:5px_5px_0_#1E3DFF]">
+            <span className="font-display-cn text-[clamp(4rem,11vw,10rem)] font-black leading-none text-riso-red [text-shadow:5px_5px_0_var(--riso-blue)]">
               冯熔
             </span>
             <span className="mb-3 max-w-64 border-l-4 border-ink pl-3 font-mono text-sm leading-snug">
@@ -61,7 +61,7 @@ export default function Home() {
           </div>
         </div>
 
-        <aside className="self-end border border-ink bg-paper/90 p-4 shadow-[8px_8px_0_#FF2D4A] backdrop-blur-sm">
+        <aside className="self-end border border-ink bg-paper/90 p-4 shadow-[8px_8px_0_var(--riso-red)] backdrop-blur-sm">
           <p className="font-display text-3xl uppercase leading-none">
             Collage newspaper, with wet ink in the margins.
           </p>
@@ -89,7 +89,7 @@ export default function Home() {
             <Link
               key={door.href}
               href={door.href}
-              className={`group relative min-h-36 overflow-hidden border border-ink bg-paper p-4 shadow-[5px_5px_0_rgb(10_10_15_/_0.9)] transition-transform hover:-translate-y-1 ${
+              className={`group relative min-h-36 overflow-hidden border border-ink bg-paper p-4 shadow-[5px_5px_0_var(--ink)] transition-transform hover:-translate-y-1 ${
                 index === doors.length - 1 ? "xl:col-start-4" : ""
               }`}
             >

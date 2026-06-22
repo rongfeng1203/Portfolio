@@ -35,7 +35,7 @@ export default function RootLayout({
       <body>
         <SplashCursor
           RAINBOW_MODE={false}
-          COLOR="#1E3DFF"
+          COLOR="var(--riso-blue)"
           DENSITY_DISSIPATION={4.2}
           VELOCITY_DISSIPATION={2.6}
           SPLAT_RADIUS={0.11}
