@@ -5,17 +5,18 @@
    ============================================================ */
 
 import type { Metadata } from "next";
+import SplashCursor from "@/components/SplashCursor";
 import { fontVariables } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Rong Feng / 荣峰",
+  title: "Rong Feng / 冯熔",
   description:
-    "Game design, visual art, photography. A portfolio that behaves like a small game world.",
+    "Game design, visual art, photography, writing, and spatial work. A portfolio that behaves like a small game world.",
   openGraph: {
-    title: "Rong Feng / 荣峰",
+    title: "Rong Feng / 冯熔",
     description:
-      "Game design, visual art, photography. Polished by default. Weird if you stay.",
+      "Game design, visual art, photography. Hack the door, walk in calm. Stay long enough to find the basement.",
     type: "website",
     locale: "en_US",
     alternateLocale: "zh_CN",
@@ -31,7 +32,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={fontVariables}>
-      <body>{children}</body>
+      <body>
+        <SplashCursor
+          RAINBOW_MODE={false}
+          COLOR="#1E3DFF"
+          DENSITY_DISSIPATION={4.2}
+          VELOCITY_DISSIPATION={2.6}
+          SPLAT_RADIUS={0.11}
+          SPLAT_FORCE={4200}
+          CURL={2.2}
+        />
+        {children}
+      </body>
     </html>
   );
 }
