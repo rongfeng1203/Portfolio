@@ -6,7 +6,6 @@
 
 import type { Metadata } from "next";
 import SplashCursor from "@/components/SplashCursor";
-import { fontVariables } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -31,16 +30,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={fontVariables}>
+    <html lang="en">
       <body>
         <SplashCursor
           RAINBOW_MODE={false}
-          COLOR="var(--riso-blue)"
+          COLOR="var(--pink)"
+          SPLAT_RADIUS={0.16}
+          SPLAT_FORCE={7200}
           DENSITY_DISSIPATION={4.2}
           VELOCITY_DISSIPATION={2.6}
-          SPLAT_RADIUS={0.11}
-          SPLAT_FORCE={4200}
           CURL={2.2}
+          OPACITY={0.95}
+          Z_INDEX={90}
         />
         {children}
       </body>

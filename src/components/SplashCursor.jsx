@@ -17,9 +17,9 @@ function SplashCursor({
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
   TRANSPARENT = true,
   RAINBOW_MODE = true,
-  COLOR = 'var(--riso-blue)',
-  Z_INDEX = 20,
-  OPACITY = 0.82
+  COLOR = 'var(--pink)',
+  Z_INDEX = 80,
+  OPACITY = 1
 }) {
   const canvasRef = useRef(null);
   const animationFrameId = useRef(null);
@@ -903,7 +903,7 @@ function SplashCursor({
       const r = parseInt(val.slice(0, 2), 16) / 255;
       const g = parseInt(val.slice(2, 4), 16) / 255;
       const b = parseInt(val.slice(4, 6), 16) / 255;
-      return { r: r * 0.15, g: g * 0.15, b: b * 0.15 };
+      return { r: r * 0.55, g: g * 0.55, b: b * 0.55 };
     }
 
     function generateColor() {
@@ -911,9 +911,9 @@ function SplashCursor({
         return hexToRGB(config.COLOR);
       }
       let c = HSVtoRGB(Math.random(), 1.0, 1.0);
-      c.r *= 0.15;
-      c.g *= 0.15;
-      c.b *= 0.15;
+    c.r *= 0.45;
+    c.g *= 0.45;
+    c.b *= 0.45;
       return c;
     }
 
@@ -1079,7 +1079,7 @@ function SplashCursor({
         left: 0,
         zIndex: Z_INDEX,
         opacity: OPACITY,
-        mixBlendMode: 'multiply',
+        mixBlendMode: 'screen',
         pointerEvents: 'none',
         width: '100%',
         height: '100%'

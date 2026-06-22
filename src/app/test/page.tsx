@@ -160,7 +160,7 @@ export default function TestPage() {
               display: "inline-block",
               borderRadius: 4,
               padding: "4px 8px",
-              background: "var(--riso-blue)",
+              background: "var(--violet)",
               color: "var(--paper)",
               fontWeight: 700,
               fontSize: 12,
@@ -191,7 +191,7 @@ const rowStyle: React.CSSProperties = {
 const labelStyle: React.CSSProperties = {
   display: "inline-block",
   minWidth: 200,
-  color: "var(--riso-blue)",
+  color: "var(--violet)",
   fontWeight: 700,
 };
 const btnStyle: React.CSSProperties = {
