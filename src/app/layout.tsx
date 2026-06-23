@@ -5,7 +5,6 @@
    ============================================================ */
 
 import type { Metadata } from "next";
-import SplashCursor from "@/components/SplashCursor";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,17 +31,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SplashCursor
-          RAINBOW_MODE={false}
-          COLOR="var(--pink)"
-          SPLAT_RADIUS={0.16}
-          SPLAT_FORCE={7200}
-          DENSITY_DISSIPATION={4.2}
-          VELOCITY_DISSIPATION={2.6}
-          CURL={2.2}
-          OPACITY={0.95}
-          Z_INDEX={90}
-        />
         {children}
       </body>
     </html>

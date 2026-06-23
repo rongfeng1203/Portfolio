@@ -1,0 +1,82 @@
+.lanyard-nav {
+  --lanyard-line: rgb(242 234 215 / 0.38);
+  position: relative;
+  display: grid;
+  justify-items: end;
+  min-width: min(58vw, 48rem);
+  padding-top: 0.15rem;
+  font-family: var(--font-mono-local), ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: rgb(242 234 215 / 0.68);
+}
+
+.lanyard-cord {
+  position: absolute;
+  top: 0.3rem;
+  right: 0;
+  width: min(58vw, 48rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lanyard-line), transparent);
+}
+
+.lanyard-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.65rem 0.8rem;
+  max-width: min(62vw, 52rem);
+}
+
+.lanyard-tag {
+  --tag-index: 0;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  min-width: 3.35rem;
+  padding-top: 0.7rem;
+  color: inherit;
+  transform: rotate(calc((var(--tag-index) - 3) * 0.55deg));
+  transition: color 240ms ease, transform 240ms ease;
+}
+
+.lanyard-tag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 0.62rem;
+  background: var(--lanyard-line);
+}
+
+.lanyard-tag span {
+  display: block;
+  border: 1px solid rgb(242 234 215 / 0.22);
+  background: rgb(5 5 9 / 0.72);
+  padding: 0.2rem 0.35rem;
+  box-shadow: 2px 2px 0 rgb(125 85 199 / 0.7);
+}
+
+.lanyard-tag:hover,
+.lanyard-tag.is-active {
+  color: var(--lime);
+  transform: translateY(2px) rotate(calc((var(--tag-index) - 3) * -0.65deg));
+}
+
+@media (max-width: 900px) {
+  .lanyard-nav {
+    min-width: 48vw;
+    font-size: 10px;
+  }
+
+  .lanyard-tag:nth-of-type(n + 5) {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .lanyard-tag:nth-of-type(n + 4) {
+    display: none;
+  }
+}

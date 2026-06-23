@@ -1,181 +1,354 @@
-import Link from "next/link";
+"use client";
 
-const doors = [
-  { href: "/games", label: "Games", cn: "游戏", accent: "bg-lime" },
-  { href: "/photography", label: "Photography", cn: "摄影", accent: "bg-violet" },
-  { href: "/visual", label: "Visual Art", cn: "视觉", accent: "bg-pink" },
-  { href: "/digital", label: "Digital", cn: "影像", accent: "bg-orange" },
-  { href: "/theatre", label: "Theatre", cn: "剧场", accent: "bg-purple" },
-  { href: "/making", label: "Making", cn: "制作", accent: "bg-lime" },
-  { href: "/writing", label: "Writing", cn: "写作", accent: "bg-pink" },
-  { href: "/basement", label: "Basement", cn: "地下室", accent: "bg-orange" },
+import Image from "next/image";
+import { type CSSProperties, useEffect, useRef, useState } from "react";
+import ASCIIText from "@/components/ASCIIText";
+import CircularText from "@/components/CircularText";
+import DecryptedText from "@/components/DecryptedText";
+import Dither from "@/components/Dither";
+import FaultyTerminal from "@/components/FaultyTerminal";
+import Noise from "@/components/Noise";
+import Ribbons from "@/components/Ribbons";
+import Shuffle from "@/components/Shuffle";
+import StaggeredMenu from "@/components/StaggeredMenu";
+import portrait from "../../assets/Self-portrait.png";
+import banner from "../../assets/icon.png";
+
+const relaxingThemeUrl = new URL("../../assets/relaxing theme.mp3", import.meta.url).toString();
+
+const sections = [
+  {
+    id: "games",
+    label: "Games",
+    cn: "游戏",
+    code: "PLAYABLE SYSTEMS",
+    color: "var(--lime)",
+    route: "/games",
+    copy:
+      "Unity worlds, Python experiments, web toys, design notes, and playable prototypes. This is where interaction becomes the first language.",
+    scraps: ["Unity", "Python", "Level design", "Systems"],
+  },
+  {
+    id: "photography",
+    label: "Photography",
+    cn: "摄影",
+    code: "CONTACT SHEETS",
+    color: "var(--violet)",
+    route: "/photography",
+    copy:
+      "Backstage archives, street fragments, portrait sequences, and image walls. This chapter should eventually scroll like a live contact sheet.",
+    scraps: ["Archive", "Series", "Stage", "Street"],
+  },
+  {
+    id: "visual",
+    label: "Visual Art",
+    cn: "视觉",
+    code: "SCAN / POSTER",
+    color: "var(--pink)",
+    route: "/visual",
+    copy:
+      "Illustration, graphic studies, painting, drawing, and visual research. I want this section to feel printed, handled, scanned, and reprinted.",
+    scraps: ["Illustration", "Poster", "Sketchbook", "Texture"],
+  },
+  {
+    id: "digital",
+    label: "Digital",
+    cn: "影像",
+    code: "MOTION BUFFER",
+    color: "var(--orange)",
+    route: "/digital",
+    copy:
+      "Motion tests, video loops, shader ideas, sound-adjacent experiments, and digital images that should not stay still.",
+    scraps: ["Video", "Shader", "Loop", "Screen"],
+  },
+  {
+    id: "theatre",
+    label: "Theatre",
+    cn: "剧场",
+    code: "SPACE CUE",
+    color: "var(--purple)",
+    route: "/theatre",
+    copy:
+      "Stage management, light, set, and spatial storytelling. This is the bridge between game space and physical performance.",
+    scraps: ["Light", "Stage", "Cue", "Space"],
+  },
+  {
+    id: "making",
+    label: "Making",
+    cn: "制作",
+    code: "MATERIAL LOG",
+    color: "var(--lime)",
+    route: "/making",
+    copy:
+      "Interior work, sewing, laser cutting, woodworking, and object experiments. The evidence should stay tactile here.",
+    scraps: ["Wood", "Fabric", "Laser", "Model"],
+  },
+  {
+    id: "writing",
+    label: "Writing",
+    cn: "写作",
+    code: "TEXT ENGINE",
+    color: "var(--pink)",
+    route: "/writing",
+    copy:
+      "Fiction, poetry, essays, scripts, and game writing. This is the quieter room inside the noise.",
+    scraps: ["Fiction", "Poetry", "Script", "Essay"],
+  },
+  {
+    id: "basement",
+    label: "Basement",
+    cn: "地下室",
+    code: "UNSORTED DOOR",
+    color: "var(--orange)",
+    route: "/basement",
+    copy:
+      "Childhood work, failed prototypes, strange sketches, private experiments, and the pieces that explain how the rest of the site happened.",
+    scraps: ["Scraps", "Old work", "Tests", "Secrets"],
+  },
+] as const;
+
+const streamRows = [
+  "RONGFENG//INDEX//0001//SCROLL//VISUALSYSTEM//",
+  "GAMES PHOTOGRAPHY VISUAL DIGITAL THEATRE MAKING WRITING BASEMENT",
+  "ASCII_WASH CHROMA_OFFSET HALFTONE_SCAN RELAXING_THEME",
 ];
 
-const asciiNoise = [
-  "[]==[]==[]==[]",
-  "::..::..::..::",
-  "/\\/\\/\\/\\/\\/\\/",
-  "##**##**##**##",
-];
+const menuItems = sections.map((section) => ({
+  label: section.label,
+  link: section.route,
+  ariaLabel: `Open ${section.label}`,
+}));
 
 export default function Home() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const heroNameRef = useRef<HTMLHeadingElement | null>(null);
+  const [introDone, setIntroDone] = useState(false);
+  const [activeIndex] = useState(0);
+  const active = sections[activeIndex];
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIntroDone(true), 3200);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const audio = new Audio(relaxingThemeUrl);
+    audio.loop = true;
+    audio.volume = 0.28;
+    audioRef.current = audio;
+
+    const startAudio = () => {
+      audio.play().catch(() => {});
+    };
+
+    startAudio();
+    window.addEventListener("pointerdown", startAudio, { once: true });
+
+    return () => {
+      window.removeEventListener("pointerdown", startAudio);
+      audio.pause();
+      audioRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    const heroName = heroNameRef.current;
+    if (!heroName || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let step = 0;
+    const positions = ["0% 50%", "32% 50%", "68% 50%", "100% 50%", "68% 50%", "32% 50%"];
+    heroName.style.transition = "background-position 1600ms ease-in-out";
+
+    const interval = window.setInterval(() => {
+      step = (step + 1) % positions.length;
+      heroName.style.backgroundPosition = positions[step];
+    }, 1600);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
   return (
-    <main className="relative z-30 min-h-screen overflow-hidden px-5 py-5 text-paper sm:px-8 lg:px-10">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 effect-noise-layer opacity-70"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 12% 22%, rgb(255 51 84 / 0.26) 0 12px, transparent 13px), radial-gradient(circle at 84% 10%, rgb(45 77 255 / 0.24) 0 10px, transparent 11px), radial-gradient(circle at 65% 82%, rgb(24 240 210 / 0.18) 0 14px, transparent 15px), linear-gradient(180deg, rgba(255,255,255,0.04), transparent 26%, rgba(255,255,255,0.04) 56%, transparent 100%)",
-          backgroundSize: "240px 240px, 320px 320px, 380px 380px, 100% 100%",
-          backgroundRepeat: "repeat, repeat, repeat, no-repeat",
-          filter: "blur(16px)",
-        }}
-      />
+    <main className="front-page relative min-h-screen overflow-x-hidden text-paper">
+      {!introDone && (
+        <div className="fixed inset-0 z-[100] overflow-hidden bg-ink">
+          <FaultyTerminal
+            className="absolute inset-0"
+            style={{}}
+            scale={1.1}
+            gridMul={[3, 2]}
+            digitSize={1.5}
+            timeScale={0.3}
+            scanlineIntensity={0.55}
+            glitchAmount={1.22}
+            flickerAmount={0.88}
+            noiseAmp={0.28}
+            chromaticAberration={0.42}
+            dither={0.9}
+            curvature={0.14}
+            tint="#CEDC00"
+            mouseReact={true}
+            mouseStrength={0.35}
+            pageLoadAnimation={true}
+            brightness={1.12}
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,9,0.05),rgba(5,5,9,0.9))]" />
+          <div className="ascii-reveal absolute inset-0" />
 
-      <header className="sticky top-5 z-40 flex items-start justify-between gap-4">
-        <Link
-          href="/"
-          className="effect-pulse group grid size-14 place-items-center border border-paper/20 bg-pink font-display-cn text-3xl leading-none text-paper shadow-[6px_6px_0_var(--ink)] transition-transform hover:-translate-y-0.5"
-          aria-label="Rong Feng home"
-        >
-          冯
-        </Link>
-
-        <nav
-          className="flex max-w-[72vw] flex-wrap items-center justify-end gap-1.5 font-mono text-[11px] uppercase tracking-normal"
-          aria-label="Primary navigation"
-        >
-          {["games", "photo", "visual", "digital", "theatre", "making", "writing", "cv"].map(
-            (item) => (
-              <Link
-                key={item}
-                href={item === "photo" ? "/photography" : `/${item}`}
-                className="effect-terminal border border-paper/20 bg-paper/10 px-2 py-1 shadow-[3px_3px_0_var(--violet)] backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-pink hover:text-paper"
-              >
-                {item}
-              </Link>
-            )
-          )}
-        </nav>
-      </header>
-
-      <section className="grid min-h-[82vh] gap-10 pt-20 lg:grid-cols-[1.12fr_0.88fr] lg:pt-24">
-        <div>
-          <p className="mb-4 inline-block border-y border-paper/25 bg-paper/10 px-2 py-1 font-mono text-xs uppercase tracking-normal text-lime">
-            game design / visual art / things that move
-          </p>
-          <h1 className="effect-chroma max-w-5xl font-display text-[clamp(4.8rem,15vw,13.5rem)] uppercase leading-[0.76] tracking-normal text-paper">
-            Rong
-            <br />
-            Feng
-          </h1>
-          <div className="mt-5 flex max-w-4xl flex-wrap items-end gap-4">
-            <span className="effect-chroma font-display-cn text-[clamp(4rem,11vw,10rem)] font-black leading-none text-lime">
-              冯熔
-            </span>
-            <span className="mb-3 max-w-72 border-l-4 border-pink pl-3 font-mono text-sm leading-snug text-paper">
-              Hack the door, walk in calm. Stay long enough to find the basement.
-            </span>
-          </div>
-        </div>
-
-        <aside className="self-end overflow-hidden border border-paper/20 bg-ink-2 p-4 shadow-[8px_8px_0_var(--purple)]">
-          <div className="flex items-center justify-between gap-3 border-b border-paper/20 pb-2 font-mono text-[11px] uppercase text-lime">
-            <span>terminal / collage / signal</span>
-            <span>live</span>
-          </div>
-          <div className="mt-4 grid gap-3">
-            <div className="border border-paper/15 bg-paper/5 p-3">
-              <p className="font-display text-2xl uppercase leading-none text-paper">
-                Collage newspaper
-                <br />
-                in a bright terminal.
+          <div className="absolute inset-0 grid items-center px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12">
+            <div className="relative h-[48vh] min-h-[320px]">
+              <ASCIIText
+                text="RONG FENG"
+                asciiFontSize={7}
+                textFontSize={210}
+                textColor="#F2EAD7"
+                planeBaseHeight={8}
+                enableWaves={true}
+              />
+            </div>
+            <div className="grid justify-items-start gap-5 lg:justify-items-end">
+              <CircularText
+                text="ENTER // SCROLL // SOUND // INDEX //"
+                spinDuration={17}
+                onHover="speedUp"
+                className="text-lime"
+              />
+              <p className="max-w-sm font-mono text-xs uppercase text-lime">
+                <DecryptedText
+                  text="loading assets / washing text / opening the index"
+                  animateOn="view"
+                  sequential={true}
+                  revealDirection="start"
+                  speed={24}
+                  maxIterations={14}
+                  characters="01█▓▒░<>/_$#@RONGFENG"
+                  className="text-lime"
+                  encryptedClassName="text-pink"
+                />
               </p>
             </div>
-            <pre className="overflow-hidden border border-paper/15 bg-black/20 p-2 font-mono text-[10px] leading-tight text-lime">
-{asciiNoise.join("\n")}
-            </pre>
-            <p className="max-w-xl font-body text-base leading-7 text-paper/90">
-              A portfolio for game design applications, built as a small world:
-              loud at the edges, readable in the center, and full of texture when
-              you stay on the page.
-            </p>
-            <p className="font-body-cn text-base leading-8 text-paper/90">
-              这里不是安静白盒子。它应该像终端窗口、海报、拼贴报纸和旧屏幕的混种，
-              让人一眼记住，再慢慢翻页。
-            </p>
           </div>
-        </aside>
-      </section>
-
-      <section className="mt-8 grid gap-4 lg:grid-cols-[0.75fr_1.25fr]">
-        <div className="border border-paper/20 border-l-4 border-l-pink bg-ink-2 p-4 shadow-[8px_8px_0_var(--orange)]">
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-lime">
-            signal strip
-          </p>
-          <h2 className="mt-2 font-display text-5xl uppercase leading-none text-paper">
-            Choose a door.
-          </h2>
-          <p className="mt-3 max-w-sm font-body text-sm leading-6 text-paper/80">
-            Each door is a section, but it should feel like a different screen.
-            Hover, and the card should wake up a little.
-          </p>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-          {doors.map((door, index) => (
-            <Link
-              key={door.href}
-              href={door.href}
-              className={`group relative min-h-40 overflow-hidden border border-paper/20 bg-ink-2 p-4 shadow-[5px_5px_0_var(--ink)] transition-transform duration-300 hover:-translate-y-1 hover:rotate-[-0.5deg] ${
-                index === doors.length - 1 ? "xl:col-start-4" : ""
-              }`}
+      )}
+
+      <div className="dither-backdrop" aria-hidden="true">
+        <Dither
+          waveSpeed={0.028}
+          waveFrequency={2.2}
+          waveAmplitude={0.42}
+          waveColor={[0.49, 0.33, 0.78]}
+          colorNum={5}
+          pixelSize={5}
+          mouseRadius={0.75}
+          enableMouseInteraction={true}
+        />
+      </div>
+      <div className="texture-halftone fixed inset-0 pointer-events-none z-0" />
+      <div className="noise-backdrop" aria-hidden="true">
+        <Noise patternSize={420} patternScaleX={1.25} patternScaleY={1.25} patternRefreshInterval={3} patternAlpha={18} />
+      </div>
+      <div className="ribbons-cursor" aria-hidden="true">
+        <Ribbons
+          colors={["#002FA7"]}
+          baseThickness={34}
+          baseSpring={0.024}
+          baseFriction={0.9}
+          offsetFactor={0}
+          maxAge={280}
+          pointCount={18}
+          speedMultiplier={0.8}
+          enableFade={false}
+          enableShaderEffect={false}
+        />
+      </div>
+
+      <StaggeredMenu
+        className="portfolio-staggered-menu"
+        position="right"
+        isFixed={true}
+        logoUrl={banner.src}
+        items={menuItems}
+        colors={["#CEDC00", "#F04E98", "#7D55C7", "#FF8F1C"]}
+        accentColor="#CEDC00"
+        menuButtonColor="#F2EAD7"
+        openMenuButtonColor="#050509"
+        displaySocials={false}
+        displayItemNumbering={true}
+      />
+
+      <section id="top" className="relative z-10 min-h-[100svh] px-4 pb-10 pt-24 sm:px-6 lg:px-8 lg:pt-28">
+        <div className="grid min-h-[calc(100svh-8rem)] gap-8 lg:grid-cols-[1.35fr_0.8fr] lg:items-end">
+          <div className="hero-copy relative">
+            <h1
+              ref={heroNameRef}
+              className="effect-chroma hero-name uppercase"
               style={{
-                animationDelay: `${index * 45}ms`,
+                backgroundImage:
+                  "linear-gradient(90deg, var(--orange), var(--pink), var(--lime), var(--violet), var(--purple), var(--orange))",
+                backgroundSize: "420% 100%",
+                backgroundPosition: "0% 50%",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               }}
             >
-              <span
-                className={`absolute inset-x-0 bottom-0 h-2 ${door.accent} transition-all duration-300 group-hover:h-full group-hover:opacity-95`}
-                aria-hidden="true"
+              <Shuffle
+                text="Rong"
+                tag="span"
+                className="hero-name-shuffle"
+                textAlign="left"
+                shuffleDirection="left"
+                duration={0.42}
+                shuffleTimes={2}
+                stagger={0.035}
+                scrambleCharset="01/_#RONGFENG"
+                colorFrom="#002FA7"
+                colorTo="#F2EAD7"
+                triggerOnce={false}
+                onShuffleComplete={() => {}}
               />
-              <span
-                aria-hidden="true"
-                className="absolute right-2 top-2 border border-paper/15 bg-black/20 px-1 py-0.5 font-mono text-[9px] leading-none text-paper/60 opacity-70 transition-transform duration-300 group-hover:translate-x-[-4px] group-hover:translate-y-[4px]"
+              <br />
+              <Shuffle
+                text="Feng"
+                tag="span"
+                className="hero-name-shuffle"
+                textAlign="left"
+                shuffleDirection="right"
+                duration={0.42}
+                shuffleTimes={2}
+                stagger={0.035}
+                scrambleCharset="01/_#RONGFENG"
+                colorFrom="#002FA7"
+                colorTo="#F2EAD7"
+                triggerOnce={false}
+                onShuffleComplete={() => {}}
               />
-              <span className="absolute left-2 top-2 font-mono text-[9px] leading-none text-paper/45">
-                {index % 2 === 0 ? "[]==[]" : "/\\/\\/"}
+            </h1>
+            <div className="mt-4 flex flex-wrap items-end gap-4">
+              <span className="effect-chroma font-display-cn text-[clamp(4rem,10vw,9rem)] font-black leading-none text-lime">
+                冯熔
               </span>
-              <span className="relative flex h-full flex-col justify-between">
-                <span className="font-mono text-[11px] uppercase text-lime">/{door.label.toLowerCase()}</span>
-                <span>
-                  <span className="effect-chroma block font-display text-4xl uppercase leading-none text-paper">
-                    {door.label}
-                  </span>
-                  <span className="mt-1 block font-display-cn text-2xl font-black text-paper">
-                    {door.cn}
-                  </span>
-                </span>
-              </span>
-            </Link>
+              <p className="max-w-xl font-body text-xl leading-7 text-paper/82">
+                One continuous index for playable work, images, writing, spaces, and the odd basement.
+              </p>
+            </div>
+          </div>
+
+          <div className="hero-portrait" style={{ "--active": active.color } as CSSProperties}>
+            <Image src={portrait} alt="Self portrait" className="portrait-chroma h-full w-full object-cover" priority />
+            <div className="portrait-caption">
+              <span>active signal</span>
+              <span>{active.label}</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="hero-stream relative z-10 mt-12 overflow-hidden border-y border-paper/15 py-2">
+          {streamRows.map((row) => (
+            <p key={row} className="marquee-line font-mono text-[11px] uppercase text-paper/45">
+              {row} {row} {row}
+            </p>
           ))}
         </div>
-      </section>
-
-      <section className="mt-6 grid gap-3 md:grid-cols-3">
-        {[
-          "grain / halftone / blur",
-          "terminal / pop art / collage",
-          "bright colors / dark base / loud edges",
-        ].map((label, index) => (
-          <div
-            key={label}
-            className={`border border-paper/20 bg-ink-2 px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] text-paper/90 shadow-[4px_4px_0_var(--purple)] ${
-              index === 1 ? "border-violet" : index === 2 ? "border-pink" : "border-lime"
-            }`}
-          >
-            {label}
-          </div>
-        ))}
       </section>
     </main>
   );
