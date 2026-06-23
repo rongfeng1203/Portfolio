@@ -90,7 +90,7 @@
 
 @font-face {
   font-family: "Chinese Handwriting Local";
-  src: url("/fonts/chinese-handwriting-style.ttf") format("truetype");
+  src: url("../../assets/chinese-handwriting-style.ttf") format("truetype");
   font-display: swap;
   font-weight: 400;
 }
@@ -538,6 +538,16 @@ a {
   -webkit-text-fill-color: transparent;
   white-space: pre-line;
 }
+
+.hero-cn-name {
+  font-family: var(--font-display-cn);
+  /* whatever size/styling you want */
+  font-size: clamp(2rem, 6vw, 5rem);
+  line-height: 1;
+  color: var(--paper);
+}
+
+
 
 .hero-copy {
   z-index: 4;
