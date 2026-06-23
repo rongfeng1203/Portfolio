@@ -9,12 +9,28 @@ import Dither from "@/components/Dither";
 import FaultyTerminal from "@/components/FaultyTerminal";
 import Noise from "@/components/Noise";
 import Ribbons from "@/components/Ribbons";
-import Shuffle from "@/components/Shuffle";
 import StaggeredMenu from "@/components/StaggeredMenu";
 import portrait from "../../assets/Self-portrait.png";
 import banner from "../../assets/icon.png";
 
 const relaxingThemeUrl = new URL("../../assets/relaxing theme.mp3", import.meta.url).toString();
+const finalName = "Rong\nFeng";
+const scrambledName = "R0N_\nF3N#";
+const scrambleChars = "01/_#<>RONGFENG";
+
+function scrambleName(revealedCount: number) {
+  let seen = 0;
+
+  return finalName
+    .split("")
+    .map((char, index) => {
+      if (char === "\n" || char === " ") return char;
+      seen += 1;
+      if (seen <= revealedCount) return char;
+      return scrambleChars[(index + revealedCount * 3) % scrambleChars.length];
+    })
+    .join("");
+}
 
 const sections = [
   {
@@ -123,6 +139,7 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const heroNameRef = useRef<HTMLHeadingElement | null>(null);
   const [introDone, setIntroDone] = useState(false);
+  const [heroNameText, setHeroNameText] = useState(scrambledName);
   const [activeIndex] = useState(0);
   const active = sections[activeIndex];
 
@@ -165,6 +182,33 @@ export default function Home() {
     }, 1600);
 
     return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const timers: number[] = [];
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      timers.push(window.setTimeout(() => setHeroNameText(finalName), 0));
+      return () => timers.forEach((timer) => window.clearTimeout(timer));
+    }
+
+    const revealableCharacters = finalName.replace(/\s/g, "").length;
+    const frames = [
+      scrambleName(0),
+      scrambleName(0),
+      ...Array.from({ length: revealableCharacters }, (_, index) => scrambleName(index + 1)),
+      finalName,
+    ];
+
+    frames.forEach((frame, index) => {
+      timers.push(window.setTimeout(() => setHeroNameText(frame), 3150 + index * 95));
+    });
+
+    timers.push(window.setTimeout(() => setHeroNameText(finalName), 4600));
+
+    return () => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+    };
   }, []);
 
   return (
@@ -232,13 +276,13 @@ export default function Home() {
 
       <div className="dither-backdrop" aria-hidden="true">
         <Dither
-          waveSpeed={0.028}
-          waveFrequency={2.2}
-          waveAmplitude={0.42}
-          waveColor={[0.49, 0.33, 0.78]}
+          waveSpeed={0.058}
+          waveFrequency={2.6}
+          waveAmplitude={0.56}
+          waveColor={[0.33, 0.15, 1]}
           colorNum={5}
-          pixelSize={5}
-          mouseRadius={0.75}
+          pixelSize={4}
+          mouseRadius={0.9}
           enableMouseInteraction={true}
         />
       </div>
@@ -275,8 +319,8 @@ export default function Home() {
         displayItemNumbering={true}
       />
 
-      <section id="top" className="relative z-10 min-h-[100svh] px-4 pb-10 pt-24 sm:px-6 lg:px-8 lg:pt-28">
-        <div className="grid min-h-[calc(100svh-8rem)] gap-8 lg:grid-cols-[1.35fr_0.8fr] lg:items-end">
+      <section id="top" className="relative z-10 min-h-[100svh] px-4 pb-10 pt-16 sm:px-6 lg:px-8 lg:pt-20">
+        <div className="grid min-h-[calc(100svh-6rem)] gap-8 lg:grid-cols-[1.35fr_0.8fr] lg:items-end">
           <div className="hero-copy relative">
             <h1
               ref={heroNameRef}
@@ -291,40 +335,10 @@ export default function Home() {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              <Shuffle
-                text="Rong"
-                tag="span"
-                className="hero-name-shuffle"
-                textAlign="left"
-                shuffleDirection="left"
-                duration={0.42}
-                shuffleTimes={2}
-                stagger={0.035}
-                scrambleCharset="01/_#RONGFENG"
-                colorFrom="#002FA7"
-                colorTo="#F2EAD7"
-                triggerOnce={false}
-                onShuffleComplete={() => {}}
-              />
-              <br />
-              <Shuffle
-                text="Feng"
-                tag="span"
-                className="hero-name-shuffle"
-                textAlign="left"
-                shuffleDirection="right"
-                duration={0.42}
-                shuffleTimes={2}
-                stagger={0.035}
-                scrambleCharset="01/_#RONGFENG"
-                colorFrom="#002FA7"
-                colorTo="#F2EAD7"
-                triggerOnce={false}
-                onShuffleComplete={() => {}}
-              />
+              {heroNameText}
             </h1>
             <div className="mt-4 flex flex-wrap items-end gap-4">
-              <span className="effect-chroma font-display-cn text-[clamp(4rem,10vw,9rem)] font-black leading-none text-lime">
+              <span className="hero-cn-name">
                 冯熔
               </span>
               <p className="max-w-xl font-body text-xl leading-7 text-paper/82">
@@ -333,11 +347,13 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-portrait" style={{ "--active": active.color } as CSSProperties}>
-            <Image src={portrait} alt="Self portrait" className="portrait-chroma h-full w-full object-cover" priority />
-            <div className="portrait-caption">
-              <span>active signal</span>
-              <span>{active.label}</span>
+          <div className="hero-side">
+            <div className="hero-portrait" style={{ "--active": "var(--lime)" } as CSSProperties}>
+              <Image src={portrait} alt="Self portrait" className="portrait-chroma h-full w-full object-cover" priority />
+              <div className="portrait-caption">
+                <span>active signal</span>
+                <span>{active.label}</span>
+              </div>
             </div>
           </div>
         </div>

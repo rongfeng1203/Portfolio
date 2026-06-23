@@ -132,7 +132,11 @@
   right: 0;
   width: clamp(260px, 38vw, 420px);
   height: 100%;
-  background: white;
+  background:
+    linear-gradient(135deg, rgb(125 85 199 / 0.62), rgb(0 47 167 / 0.48) 48%, rgb(5 5 9 / 0.9)),
+    radial-gradient(circle at 18% 16%, rgb(240 78 152 / 0.18), transparent 16rem),
+    repeating-linear-gradient(0deg, rgb(242 234 215 / 0.055) 0 1px, transparent 1px 8px),
+    #050509 !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
