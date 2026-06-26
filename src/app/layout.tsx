@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rong Feng / 冯熔",
     description:
-      "Game design, visual art, photography. Hack the door, walk in calm. Stay long enough to find the basement.",
+      "Game design, visual art, photography. Hack the door, walk in calm. Stay long enough to find the process.",
     type: "website",
     locale: "en_US",
     alternateLocale: "zh_CN",

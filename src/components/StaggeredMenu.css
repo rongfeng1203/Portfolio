@@ -314,7 +314,7 @@
 }
 
 .sm-panel-item:hover {
-  color: var(--sm-accent, #5227ff);
+  color: var(--orange, #ff8f1c) !important;
 }
 
 .sm-panel-list[data-numbering] {

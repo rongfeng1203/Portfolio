@@ -8,7 +8,7 @@ import DecryptedText from "@/components/DecryptedText";
 import Dither from "@/components/Dither";
 import FaultyTerminal from "@/components/FaultyTerminal";
 import Noise from "@/components/Noise";
-import Ribbons from "@/components/Ribbons";
+import SplashCursor from "@/components/SplashCursor";
 import StaggeredMenu from "@/components/StaggeredMenu";
 import portrait from "../../assets/Self-portrait.png";
 import banner from "../../assets/icon.png";
@@ -110,22 +110,11 @@ const sections = [
       "Fiction, poetry, essays, scripts, and game writing. This is the quieter room inside the noise.",
     scraps: ["Fiction", "Poetry", "Script", "Essay"],
   },
-  {
-    id: "basement",
-    label: "Basement",
-    cn: "地下室",
-    code: "UNSORTED DOOR",
-    color: "var(--orange)",
-    route: "/basement",
-    copy:
-      "Childhood work, failed prototypes, strange sketches, private experiments, and the pieces that explain how the rest of the site happened.",
-    scraps: ["Scraps", "Old work", "Tests", "Secrets"],
-  },
 ] as const;
 
 const streamRows = [
   "RONGFENG//INDEX//0001//SCROLL//VISUALSYSTEM//",
-  "GAMES PHOTOGRAPHY VISUAL DIGITAL THEATRE MAKING WRITING BASEMENT",
+  "GAMES PHOTOGRAPHY VISUAL DIGITAL THEATRE MAKING WRITING",
   "ASCII_WASH CHROMA_OFFSET HALFTONE_SCAN RELAXING_THEME",
 ];
 
@@ -290,18 +279,20 @@ export default function Home() {
       <div className="noise-backdrop" aria-hidden="true">
         <Noise patternSize={420} patternScaleX={1.25} patternScaleY={1.25} patternRefreshInterval={3} patternAlpha={18} />
       </div>
-      <div className="ribbons-cursor" aria-hidden="true">
-        <Ribbons
-          colors={["#002FA7"]}
-          baseThickness={34}
-          baseSpring={0.024}
-          baseFriction={0.9}
-          offsetFactor={0}
-          maxAge={280}
-          pointCount={18}
-          speedMultiplier={0.8}
-          enableFade={false}
-          enableShaderEffect={false}
+      <div className="splash-cursor" aria-hidden="true">
+        <SplashCursor
+          SIM_RESOLUTION={96}
+          DYE_RESOLUTION={768}
+          DENSITY_DISSIPATION={3.2}
+          VELOCITY_DISSIPATION={2.4}
+          PRESSURE={0.08}
+          CURL={4}
+          SPLAT_RADIUS={0.18}
+          SPLAT_FORCE={5200}
+          RAINBOW_MODE={false}
+          COLOR="#002FA7"
+          Z_INDEX={82}
+          OPACITY={0.82}
         />
       </div>
 
@@ -319,8 +310,8 @@ export default function Home() {
         displayItemNumbering={true}
       />
 
-      <section id="top" className="relative z-10 min-h-[100svh] px-4 pb-10 pt-16 sm:px-6 lg:px-8 lg:pt-20">
-        <div className="grid min-h-[calc(100svh-6rem)] gap-8 lg:grid-cols-[1.35fr_0.8fr] lg:items-end">
+      <section id="top" className="relative z-10 flex min-h-[100svh] flex-col px-4 pb-4 pt-4 sm:px-6 sm:pt-5 lg:px-8 lg:pt-6">
+        <div className="grid flex-1 gap-8 lg:grid-cols-[1.35fr_0.8fr] lg:items-center">
           <div className="hero-copy relative">
             <h1
               ref={heroNameRef}
@@ -339,17 +330,17 @@ export default function Home() {
             </h1>
             <div className="mt-4 flex flex-wrap items-end gap-4">
               <span className="hero-cn-name">
-                冯熔
+                馮熔
               </span>
               <p className="max-w-xl font-body text-xl leading-7 text-paper/82">
-                One continuous index for playable work, images, writing, spaces, and the odd basement.
+                One continuous index for playable work, images, writing, spaces, and process fragments.
               </p>
             </div>
           </div>
 
           <div className="hero-side">
             <div className="hero-portrait" style={{ "--active": "var(--lime)" } as CSSProperties}>
-              <Image src={portrait} alt="Self portrait" className="portrait-chroma h-full w-full object-cover" priority />
+              <Image src={portrait} alt="Self portrait" className="portrait-chroma h-full w-full object-contain" priority />
               <div className="portrait-caption">
                 <span>active signal</span>
                 <span>{active.label}</span>
@@ -358,7 +349,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-stream relative z-10 mt-12 overflow-hidden border-y border-paper/15 py-2">
+        <div className="hero-stream relative z-10 mt-auto overflow-hidden border-y border-paper/15 py-2">
           {streamRows.map((row) => (
             <p key={row} className="marquee-line font-mono text-[11px] uppercase text-paper/45">
               {row} {row} {row}

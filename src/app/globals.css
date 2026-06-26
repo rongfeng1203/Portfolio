@@ -51,6 +51,8 @@
   --font-body-local: "Handjet Local";
   --font-mono-local: "Micro 5 Local";
   --font-y2k-local: "Barrio Local";
+  --font-title-en-local: "Tiny 5 Local";
+  --font-title-cn-local: "ZLabs Pixel Local";
   --font-display-cn-local: "Chinese Handwriting Name";
   --font-display-cn-fallback: "Songti SC";
   --font-body-cn-fallback: "PingFang SC";
@@ -77,20 +79,33 @@
 }
 
 @font-face {
-  font-family: "Rubik Glitch Local";
-  src: url("../../assets/RubikGlitch-Regular.ttf") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Barrio Local";
   src: url("../../assets/Barrio-Regular.ttf") format("truetype");
   font-display: swap;
 }
 
 @font-face {
+  font-family: "Tiny 5 Local";
+  src: url("../../assets/Tiny5-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ZLabs Pixel Local";
+  src: url("../../assets/ZLabsPixel_12px_M_JP.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Chinese Handwriting Name";
   src: url("/fonts/chinese-handwriting-name.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Chinese Title Name";
+  src: url("/fonts/chinese-handwriting-name.woff2?v=title-2") format("woff2");
   font-display: swap;
   font-weight: 400;
 }
@@ -122,13 +137,12 @@ body::after {
 }
 
 body::before {
-  opacity: 0.22;
-  mix-blend-mode: screen;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
   background-image:
-    radial-gradient(circle at 20% 30%, rgb(255 255 255 / 0.14) 0 1px, transparent 1px),
-    radial-gradient(circle at 70% 60%, rgb(255 255 255 / 0.08) 0 1px, transparent 1px),
-    linear-gradient(135deg, rgb(240 78 152 / 0.12), transparent 30%, rgb(125 85 199 / 0.12) 58%, transparent 78%, rgb(255 143 28 / 0.08));
-  background-size: 6px 6px, 10px 10px, 100% 100%;
+    radial-gradient(circle, rgb(255 255 255 / 0.12) 0 1px, transparent 1.2px),
+    radial-gradient(circle, rgb(0 47 167 / 0.18) 0 1px, transparent 1.3px);
+  background-size: 7px 7px, 13px 13px;
 }
 
 body::after {
@@ -280,7 +294,7 @@ a {
 
 .dither-backdrop,
 .noise-backdrop,
-.ribbons-cursor {
+.splash-cursor {
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -301,7 +315,7 @@ a {
   mix-blend-mode: overlay;
 }
 
-.ribbons-cursor {
+.splash-cursor {
   z-index: 88;
   opacity: 1;
   mix-blend-mode: screen;
@@ -387,8 +401,8 @@ a {
 }
 
 .portfolio-staggered-menu .sm-panel-item:hover {
-  color: #002fa7;
-  text-shadow: 2px 0 var(--lime), -2px 0 var(--pink);
+  color: var(--orange) !important;
+  text-shadow: 2px 0 #002fa7, -2px 0 var(--pink);
 }
 
 .portfolio-staggered-menu .sm-panel-list[data-numbering] .sm-panel-item::after {
@@ -520,7 +534,7 @@ a {
 }
 
 .hero-name {
-  font-family: "Barrio Local", var(--font-y2k-cn-fallback), system-ui, sans-serif;
+  font-family: var(--font-title-en-local), var(--font-y2k-cn-fallback), system-ui, sans-serif;
   font-size: clamp(5.5rem, 18vw, 16rem);
   line-height: 0.76;
   letter-spacing: 0;
@@ -547,7 +561,7 @@ a {
 
 .hero-cn-name {
   display: inline-block;
-  font-family: "Chinese Handwriting Name", var(--font-display-cn-fallback), serif !important;
+  font-family: var(--font-title-cn-local), var(--font-display-cn-fallback), serif !important;
   font-size: clamp(4.8rem, 11vw, 9.25rem);
   font-weight: 400;
   line-height: 0.98;
@@ -561,15 +575,17 @@ a {
 .hero-side {
   display: grid;
   gap: 0;
-  align-self: end;
-  transform: translateY(-1.75rem);
+  align-self: center;
+  justify-items: end;
 }
 
 .hero-portrait,
 .index-media {
   --active: var(--orange);
   position: relative;
-  min-height: 38rem;
+  width: min(42vw, 38rem);
+  aspect-ratio: 1 / 1;
+  min-height: auto;
   isolation: isolate;
   overflow: hidden;
   background: var(--active);
@@ -723,6 +739,259 @@ a {
 .marquee-line:nth-child(3) {
   animation-duration: 31s;
   color: rgb(240 78 152 / 0.58);
+}
+
+.section-page {
+  --section-color: var(--lime);
+  --section-accent: #002fa7;
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  background-color: #070816;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 .5H32M.5 0V32' stroke='%23f2ead7' stroke-opacity='.045' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 32px 32px;
+  animation: background-grid-drift 18s linear infinite;
+}
+
+.section-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23CEDC00' fill-opacity='.18'/%3E%3Ccircle cx='11' cy='9' r='1.1' fill='%23050509' fill-opacity='.34'/%3E%3Cpath d='M0 8.5H18' stroke='%23f2ead7' stroke-opacity='.04'/%3E%3C/svg%3E");
+  background-size: 18px 18px;
+}
+
+.section-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.72'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  image-rendering: pixelated;
+}
+
+.section-noise-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 96 96' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 96px 96px;
+  image-rendering: pixelated;
+}
+
+.section-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.section-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  color: rgb(242 234 215 / 0.66);
+}
+
+.section-back {
+  color: var(--section-color);
+}
+
+.section-back:hover {
+  color: var(--section-accent);
+}
+
+.section-hero {
+  display: grid;
+  min-height: 52svh;
+  align-items: end;
+  gap: 2rem;
+  padding: clamp(3rem, 8vw, 6rem) 0 2rem;
+  border-bottom: 1px solid rgb(242 234 215 / 0.16);
+}
+
+.section-code {
+  margin-bottom: 0.75rem;
+  width: fit-content;
+  background: var(--section-color);
+  padding: 0.15rem 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.section-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(4.4rem, 15vw, 14rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--section-color) 28%, var(--paper));
+  text-shadow: 3px 0 var(--section-accent), -2px 0 var(--pink);
+  overflow: visible;
+}
+
+.section-hero h1.section-title-long {
+  font-size: clamp(3.4rem, 10.8vw, 10.25rem);
+  line-height: 0.95;
+  max-width: 100%;
+}
+
+.section-cn {
+  margin-top: 0.4rem;
+  font-family: "Chinese Handwriting Name", var(--font-display-cn-fallback), serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.95;
+  color: var(--section-color);
+}
+
+.section-intro {
+  max-width: 48rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.4rem, 2.6vw, 2.25rem);
+  line-height: 1.05;
+  color: rgb(242 234 215 / 0.84);
+}
+
+.section-workbench {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.section-image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(12rem, 22vw);
+  gap: 0.85rem;
+}
+
+.section-image-slot {
+  display: grid;
+  align-content: space-between;
+  min-height: 12rem;
+  padding: 0.85rem;
+  border: 1px solid rgb(242 234 215 / 0.2);
+  background-color: rgb(5 5 9 / 0.72);
+  background-image: url("data:image/svg+xml,%3Csvg width='11' height='11' viewBox='0 0 11 11' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23CEDC00' fill-opacity='.24'/%3E%3C/svg%3E");
+  background-size: 11px 11px;
+  color: var(--paper);
+  overflow: hidden;
+}
+
+.section-image-slot span,
+.section-image-slot em,
+.section-note span,
+.bucket-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-style: normal;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--section-color) 72%, var(--paper));
+}
+
+.section-image-slot strong {
+  max-width: 12ch;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.section-image-slot.slot-1 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.section-image-slot.slot-4 {
+  grid-column: span 2;
+}
+
+.section-note {
+  display: grid;
+  gap: 0.45rem;
+  border-top: 1px solid rgb(242 234 215 / 0.16);
+  padding-top: 0.85rem;
+}
+
+.section-note p {
+  max-width: 58rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  line-height: 1.08;
+  color: rgb(242 234 215 / 0.8);
+}
+
+.section-buckets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border-top: 1px solid rgb(242 234 215 / 0.18);
+  border-left: 1px solid rgb(242 234 215 / 0.18);
+}
+
+.section-buckets article {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+  min-height: 18rem;
+  padding: 1rem;
+  border-right: 1px solid rgb(242 234 215 / 0.18);
+  border-bottom: 1px solid rgb(242 234 215 / 0.18);
+  background: rgb(5 5 9 / 0.42);
+}
+
+.section-buckets article > span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--section-color);
+}
+
+.section-buckets h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3.6rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.section-buckets p:last-child {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  line-height: 1.12;
+  color: rgb(242 234 215 / 0.74);
+}
+
+@media (max-width: 900px) {
+  .section-hero {
+    min-height: auto;
+    padding-top: 3rem;
+  }
+
+  .section-image-grid,
+  .section-buckets {
+    grid-template-columns: 1fr;
+  }
+
+  .section-image-slot,
+  .section-image-slot.slot-1,
+  .section-image-slot.slot-4 {
+    grid-column: auto;
+    grid-row: auto;
+  }
 }
 
 .index-media {
@@ -879,7 +1148,7 @@ a {
     bottom: auto;
     z-index: 0;
     width: min(68vw, 28rem);
-    min-height: 22rem;
+    min-height: auto;
     opacity: 0.34;
     pointer-events: none;
   }
@@ -915,7 +1184,7 @@ a {
     top: 72svh;
     bottom: auto;
     width: 86vw;
-    min-height: 19rem;
+    min-height: auto;
     opacity: 0.24;
   }
 
@@ -1050,4 +1319,22 @@ a {
   html {
     @apply font-sans;
   }
+}
+
+/* Final portfolio overrides: keep these after Tailwind/base layers. */
+.hero-cn-name,
+.hero-cn-name * {
+  font-family: var(--font-title-cn-local), var(--font-display-cn-fallback), serif !important;
+}
+
+.portfolio-staggered-menu .sm-panel-item:hover,
+.portfolio-staggered-menu .sm-panel-item:hover .sm-panel-itemLabel,
+.staggered-menu-wrapper.portfolio-staggered-menu .sm-panel-item:hover {
+  color: var(--orange) !important;
+}
+
+.section-page {
+  background-color: #070816 !important;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 .5H32M.5 0V32' stroke='%23f2ead7' stroke-opacity='.045' stroke-width='1'/%3E%3C/svg%3E") !important;
+  background-size: 32px 32px !important;
 }
