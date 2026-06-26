@@ -133,10 +133,11 @@
   width: clamp(260px, 38vw, 420px);
   height: 100%;
   background:
-    linear-gradient(135deg, rgb(125 85 199 / 0.62), rgb(0 47 167 / 0.48) 48%, rgb(5 5 9 / 0.9)),
-    radial-gradient(circle at 18% 16%, rgb(240 78 152 / 0.18), transparent 16rem),
-    repeating-linear-gradient(0deg, rgb(242 234 215 / 0.055) 0 1px, transparent 1px 8px),
+    radial-gradient(circle, rgb(206 220 0 / 0.18) 0 1px, transparent 1.4px),
+    linear-gradient(90deg, rgb(242 234 215 / 0.055) 1px, transparent 1px),
+    linear-gradient(180deg, rgb(242 234 215 / 0.045) 1px, transparent 1px),
     #050509 !important;
+  background-size: 13px 13px, 32px 32px, 32px 32px, 100% 100% !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;

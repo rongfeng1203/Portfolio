@@ -51,7 +51,7 @@
   --font-body-local: "Handjet Local";
   --font-mono-local: "Micro 5 Local";
   --font-y2k-local: "Barrio Local";
-  --font-display-cn-local: "Chinese Handwriting Local";
+  --font-display-cn-local: "Chinese Handwriting Name";
   --font-display-cn-fallback: "Songti SC";
   --font-body-cn-fallback: "PingFang SC";
   --font-y2k-cn-fallback: "Kaiti SC";
@@ -89,8 +89,8 @@
 }
 
 @font-face {
-  font-family: "Chinese Handwriting Local";
-  src: url("../../assets/chinese-handwriting-style.ttf") format("truetype");
+  font-family: "Chinese Handwriting Name";
+  src: url("/fonts/chinese-handwriting-name.woff2") format("woff2");
   font-display: swap;
   font-weight: 400;
 }
@@ -347,10 +347,11 @@ a {
   width: clamp(21rem, 40vw, 34rem) !important;
   border-left: 1px solid rgb(242 234 215 / 0.18);
   background:
-    linear-gradient(135deg, rgb(125 85 199 / 0.62), rgb(0 47 167 / 0.48) 48%, rgb(5 5 9 / 0.9)),
-    radial-gradient(circle at 18% 16%, rgb(240 78 152 / 0.18), transparent 16rem),
-    repeating-linear-gradient(0deg, rgb(242 234 215 / 0.055) 0 1px, transparent 1px 8px),
+    radial-gradient(circle, rgb(206 220 0 / 0.18) 0 1px, transparent 1.4px),
+    linear-gradient(90deg, rgb(242 234 215 / 0.055) 1px, transparent 1px),
+    linear-gradient(180deg, rgb(242 234 215 / 0.045) 1px, transparent 1px),
     var(--ink) !important;
+  background-size: 13px 13px, 32px 32px, 32px 32px, 100% 100% !important;
   color: var(--paper);
   box-shadow: -18px 0 0 rgb(0 47 167 / 0.18);
 }
@@ -365,13 +366,13 @@ a {
   display: block;
   max-width: 100%;
   padding-right: 2rem;
-  color: var(--paper);
+  color: var(--lime);
   font-family: var(--font-display);
   font-size: clamp(1.95rem, 4.35vw, 3.75rem) !important;
   line-height: 0.9;
   letter-spacing: 0;
   white-space: nowrap;
-  text-shadow: 2px 0 var(--pink), -2px 0 var(--violet);
+  text-shadow: 2px 0 rgb(0 47 167 / 0.72), -2px 0 var(--purple);
 }
 
 @media (max-width: 720px) {
@@ -386,7 +387,8 @@ a {
 }
 
 .portfolio-staggered-menu .sm-panel-item:hover {
-  color: var(--lime);
+  color: #002fa7;
+  text-shadow: 2px 0 var(--lime), -2px 0 var(--pink);
 }
 
 .portfolio-staggered-menu .sm-panel-list[data-numbering] .sm-panel-item::after {
@@ -539,26 +541,16 @@ a {
   white-space: pre-line;
 }
 
-.hero-cn-name {
-  font-family: var(--font-display-cn);
-  /* whatever size/styling you want */
-  font-size: clamp(2rem, 6vw, 5rem);
-  line-height: 1;
-  color: var(--paper);
-}
-
-
-
 .hero-copy {
   z-index: 4;
 }
 
 .hero-cn-name {
   display: inline-block;
-  font-family: "Chinese Handwriting Local", var(--font-display-cn-fallback), serif !important;
-  font-size: clamp(7rem, 17vw, 16rem);
+  font-family: "Chinese Handwriting Name", var(--font-display-cn-fallback), serif !important;
+  font-size: clamp(4.8rem, 11vw, 9.25rem);
   font-weight: 400;
-  line-height: 0.78;
+  line-height: 0.98;
   color: var(--orange) !important;
   text-shadow:
     2px 0 var(--pink),
@@ -570,6 +562,7 @@ a {
   display: grid;
   gap: 0;
   align-self: end;
+  transform: translateY(-1.75rem);
 }
 
 .hero-portrait,
