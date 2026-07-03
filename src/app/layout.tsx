@@ -5,6 +5,7 @@
    ============================================================ */
 
 import type { Metadata } from "next";
+import GlobalNoise from "@/components/GlobalNoise";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
+        <GlobalNoise />
       </body>
     </html>
   );

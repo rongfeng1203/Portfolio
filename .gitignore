@@ -20,6 +20,13 @@
 # production
 /build
 
+# local/source media archives
+/assets/photography/
+/assets/digital media/
+/assets/visual art/
+/assets/chinese-handwriting-style.ttf
+/public/fonts/chinese-handwriting-style.ttf
+
 # misc
 .DS_Store
 *.pem

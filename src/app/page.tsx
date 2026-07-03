@@ -7,8 +7,7 @@ import CircularText from "@/components/CircularText";
 import DecryptedText from "@/components/DecryptedText";
 import Dither from "@/components/Dither";
 import FaultyTerminal from "@/components/FaultyTerminal";
-import Noise from "@/components/Noise";
-import SplashCursor from "@/components/SplashCursor";
+import PixelTrail from "@/components/PixelTrail";
 import StaggeredMenu from "@/components/StaggeredMenu";
 import portrait from "../../assets/Self-portrait.png";
 import banner from "../../assets/icon.png";
@@ -17,6 +16,9 @@ const relaxingThemeUrl = new URL("../../assets/relaxing theme.mp3", import.meta.
 const finalName = "Rong\nFeng";
 const scrambledName = "R0N_\nF3N#";
 const scrambleChars = "01/_#<>RONGFENG";
+const heroDecipherStartMs = 3350;
+const heroDecipherFrameMs = 260;
+const heroDecipherFinalMs = 7200;
 
 function scrambleName(revealedCount: number) {
   let seen = 0;
@@ -36,7 +38,7 @@ const sections = [
   {
     id: "games",
     label: "Games",
-    cn: "游戏",
+    cn: "遊戲",
     code: "PLAYABLE SYSTEMS",
     color: "var(--lime)",
     route: "/games",
@@ -47,7 +49,7 @@ const sections = [
   {
     id: "photography",
     label: "Photography",
-    cn: "摄影",
+    cn: "攝影",
     code: "CONTACT SHEETS",
     color: "var(--violet)",
     route: "/photography",
@@ -80,7 +82,7 @@ const sections = [
   {
     id: "theatre",
     label: "Theatre",
-    cn: "剧场",
+    cn: "戲劇",
     code: "SPACE CUE",
     color: "var(--purple)",
     route: "/theatre",
@@ -131,6 +133,7 @@ export default function Home() {
   const [heroNameText, setHeroNameText] = useState(scrambledName);
   const [activeIndex] = useState(0);
   const active = sections[activeIndex];
+  const cursorEventSource = typeof document !== "undefined" ? document.body : undefined;
 
   useEffect(() => {
     const timer = window.setTimeout(() => setIntroDone(true), 3200);
@@ -190,10 +193,10 @@ export default function Home() {
     ];
 
     frames.forEach((frame, index) => {
-      timers.push(window.setTimeout(() => setHeroNameText(frame), 3150 + index * 95));
+      timers.push(window.setTimeout(() => setHeroNameText(frame), heroDecipherStartMs + index * heroDecipherFrameMs));
     });
 
-    timers.push(window.setTimeout(() => setHeroNameText(finalName), 4600));
+    timers.push(window.setTimeout(() => setHeroNameText(finalName), heroDecipherFinalMs));
 
     return () => {
       timers.forEach((timer) => window.clearTimeout(timer));
@@ -218,7 +221,7 @@ export default function Home() {
             chromaticAberration={0.42}
             dither={0.9}
             curvature={0.14}
-            tint="#CEDC00"
+            tint="#cddc00"
             mouseReact={true}
             mouseStrength={0.35}
             pageLoadAnimation={true}
@@ -228,12 +231,12 @@ export default function Home() {
           <div className="ascii-reveal absolute inset-0" />
 
           <div className="absolute inset-0 grid items-center px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12">
-            <div className="relative h-[48vh] min-h-[320px]">
+            <div className="relative h-[48vh] min-h-[320px] lg:translate-x-12 xl:translate-x-20">
               <ASCIIText
                 text="RONG FENG"
                 asciiFontSize={7}
                 textFontSize={210}
-                textColor="#F2EAD7"
+                textColor="#3b38ff"
                 planeBaseHeight={8}
                 enableWaves={true}
               />
@@ -276,23 +279,18 @@ export default function Home() {
         />
       </div>
       <div className="texture-halftone fixed inset-0 pointer-events-none z-0" />
-      <div className="noise-backdrop" aria-hidden="true">
-        <Noise patternSize={420} patternScaleX={1.25} patternScaleY={1.25} patternRefreshInterval={3} patternAlpha={18} />
-      </div>
-      <div className="splash-cursor" aria-hidden="true">
-        <SplashCursor
-          SIM_RESOLUTION={96}
-          DYE_RESOLUTION={768}
-          DENSITY_DISSIPATION={3.2}
-          VELOCITY_DISSIPATION={2.4}
-          PRESSURE={0.08}
-          CURL={4}
-          SPLAT_RADIUS={0.18}
-          SPLAT_FORCE={5200}
-          RAINBOW_MODE={false}
-          COLOR="#002FA7"
-          Z_INDEX={82}
-          OPACITY={0.82}
+      <div className="pixel-trail-cursor" aria-hidden="true">
+        <PixelTrail
+          gridSize={68}
+          trailSize={0.075}
+          maxAge={180}
+          interpolate={2}
+          color="#002FA7"
+          gooeyFilter={undefined}
+          canvasProps={{
+            eventSource: cursorEventSource,
+            eventPrefix: "client",
+          }}
         />
       </div>
 
@@ -333,7 +331,7 @@ export default function Home() {
                 馮熔
               </span>
               <p className="max-w-xl font-body text-xl leading-7 text-paper/82">
-                One continuous index for playable work, images, writing, spaces, and process fragments.
+                17 y/o highschool student, aspiring game designer and multi-disciplinary artist. I LOVEEE creating interactive art, all kinds of design and experimenting with different mediums.
               </p>
             </div>
           </div>
