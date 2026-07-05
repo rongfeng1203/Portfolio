@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { type CSSProperties, useEffect, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import ASCIIText from "@/components/ASCIIText";
 import CircularText from "@/components/CircularText";
 import DecryptedText from "@/components/DecryptedText";
@@ -126,14 +126,31 @@ const menuItems = sections.map((section) => ({
   ariaLabel: `Open ${section.label}`,
 }));
 
+function subscribeToHydration(callback: () => void) {
+  queueMicrotask(callback);
+  return () => {};
+}
+
+function getClientHydrationSnapshot() {
+  return true;
+}
+
+function getServerHydrationSnapshot() {
+  return false;
+}
+
 export default function Home() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const heroNameRef = useRef<HTMLHeadingElement | null>(null);
   const [introDone, setIntroDone] = useState(false);
   const [heroNameText, setHeroNameText] = useState(scrambledName);
   const [activeIndex] = useState(0);
+  const cursorReady = useSyncExternalStore(
+    subscribeToHydration,
+    getClientHydrationSnapshot,
+    getServerHydrationSnapshot,
+  );
   const active = sections[activeIndex];
-  const cursorEventSource = typeof document !== "undefined" ? document.body : undefined;
 
   useEffect(() => {
     const timer = window.setTimeout(() => setIntroDone(true), 3200);
@@ -166,12 +183,12 @@ export default function Home() {
 
     let step = 0;
     const positions = ["0% 50%", "32% 50%", "68% 50%", "100% 50%", "68% 50%", "32% 50%"];
-    heroName.style.transition = "background-position 1600ms ease-in-out";
+    heroName.style.transition = "background-position 780ms ease-in-out";
 
     const interval = window.setInterval(() => {
       step = (step + 1) % positions.length;
       heroName.style.backgroundPosition = positions[step];
-    }, 1600);
+    }, 780);
 
     return () => window.clearInterval(interval);
   }, []);
@@ -279,20 +296,22 @@ export default function Home() {
         />
       </div>
       <div className="texture-halftone fixed inset-0 pointer-events-none z-0" />
-      <div className="pixel-trail-cursor" aria-hidden="true">
-        <PixelTrail
-          gridSize={68}
-          trailSize={0.075}
-          maxAge={180}
-          interpolate={2}
-          color="#002FA7"
-          gooeyFilter={undefined}
-          canvasProps={{
-            eventSource: cursorEventSource,
-            eventPrefix: "client",
-          }}
-        />
-      </div>
+      {cursorReady ? (
+        <div className="pixel-trail-cursor" aria-hidden="true">
+          <PixelTrail
+            gridSize={68}
+            trailSize={0.075}
+            maxAge={180}
+            interpolate={2}
+            color="#002FA7"
+            gooeyFilter={undefined}
+            canvasProps={{
+              eventSource: document.body,
+              eventPrefix: "client",
+            }}
+          />
+        </div>
+      ) : null}
 
       <StaggeredMenu
         className="portfolio-staggered-menu"

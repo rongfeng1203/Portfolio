@@ -5,7 +5,7 @@ import type { PortfolioSection } from "@/lib/portfolioSections";
 
 type MediaItem = NonNullable<PortfolioSection["mediaItems"]>[number];
 
-export default function PhotographySlideshow({ items }: { items: MediaItem[] }) {
+export default function PhotographySlideshow({ items, label = "Gallery slideshow" }: { items: MediaItem[]; label?: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -22,15 +22,28 @@ export default function PhotographySlideshow({ items }: { items: MediaItem[] }) 
   const active = items[activeIndex];
 
   return (
-    <section className="photo-slideshow" aria-label="Photography slideshow">
+    <section className="photo-slideshow" aria-label={label}>
       <div className="photo-slideshow-frame">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          key={active.src}
-          src={active.src}
-          alt={active.title}
-          className="photo-slideshow-image"
-        />
+        {active.type === "video" ? (
+          <video
+            key={active.src}
+            src={active.src}
+            className="photo-slideshow-image"
+            muted
+            autoPlay
+            loop
+            playsInline
+            controls
+          />
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={active.src}
+            src={active.src}
+            alt={active.title}
+            className="photo-slideshow-image"
+          />
+        )}
       </div>
       <div className="photo-slideshow-meta">
         <span>{String(activeIndex + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>

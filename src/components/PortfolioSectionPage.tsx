@@ -8,7 +8,7 @@ import banner from "../../assets/icon.png";
 export default function PortfolioSectionPage({ section }: { section: PortfolioSection }) {
   const mediaItems = section.mediaItems ?? [];
   const hasMedia = mediaItems.length > 0;
-  const isPhotography = section.slug === "photography";
+  const usesGalleryLayout = ["photography", "visual", "digital"].includes(section.slug);
 
   return (
     <main
@@ -32,7 +32,7 @@ export default function PortfolioSectionPage({ section }: { section: PortfolioSe
         <p>{section.code}</p>
       </header>
 
-      {isPhotography && hasMedia ? <PhotographySlideshow items={mediaItems} /> : null}
+      {usesGalleryLayout && hasMedia ? <PhotographySlideshow items={mediaItems} label={`${section.title} gallery`} /> : null}
 
       <section className="section-hero">
         <div>
@@ -43,7 +43,7 @@ export default function PortfolioSectionPage({ section }: { section: PortfolioSe
         <p className="section-intro">{section.intro}</p>
       </section>
 
-      {!isPhotography ? (
+      {!usesGalleryLayout ? (
         <section className="section-workbench" aria-label={`${section.title} work slots`}>
           {hasMedia ? (
             <div className="section-media-grid">
