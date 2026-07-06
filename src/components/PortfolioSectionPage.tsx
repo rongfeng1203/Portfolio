@@ -1,11 +1,27 @@
 import Link from "next/link";
 import Image from "next/image";
-import { type CSSProperties } from "react";
+import { type CSSProperties, type ReactNode } from "react";
 import PhotographySlideshow from "@/components/PhotographySlideshow";
 import type { PortfolioSection } from "@/lib/portfolioSections";
 import banner from "../../assets/icon.png";
 
-export default function PortfolioSectionPage({ section }: { section: PortfolioSection }) {
+type MediaItem = NonNullable<PortfolioSection["mediaItems"]>[number];
+
+const photographyPreviewIndexes = [
+  [1, 14, 27],
+  [6, 35, 52],
+  [11, 43, 68],
+];
+
+function getBucketPreviewItems(sectionSlug: string, mediaItems: MediaItem[], bucketIndex: number) {
+  if (sectionSlug !== "photography" || !mediaItems.length) return [];
+
+  return photographyPreviewIndexes[bucketIndex % photographyPreviewIndexes.length]
+    .map((itemIndex) => mediaItems[(itemIndex - 1) % mediaItems.length])
+    .filter((item) => item.type === "image");
+}
+
+export default function PortfolioSectionPage({ section, feature }: { section: PortfolioSection; feature?: ReactNode }) {
   const mediaItems = section.mediaItems ?? [];
   const hasMedia = mediaItems.length > 0;
   const usesGalleryLayout = ["photography", "visual", "digital"].includes(section.slug);
@@ -32,7 +48,9 @@ export default function PortfolioSectionPage({ section }: { section: PortfolioSe
         <p>{section.code}</p>
       </header>
 
-      {usesGalleryLayout && hasMedia ? <PhotographySlideshow items={mediaItems} label={`${section.title} gallery`} /> : null}
+      {usesGalleryLayout && hasMedia ? (
+        <PhotographySlideshow items={mediaItems} label={`${section.title} gallery`} shuffle={section.slug === "photography"} />
+      ) : null}
 
       <section className="section-hero">
         <div>
@@ -43,7 +61,15 @@ export default function PortfolioSectionPage({ section }: { section: PortfolioSe
         <p className="section-intro">{section.intro}</p>
       </section>
 
-      {!usesGalleryLayout ? (
+      {feature ? (
+        <section className="section-workbench" aria-label={`${section.title} featured work`}>
+          {feature}
+          <aside className="section-note">
+            <span>playable build loaded</span>
+            <p>{section.note}</p>
+          </aside>
+        </section>
+      ) : !usesGalleryLayout ? (
         <section className="section-workbench" aria-label={`${section.title} work slots`}>
           {hasMedia ? (
             <div className="section-media-grid">
@@ -90,9 +116,26 @@ export default function PortfolioSectionPage({ section }: { section: PortfolioSe
       ) : null}
 
       <section className="section-buckets" aria-label={`${section.title} categories`}>
-        {section.buckets.map((bucket, index) => (
-          bucket.href ? (
+        {section.buckets.map((bucket, index) => {
+          const previewItems = getBucketPreviewItems(section.slug, mediaItems, index);
+
+          return bucket.href ? (
             <Link key={bucket.title} href={bucket.href} className="section-bucket-link">
+              {previewItems.length ? (
+                <div className="bucket-preview" aria-hidden="true">
+                  {previewItems.map((item, previewIndex) => (
+                    <div key={`${bucket.title}-${item.src}-${previewIndex}`} className="bucket-preview-frame">
+                      <Image
+                        src={item.src}
+                        alt=""
+                        fill
+                        sizes="(max-width: 720px) 28vw, 12vw"
+                        unoptimized
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : null}
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h2>{bucket.title}</h2>
               <p className="bucket-meta">{bucket.meta}</p>
@@ -105,8 +148,8 @@ export default function PortfolioSectionPage({ section }: { section: PortfolioSe
               <p className="bucket-meta">{bucket.meta}</p>
               <p>{bucket.copy}</p>
             </article>
-          )
-        ))}
+          );
+        })}
       </section>
     </main>
   );

@@ -118,7 +118,7 @@ export const portfolioSections: PortfolioSection[] = [
     textColor: "var(--pink)",
     intro:
       "Playable prototypes, Unity scenes, small web experiments, and design studies. This page is the main application-facing archive for systems, level design, and interaction.",
-    note: "Add builds, gameplay captures, itch links, Unity clips, process diagrams.",
+    note: "Starfall Build 1 is embedded as a live Unity WebGL build. Add gameplay captures, itch links, and process diagrams around it later.",
     buckets: [
       { title: "Playable", meta: "web / python / prototype", copy: "Small loops with a clear mechanic, a readable goal, and room for player curiosity." },
       { title: "Unity", meta: "3d / lighting / systems", copy: "Worldbuilding, camera tests, spatial interaction, and scenes that show game-design thinking." },
