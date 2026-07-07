@@ -381,7 +381,8 @@ export default function Home() {
               */}
               <TextType
                 as="p"
-                text="17 y/o highschool student, aspiring game designer and multi-disciplinary artist. I LOVEEE creating interactive art, all kinds of design and experimenting with different mediums."
+                text="I am a 17 y/o highschool student, aspiring game designer and multi-disciplinary artist. 
+                I LOVEEE creating interactive art, all kinds of design and experimenting with different mediums."
                 className="max-w-xl font-body text-xl leading-7 text-paper/82"
                 typingSpeed={28}
                 initialDelay={320}

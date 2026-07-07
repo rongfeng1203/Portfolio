@@ -20,6 +20,27 @@ body { padding: 0; margin: 0 }
 }
 .unity-mobile #unity-canvas { width: 100%; height: 100% }
 #unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none }
+#unity-deploy-error {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  width: min(80vw, 720px);
+  min-height: 160px;
+  transform: translate(-50%, -50%);
+  place-items: center;
+  border: 1px solid #CEDC00;
+  padding: 24px;
+  background:
+    radial-gradient(circle, rgb(206 220 0 / 0.18) 0 1px, transparent 1.4px),
+    rgb(5 5 9 / 0.92);
+  background-size: 12px 12px, 100% 100%;
+  color: #CEDC00;
+  font: 18px/1.35 monospace;
+  text-align: center;
+  text-transform: uppercase;
+}
 #unity-logo { width: 154px; height: 130px; background: url('unity-logo-dark.png') no-repeat center }
 #unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 10px; margin-left: 6.5px; background: url('progress-bar-empty-dark.png') no-repeat center }
 #unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-dark.png') no-repeat center }
