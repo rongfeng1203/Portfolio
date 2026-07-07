@@ -10,6 +10,7 @@ import Dither from "@/components/Dither";
 import FaultyTerminal from "@/components/FaultyTerminal";
 import PixelTrail from "@/components/PixelTrail";
 import StaggeredMenu from "@/components/StaggeredMenu";
+import TextType from "@/components/TextType";
 import portrait from "../../assets/Self-portrait.png";
 import banner from "../../assets/icon.png";
 
@@ -161,7 +162,7 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const heroNameRef = useRef<HTMLHeadingElement | null>(null);
   const [introDone, setIntroDone] = useState(false);
-  const [heroNameText, setHeroNameText] = useState(scrambledName);
+  const [, setHeroNameText] = useState(scrambledName);
   const [activeIndex] = useState(0);
   const cursorReady = useSyncExternalStore(
     subscribeToHydration,
@@ -171,15 +172,6 @@ export default function Home() {
   const active = sections[activeIndex];
 
   useEffect(() => {
-    if (readFirstEntrySeen()) {
-      const skipTimer = window.setTimeout(() => {
-        setIntroDone(true);
-        setHeroNameText(finalName);
-      }, 0);
-
-      return () => window.clearTimeout(skipTimer);
-    }
-
     const timer = window.setTimeout(() => setIntroDone(true), 3200);
     return () => window.clearTimeout(timer);
   }, []);
@@ -282,13 +274,12 @@ export default function Home() {
             chromaticAberration={0.42}
             dither={0.9}
             curvature={0.14}
-            tint="#cddc00"
+            tint="#F04E98"
             mouseReact={true}
             mouseStrength={0.35}
             pageLoadAnimation={true}
             brightness={1.12}
           />
-          <div className="absolute inset-0 bg-pink/62" />
           <div className="ascii-reveal absolute inset-0" />
 
           <div className="absolute inset-0 grid items-center px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12">
@@ -374,28 +365,31 @@ export default function Home() {
       <section id="top" className="relative z-10 flex min-h-[100svh] flex-col px-4 pb-4 pt-4 sm:px-6 sm:pt-5 lg:px-8 lg:pt-6">
         <div className="grid flex-1 gap-8 lg:grid-cols-[1.35fr_0.8fr] lg:items-center">
           <div className="hero-copy relative">
+            {/*
             <h1
               ref={heroNameRef}
               className="effect-chroma hero-name uppercase"
-              style={{
-                backgroundImage:
-                  "linear-gradient(90deg, var(--orange), var(--pink), var(--lime), var(--violet), var(--purple), var(--orange))",
-                backgroundSize: "420% 100%",
-                backgroundPosition: "0% 50%",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
             >
               {heroNameText}
             </h1>
+            */}
             <div className="mt-4 flex flex-wrap items-end gap-4">
+              {/*
               <span className="hero-cn-name">
                 馮熔
               </span>
-              <p className="max-w-xl font-body text-xl leading-7 text-paper/82">
-                17 y/o highschool student, aspiring game designer and multi-disciplinary artist. I LOVEEE creating interactive art, all kinds of design and experimenting with different mediums.
-              </p>
+              */}
+              <TextType
+                as="p"
+                text="17 y/o highschool student, aspiring game designer and multi-disciplinary artist. I LOVEEE creating interactive art, all kinds of design and experimenting with different mediums."
+                className="max-w-xl font-body text-xl leading-7 text-paper/82"
+                typingSpeed={28}
+                initialDelay={320}
+                loop={false}
+                showCursor={true}
+                cursorCharacter="_"
+                cursorClassName="text-lime"
+              />
             </div>
           </div>
 

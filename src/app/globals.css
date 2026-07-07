@@ -567,28 +567,18 @@ a {
 
 .hero-name {
   font-family: var(--font-title-en-local), var(--font-y2k-cn-fallback), system-ui, sans-serif;
-  font-size: clamp(5.5rem, 18vw, 16rem);
+  font-size: clamp(5.1rem, 16.8vw, 14.75rem);
   line-height: 0.76;
   letter-spacing: 0;
-  color: transparent;
-  background-image: linear-gradient(
-    90deg,
-    var(--orange),
-    var(--pink),
-    var(--lime),
-    var(--violet),
-    var(--purple),
-    var(--orange)
-  );
-  background-size: 420% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--lime);
+  background-image: none;
+  -webkit-text-fill-color: var(--lime);
   white-space: pre-line;
 }
 
 .hero-copy {
   z-index: 4;
+  padding-inline-start: clamp(1rem, 4vw, 4rem);
 }
 
 .hero-cn-name {
@@ -609,6 +599,7 @@ a {
   gap: 0;
   align-self: center;
   justify-items: end;
+  padding-inline-end: clamp(1rem, 3vw, 3.5rem);
 }
 
 .hero-portrait,
@@ -1109,6 +1100,58 @@ a {
   height: 100%;
   border: 0;
   background: #231f20;
+}
+
+.unity-webgl-loader {
+  display: grid;
+  place-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  border: 0;
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--section-text) 26%, transparent) 0 1px, transparent 1.4px),
+    rgb(5 5 9 / 0.72);
+  background-size: 12px 12px, 100% 100%;
+  color: var(--section-color);
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.unity-webgl-loader span,
+.unity-webgl-loader em {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-style: normal;
+  color: color-mix(in srgb, var(--section-text) 76%, transparent);
+}
+
+.unity-webgl-loader strong {
+  font-family: var(--font-display-local), system-ui, sans-serif;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-weight: 400;
+  line-height: 0.86;
+  color: var(--section-color);
+}
+
+.unity-webgl-loader:hover,
+.unity-webgl-loader:focus-visible {
+  background:
+    radial-gradient(circle, rgb(5 5 9 / 0.25) 0 1px, transparent 1.4px),
+    var(--section-color);
+  color: var(--ink);
+  outline: 0;
+}
+
+.unity-webgl-loader:hover span,
+.unity-webgl-loader:hover em,
+.unity-webgl-loader:focus-visible span,
+.unity-webgl-loader:focus-visible em,
+.unity-webgl-loader:hover strong,
+.unity-webgl-loader:focus-visible strong {
+  color: var(--ink);
 }
 
 .unity-webgl-meta {
@@ -1849,7 +1892,7 @@ video.photo-slideshow-image {
 
   .hero-portrait {
     position: absolute;
-    right: -22vw;
+    right: -12vw;
     top: 68svh;
     bottom: auto;
     z-index: 0;
@@ -1901,11 +1944,15 @@ video.photo-slideshow-image {
   }
 
   .hero-name {
-    font-size: clamp(4.2rem, 21vw, 7rem);
+    font-size: clamp(3.9rem, 19.6vw, 6.45rem);
+  }
+
+  .hero-copy {
+    padding-inline-start: clamp(0.75rem, 3vw, 1.5rem);
   }
 
   .hero-portrait {
-    right: -34vw;
+    right: -20vw;
     top: 72svh;
     bottom: auto;
     width: 86vw;

@@ -1,6 +1,12 @@
+"use client";
+
+import { useState } from "react";
+
 const starfallBuildUrl = "/starfallbuild1/index.html";
 
 export default function UnityWebGLEmbed() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <section className="unity-webgl-panel" aria-label="Starfall Unity WebGL build">
       <header className="unity-webgl-header">
@@ -14,12 +20,20 @@ export default function UnityWebGLEmbed() {
       </header>
 
       <div className="unity-webgl-stage">
-        <iframe
-          src={starfallBuildUrl}
-          title="Starfall Build 1 Unity WebGL player"
-          allow="fullscreen; gamepad; autoplay; xr-spatial-tracking"
-          allowFullScreen
-        />
+        {isLoaded ? (
+          <iframe
+            src={starfallBuildUrl}
+            title="Starfall Build 1 Unity WebGL player"
+            allow="fullscreen; gamepad; autoplay; xr-spatial-tracking"
+            allowFullScreen
+          />
+        ) : (
+          <button type="button" className="unity-webgl-loader" onClick={() => setIsLoaded(true)}>
+            <span>load playable build</span>
+            <strong>Starfall Build 1</strong>
+            <em>large unity webgl file / click to start</em>
+          </button>
+        )}
       </div>
 
       <footer className="unity-webgl-meta" aria-label="Starfall build metadata">
