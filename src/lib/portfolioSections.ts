@@ -13,6 +13,7 @@ export type PortfolioSection = {
     meta: string;
     copy: string;
     href?: string;
+    mediaCategory?: "stage" | "scenery" | "humans";
   }>;
   imageSlots: string[];
   mediaItems?: Array<{
@@ -24,6 +25,8 @@ export type PortfolioSection = {
     height?: number;
   }>;
 };
+
+type MediaItem = NonNullable<PortfolioSection["mediaItems"]>[number];
 
 const mediaDimensions: Record<string, { width: number; height: number }> = {
   "visual/001.png": { width: 1734, height: 976 },
@@ -49,27 +52,43 @@ const mediaDimensions: Record<string, { width: number; height: number }> = {
   "digital/019.png": { width: 1800, height: 2400 },
 };
 
+function numberedFiles(count: number, extension = "jpg") {
+  return Array.from({ length: count }, (_, index) => `${String(index + 1).padStart(3, "0")}.${extension}`);
+}
+
 function numberedMedia(
-  folder: "photography" | "visual" | "digital",
+  folder: string,
   files: string[],
   type: "image" | "video",
   titlePrefix: string,
+  metaPrefix = titlePrefix,
 ) {
   return files.map((file, index) => ({
     src: `/portfolio-assets/${folder}/${file}`,
     type,
     title: `${titlePrefix} ${String(index + 1).padStart(2, "0")}`,
-    meta: file.toUpperCase(),
+    meta: `${metaPrefix}_${String(index + 1).padStart(2, "0")}`,
     ...mediaDimensions[`${folder}/${file}`],
   }));
 }
 
-const photographyMedia = numberedMedia(
-  "photography",
-  Array.from({ length: 74 }, (_, index) => `${String(index + 1).padStart(3, "0")}.jpg`),
-  "image",
-  "Photo",
-);
+const photographyCategoryMedia = {
+  stage: numberedMedia("photography/stage", numberedFiles(19), "image", "Stage photo", "PHOTO_STAGE"),
+  scenery: numberedMedia("photography/scenery", numberedFiles(20), "image", "Scenery photo", "PHOTO_SCENERY"),
+  humans: numberedMedia("photography/humans", numberedFiles(18), "image", "Human photo", "PHOTO_HUMANS"),
+} as const satisfies Record<"stage" | "scenery" | "humans", MediaItem[]>;
+
+export type PhotographyCategory = keyof typeof photographyCategoryMedia;
+
+export function getPhotographyCategoryMedia(category: PhotographyCategory) {
+  return photographyCategoryMedia[category];
+}
+
+const photographyMedia = [
+  ...photographyCategoryMedia.stage,
+  ...photographyCategoryMedia.scenery,
+  ...photographyCategoryMedia.humans,
+];
 
 const visualMedia = numberedMedia(
   "visual",
@@ -107,6 +126,8 @@ const digitalMedia = [
   ...numberedMedia("digital", ["019.png"], "image", "Digital still"),
 ];
 
+const theatreStageMedia = numberedMedia("theatre/stage", numberedFiles(17), "image", "Stage photo", "THEATRE_STAGE");
+
 export const portfolioSections: PortfolioSection[] = [
   {
     slug: "games",
@@ -138,9 +159,9 @@ export const portfolioSections: PortfolioSection[] = [
       "Series-based photo archive for portraits, street fragments, theatre documentation, backstage images, and visual research.",
     note: "Current photography assets are loaded as a living photo wall. Series labels can be added once the archive is sorted.",
     buckets: [
-      { title: "Stage", meta: "theatre / rehearsal / production", copy: "A living record of light, waiting, and the machinery around performance.", href: "/photography/stage" },
-      { title: "Scenery", meta: "place / texture / surface", copy: "Found spaces, accidental compositions, locations, and environmental fragments.", href: "/photography/scenery" },
-      { title: "Humans", meta: "people / character / quiet", copy: "Images built around presence, styling, and small emotional clues.", href: "/photography/humans" },
+      { title: "Stage", meta: "theatre / rehearsal / production", copy: "A living record of light, waiting, and the machinery around performance.", href: "/photography/stage", mediaCategory: "stage" },
+      { title: "Scenery", meta: "place / texture / surface", copy: "Found spaces, accidental compositions, locations, and environmental fragments.", href: "/photography/scenery", mediaCategory: "scenery" },
+      { title: "Humans", meta: "people / character / quiet", copy: "Images built around presence, styling, and small emotional clues.", href: "/photography/humans", mediaCategory: "humans" },
     ],
     imageSlots: ["series cover", "masonry image", "contact sheet", "detail crop"],
     mediaItems: photographyMedia,
@@ -193,13 +214,14 @@ export const portfolioSections: PortfolioSection[] = [
     textColor: "var(--purple)",
     intro:
       "Performance, stage management, set and lighting concepts, spatial storytelling, and theatre work as game-space thinking.",
-    note: "Add production photos, cue sheets, light plots, stage/process documentation.",
+    note: "Stage photos are loaded. Cue sheets, light plots, and process documentation can be added when those assets arrive.",
     buckets: [
       { title: "Production", meta: "stage / rehearsal / cue", copy: "The practical systems that make a live event hold together." },
       { title: "Space", meta: "set / light / movement", copy: "How bodies, objects, and light teach an audience where to look." },
       { title: "Documentation", meta: "photo / note / archive", copy: "Images and records that preserve work after the performance disappears." },
     ],
     imageSlots: ["stage photo", "cue sheet", "set sketch", "lighting test"],
+    mediaItems: theatreStageMedia,
   },
   {
     slug: "making",

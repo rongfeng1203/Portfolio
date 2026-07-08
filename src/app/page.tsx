@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Mail } from "lucide-react";
 import { type CSSProperties, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import ASCIIText from "@/components/ASCIIText";
 import CircularText from "@/components/CircularText";
@@ -11,8 +12,10 @@ import FaultyTerminal from "@/components/FaultyTerminal";
 import PixelTrail from "@/components/PixelTrail";
 import StaggeredMenu from "@/components/StaggeredMenu";
 import TextType from "@/components/TextType";
+import SocialFlipButton, { type SocialItem } from "@/components/ui/social-flip-button";
 import portrait from "../../assets/Self-portrait.png";
 import banner from "../../assets/icon.png";
+import artstationLogo from "../../assets/blackartstation.png";
 
 const relaxingThemeUrl = new URL("../../assets/relaxing theme.mp3", import.meta.url).toString();
 const finalName = "Rong\nFeng";
@@ -170,6 +173,50 @@ export default function Home() {
     getServerHydrationSnapshot,
   );
   const active = sections[activeIndex];
+  const contactFlipItems: SocialItem[] = [
+    {
+      letter: "C",
+      icon: <Mail className="h-4 w-4" aria-hidden="true" />,
+      label: "Email",
+      href: "mailto:mailrongfeng1203@gmail.com",
+    },
+    {
+      letter: "O",
+      icon: <Image src={artstationLogo} alt="" className="h-5 w-5 object-contain" />,
+      label: "ArtStation",
+      href: "https://www.artstation.com/",
+    },
+    {
+      letter: "N",
+      icon: <Mail className="h-4 w-4" aria-hidden="true" />,
+      label: "Email",
+      href: "mailto:mailrongfeng1203@gmail.com",
+    },
+    {
+      letter: "T",
+      icon: <Image src={artstationLogo} alt="" className="h-5 w-5 object-contain" />,
+      label: "ArtStation",
+      href: "https://www.artstation.com/",
+    },
+    {
+      letter: "A",
+      icon: <Image src={artstationLogo} alt="" className="h-5 w-5 object-contain" />,
+      label: "ArtStation",
+      href: "https://www.artstation.com/",
+    },
+    {
+      letter: "C",
+      icon: <Mail className="h-4 w-4" aria-hidden="true" />,
+      label: "Email",
+      href: "mailto:mailrongfeng1203@gmail.com",
+    },
+    {
+      letter: "T",
+      icon: <Image src={artstationLogo} alt="" className="h-5 w-5 object-contain" />,
+      label: "ArtStation",
+      href: "https://www.artstation.com/",
+    },
+  ];
 
   useEffect(() => {
     const timer = window.setTimeout(() => setIntroDone(true), 3200);
@@ -401,6 +448,24 @@ export default function Home() {
                 <span>active signal</span>
                 <span>{active.label}</span>
               </div>
+            </div>
+            <div className="contact-panel hero-contact-panel" aria-label="Contact links">
+              <p className="contact-panel-row">
+                <span>mail</span>
+                <strong>mailrongfeng1203@gmail.com</strong>
+              </p>
+              <p className="contact-panel-row">
+                <span>social</span>
+                <strong>artstation / portfolio in progress</strong>
+              </p>
+              <SocialFlipButton
+                items={contactFlipItems}
+                className="contact-flip"
+                itemClassName="contact-flip-item"
+                frontClassName="contact-flip-front"
+                backClassName="contact-flip-back"
+                showTooltips={false}
+              />
             </div>
           </div>
         </div>

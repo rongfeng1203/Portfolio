@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { type CSSProperties, type ReactNode } from "react";
 import PhotographySlideshow from "@/components/PhotographySlideshow";
-import type { PortfolioSection } from "@/lib/portfolioSections";
+import { getPhotographyCategoryMedia, type PortfolioSection } from "@/lib/portfolioSections";
 import banner from "../../assets/icon.png";
 
 type MediaItem = NonNullable<PortfolioSection["mediaItems"]>[number];
@@ -13,11 +13,13 @@ const photographyPreviewIndexes = [
   [11, 43, 68],
 ];
 
-function getBucketPreviewItems(sectionSlug: string, mediaItems: MediaItem[], bucketIndex: number) {
+function getBucketPreviewItems(sectionSlug: string, mediaItems: MediaItem[], bucket: PortfolioSection["buckets"][number], bucketIndex: number) {
   if (sectionSlug !== "photography" || !mediaItems.length) return [];
 
+  const sourceItems = bucket.mediaCategory ? [...getPhotographyCategoryMedia(bucket.mediaCategory)] : mediaItems;
+
   return photographyPreviewIndexes[bucketIndex % photographyPreviewIndexes.length]
-    .map((itemIndex) => mediaItems[(itemIndex - 1) % mediaItems.length])
+    .map((itemIndex) => sourceItems[(itemIndex - 1) % sourceItems.length])
     .filter((item) => item.type === "image");
 }
 
@@ -117,7 +119,7 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
 
       <section className="section-buckets" aria-label={`${section.title} categories`}>
         {section.buckets.map((bucket, index) => {
-          const previewItems = getBucketPreviewItems(section.slug, mediaItems, index);
+          const previewItems = getBucketPreviewItems(section.slug, mediaItems, bucket, index);
 
           return bucket.href ? (
             <Link key={bucket.title} href={bucket.href} className="section-bucket-link">

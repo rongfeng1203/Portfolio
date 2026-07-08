@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type CSSProperties } from "react";
-import { getPortfolioSection } from "@/lib/portfolioSections";
+import { getPhotographyCategoryMedia, getPortfolioSection, type PhotographyCategory } from "@/lib/portfolioSections";
 import banner from "../../assets/icon.png";
 
 const categoryCopy = {
@@ -22,11 +22,9 @@ const categoryCopy = {
   },
 } as const;
 
-export type PhotographyCategory = keyof typeof categoryCopy;
-
 export default function PhotographyContactSheetPage({ category }: { category: PhotographyCategory }) {
   const section = getPortfolioSection("photography")!;
-  const mediaItems = section.mediaItems ?? [];
+  const mediaItems = getPhotographyCategoryMedia(category);
   const content = categoryCopy[category];
 
   return (
@@ -57,7 +55,7 @@ export default function PhotographyContactSheetPage({ category }: { category: Ph
           <h1>{content.title}</h1>
           <p className="section-cn">攝影</p>
         </div>
-        <p>{content.intro} For now it contains the full individual-photo pool; classification can happen after review.</p>
+        <p>{content.intro} This page is now scoped to the {content.title.toLowerCase()} folder.</p>
       </section>
 
       <section className="contact-sheet-grid" aria-label={`${content.title} contact sheet`}>

@@ -709,31 +709,36 @@ a {
 .contact-panel {
   display: grid;
   gap: 0.4rem;
-  margin-top: -0.35rem;
-  padding: 1rem 1.15rem 1.1rem;
+  position: relative;
+  z-index: 5;
+  justify-self: end;
+  width: min(42vw, 38rem);
+  margin-top: 0.45rem;
+  padding: 0.62rem 0.9rem 0.72rem;
   background:
     repeating-linear-gradient(90deg, rgb(0 47 167 / 0.13) 0 1px, transparent 1px 9px),
     linear-gradient(135deg, rgb(206 220 0 / 0.94), rgb(206 220 0 / 0.72));
   border-top: 2px solid #002fa7;
   color: #002fa7;
-  font-family: var(--font-mono);
-  font-size: clamp(1.15rem, 2.1vw, 1.7rem);
+  font-family: var(--font-title-en-local), var(--font-mono), monospace;
+  font-size: clamp(1rem, 1.55vw, 1.35rem);
   text-transform: uppercase;
   clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 96%);
+  box-shadow: 0 0 0 1px rgb(0 47 167 / 0.18), 0 18px 38px rgb(5 5 9 / 0.25);
 }
 
-.contact-panel a,
-.contact-panel p {
+.contact-panel > a,
+.contact-panel > p {
   display: grid;
-  grid-template-columns: minmax(4.8rem, 0.38fr) minmax(0, 1fr);
+  grid-template-columns: minmax(4.8rem, 0.34fr) minmax(0, 1fr);
   align-items: baseline;
-  gap: 0.75rem;
+  gap: 0.62rem;
   margin: 0;
-  padding: 0.52rem 0;
+  padding: 0.34rem 0;
   border-top: 1px solid rgb(0 47 167 / 0.32);
 }
 
-.contact-panel a:hover {
+.contact-panel > a:hover {
   color: var(--purple);
 }
 
@@ -743,9 +748,61 @@ a {
 
 .contact-panel strong {
   overflow-wrap: anywhere;
-  font-weight: 700;
+  font-family: var(--font-body);
+  font-weight: 760;
+  letter-spacing: 0;
   color: #002fa7;
   text-shadow: 1px 0 rgb(240 78 152 / 0.35);
+}
+
+.contact-flip {
+  justify-content: flex-start !important;
+  gap: 0 !important;
+  padding: 0.28rem 0 0 !important;
+}
+
+.contact-flip > div {
+  justify-content: flex-start !important;
+  gap: 0.36rem !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.contact-flip > div > div:first-child {
+  display: none;
+}
+
+.contact-flip-item {
+  width: clamp(1.9rem, 2.4vw, 2.25rem) !important;
+  height: clamp(1.9rem, 2.4vw, 2.25rem) !important;
+}
+
+.contact-flip-front,
+.contact-flip-back {
+  border-radius: 0.16rem !important;
+}
+
+.contact-flip-front {
+  background: #002fa7 !important;
+  color: var(--lime) !important;
+  font-family: var(--font-title-en-local), var(--font-mono), monospace !important;
+  font-size: clamp(1rem, 1.65vw, 1.42rem) !important;
+  font-weight: 400 !important;
+  text-shadow: 1px 0 var(--pink);
+  box-shadow: inset 0 0 0 1px rgb(206 220 0 / 0.42) !important;
+}
+
+.contact-flip-back {
+  background: var(--lime) !important;
+  color: var(--ink) !important;
+  box-shadow: inset 0 0 0 1px #002fa7 !important;
+}
+
+.contact-flip-back img {
+  width: 1.08rem !important;
+  height: 1.08rem !important;
 }
 
 .marquee-line {
@@ -1231,6 +1288,11 @@ a {
 .section-photography .section-media-frame img {
   object-fit: contain;
   padding: 0.4rem;
+}
+
+.section-theatre .section-media-frame img {
+  object-fit: contain;
+  padding: 0.35rem;
 }
 
 .photo-slideshow {
@@ -1902,6 +1964,13 @@ video.photo-slideshow-image {
     pointer-events: none;
   }
 
+  .hero-contact-panel {
+    justify-self: start;
+    width: min(88vw, 31rem);
+    margin-top: 1rem;
+    margin-inline-start: clamp(0.75rem, 3vw, 1.5rem);
+  }
+
   .index-row-link {
     grid-template-columns: 2.25rem minmax(0, 1fr);
   }
@@ -1958,6 +2027,21 @@ video.photo-slideshow-image {
     width: 86vw;
     min-height: auto;
     opacity: 0.24;
+  }
+
+  .hero-contact-panel {
+    width: min(92vw, 26rem);
+    font-size: clamp(1rem, 5.2vw, 1.28rem);
+  }
+
+  .contact-panel > a,
+  .contact-panel > p {
+    grid-template-columns: 1fr;
+    gap: 0.12rem;
+  }
+
+  .contact-flip > div {
+    flex-wrap: wrap;
   }
 
   .index-row {
