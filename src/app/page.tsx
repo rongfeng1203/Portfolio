@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { FaDiscord, FaEnvelope, FaGithub, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { type CSSProperties, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import ASCIIText from "@/components/ASCIIText";
 import CircularText from "@/components/CircularText";
@@ -176,45 +176,45 @@ export default function Home() {
   const contactFlipItems: SocialItem[] = [
     {
       letter: "C",
-      icon: <Mail className="h-4 w-4" aria-hidden="true" />,
+      icon: <FaEnvelope aria-hidden="true" />,
       label: "Email",
-      href: "mailto:mailrongfeng1203@gmail.com",
+      href: "mailto:rongfeng1203@gmail.com",
     },
     {
       letter: "O",
       icon: <Image src={artstationLogo} alt="" className="h-5 w-5 object-contain" />,
       label: "ArtStation",
-      href: "https://www.artstation.com/",
+      href: "https://www.artstation.com/rongfeng",
     },
     {
       letter: "N",
-      icon: <Mail className="h-4 w-4" aria-hidden="true" />,
-      label: "Email",
-      href: "mailto:mailrongfeng1203@gmail.com",
+      icon: <FaInstagram aria-hidden="true" />,
+      label: "Instagram",
+      href: "https://www.instagram.com/rongfeng1203/",
     },
     {
       letter: "T",
-      icon: <Image src={artstationLogo} alt="" className="h-5 w-5 object-contain" />,
-      label: "ArtStation",
-      href: "https://www.artstation.com/",
+      icon: <FaGithub aria-hidden="true" />,
+      label: "GitHub",
+      href: "https://github.com/rongfeng1203",
     },
     {
       letter: "A",
-      icon: <Image src={artstationLogo} alt="" className="h-5 w-5 object-contain" />,
-      label: "ArtStation",
-      href: "https://www.artstation.com/",
+      icon: <FaLinkedin aria-hidden="true" />,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/rong-feng-b65a15259/",
     },
     {
       letter: "C",
-      icon: <Mail className="h-4 w-4" aria-hidden="true" />,
-      label: "Email",
-      href: "mailto:mailrongfeng1203@gmail.com",
+      icon: <FaYoutube aria-hidden="true" />,
+      label: "YouTube",
+      href: "https://www.youtube.com/@RongFeng1203",
     },
     {
       letter: "T",
-      icon: <Image src={artstationLogo} alt="" className="h-5 w-5 object-contain" />,
-      label: "ArtStation",
-      href: "https://www.artstation.com/",
+      icon: <FaDiscord aria-hidden="true" />,
+      label: "Discord",
+      href: "https://discord.gg/rHFK8PS6",
     },
   ];
 
@@ -450,14 +450,6 @@ export default function Home() {
               </div>
             </div>
             <div className="contact-panel hero-contact-panel" aria-label="Contact links">
-              <p className="contact-panel-row">
-                <span>mail</span>
-                <strong>mailrongfeng1203@gmail.com</strong>
-              </p>
-              <p className="contact-panel-row">
-                <span>social</span>
-                <strong>artstation / portfolio in progress</strong>
-              </p>
               <SocialFlipButton
                 items={contactFlipItems}
                 className="contact-flip"

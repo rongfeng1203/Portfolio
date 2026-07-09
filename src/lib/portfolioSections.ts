@@ -214,7 +214,7 @@ export const portfolioSections: PortfolioSection[] = [
     textColor: "var(--purple)",
     intro:
       "Performance, stage management, set and lighting concepts, spatial storytelling, and theatre work as game-space thinking.",
-    note: "Stage photos are loaded. Cue sheets, light plots, and process documentation can be added when those assets arrive.",
+    note: "Stage photos live in a compact automatic screen for now. Cue sheets, light plots, and process documentation can be added when those assets arrive.",
     buckets: [
       { title: "Production", meta: "stage / rehearsal / cue", copy: "The practical systems that make a live event hold together." },
       { title: "Space", meta: "set / light / movement", copy: "How bodies, objects, and light teach an audience where to look." },

@@ -60,7 +60,7 @@ const SocialFlipNode = ({
     return (
         <Wrapper
             {...wrapperProps}
-            className={cn("relative h-10 w-10 cursor-pointer", itemClassName)}
+            className={cn("relative h-10 w-10", item.href || item.onClick ? "cursor-pointer" : "cursor-default", itemClassName)}
             style={{ perspective: "1000px" }}
             onMouseEnter={() => setTooltipIndex(index)}
             onMouseLeave={() => setTooltipIndex(null)}

@@ -14,7 +14,9 @@ const photographyPreviewIndexes = [
 ];
 
 function getBucketPreviewItems(sectionSlug: string, mediaItems: MediaItem[], bucket: PortfolioSection["buckets"][number], bucketIndex: number) {
-  if (sectionSlug !== "photography" || !mediaItems.length) return [];
+  if (!mediaItems.length) return [];
+
+  if (sectionSlug !== "photography") return [];
 
   const sourceItems = bucket.mediaCategory ? [...getPhotographyCategoryMedia(bucket.mediaCategory)] : mediaItems;
 
@@ -27,6 +29,8 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
   const mediaItems = section.mediaItems ?? [];
   const hasMedia = mediaItems.length > 0;
   const usesGalleryLayout = ["photography", "visual", "digital"].includes(section.slug);
+  const usesCompactBucketLibrary = section.slug === "theatre";
+  const showMainMediaGrid = hasMedia && !usesCompactBucketLibrary;
 
   return (
     <main
@@ -73,7 +77,7 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
         </section>
       ) : !usesGalleryLayout ? (
         <section className="section-workbench" aria-label={`${section.title} work slots`}>
-          {hasMedia ? (
+          {showMainMediaGrid ? (
             <div className="section-media-grid">
               {mediaItems.map((item, index) => (
                 <figure key={`${item.src}-${index}`} className={`section-media-card media-${(index % 9) + 1}`}>
@@ -100,18 +104,34 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
             </div>
           ) : (
             <div className="section-image-grid is-pending">
-              {section.imageSlots.map((slot, index) => (
-                <div key={slot} className={`section-image-slot slot-${index + 1}`}>
-                  <span>content pending</span>
-                  <strong>{slot}</strong>
-                  <em>assets not gathered yet</em>
-                </div>
-              ))}
+              {section.imageSlots.map((slot, index) => {
+                const isTheatreStageSlot = usesCompactBucketLibrary && hasMedia && slot === "stage photo";
+
+                return (
+                  <div key={slot} className={`section-image-slot slot-${index + 1}${isTheatreStageSlot ? " has-stage-gallery" : ""}`}>
+                    <span>{isTheatreStageSlot ? "stage photo library" : "content pending"}</span>
+                    <strong>{slot}</strong>
+                    {isTheatreStageSlot ? (
+                      <div className="theatre-stage-gallery">
+                        <PhotographySlideshow items={mediaItems} label="Theatre stage photo preview" />
+                      </div>
+                    ) : (
+                      <em>assets not gathered yet</em>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           )}
 
           <aside className="section-note">
-            <span>{hasMedia ? `${mediaItems.length} asset${mediaItems.length === 1 ? "" : "s"} loaded` : "next upload"}</span>
+            <span>
+              {showMainMediaGrid
+                ? `${mediaItems.length} asset${mediaItems.length === 1 ? "" : "s"} loaded`
+                : usesCompactBucketLibrary && hasMedia
+                  ? `${mediaItems.length} stage photos in compact screen`
+                  : "next upload"}
+            </span>
             <p>{section.note}</p>
           </aside>
         </section>
@@ -120,24 +140,25 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
       <section className="section-buckets" aria-label={`${section.title} categories`}>
         {section.buckets.map((bucket, index) => {
           const previewItems = getBucketPreviewItems(section.slug, mediaItems, bucket, index);
+          const preview = previewItems.length ? (
+            <div className="bucket-preview" aria-hidden="true">
+              {previewItems.map((item, previewIndex) => (
+                <div key={`${bucket.title}-${item.src}-${previewIndex}`} className="bucket-preview-frame">
+                  <Image
+                    src={item.src}
+                    alt=""
+                    fill
+                    sizes="(max-width: 720px) 28vw, 12vw"
+                    unoptimized
+                  />
+                </div>
+              ))}
+            </div>
+          ) : null;
 
           return bucket.href ? (
             <Link key={bucket.title} href={bucket.href} className="section-bucket-link">
-              {previewItems.length ? (
-                <div className="bucket-preview" aria-hidden="true">
-                  {previewItems.map((item, previewIndex) => (
-                    <div key={`${bucket.title}-${item.src}-${previewIndex}`} className="bucket-preview-frame">
-                      <Image
-                        src={item.src}
-                        alt=""
-                        fill
-                        sizes="(max-width: 720px) 28vw, 12vw"
-                        unoptimized
-                      />
-                    </div>
-                  ))}
-                </div>
-              ) : null}
+              {preview}
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h2>{bucket.title}</h2>
               <p className="bucket-meta">{bucket.meta}</p>
@@ -149,6 +170,7 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
               <h2>{bucket.title}</h2>
               <p className="bucket-meta">{bucket.meta}</p>
               <p>{bucket.copy}</p>
+              {preview}
             </article>
           );
         })}

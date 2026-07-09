@@ -599,6 +599,7 @@ a {
   gap: 0;
   align-self: center;
   justify-items: end;
+  width: min(42vw, 38rem);
   padding-inline-end: clamp(1rem, 3vw, 3.5rem);
 }
 
@@ -606,7 +607,7 @@ a {
 .index-media {
   --active: var(--orange);
   position: relative;
-  width: min(42vw, 38rem);
+  width: 100%;
   aspect-ratio: 1 / 1;
   min-height: auto;
   isolation: isolate;
@@ -708,23 +709,23 @@ a {
 
 .contact-panel {
   display: grid;
-  gap: 0.4rem;
   position: relative;
   z-index: 5;
-  justify-self: end;
-  width: min(42vw, 38rem);
-  margin-top: 0.45rem;
-  padding: 0.62rem 0.9rem 0.72rem;
+  justify-self: center;
+  width: max-content;
+  max-width: 100%;
+  margin-top: 0.58rem;
+  padding: 0.48rem 0.58rem;
   background:
-    repeating-linear-gradient(90deg, rgb(0 47 167 / 0.13) 0 1px, transparent 1px 9px),
+    repeating-linear-gradient(90deg, rgb(150 60 189 / 0.16) 0 1px, transparent 1px 9px),
     linear-gradient(135deg, rgb(206 220 0 / 0.94), rgb(206 220 0 / 0.72));
-  border-top: 2px solid #002fa7;
-  color: #002fa7;
+  border-top: 2px solid var(--purple);
+  color: var(--purple);
   font-family: var(--font-title-en-local), var(--font-mono), monospace;
   font-size: clamp(1rem, 1.55vw, 1.35rem);
   text-transform: uppercase;
   clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 96%);
-  box-shadow: 0 0 0 1px rgb(0 47 167 / 0.18), 0 18px 38px rgb(5 5 9 / 0.25);
+  box-shadow: 0 0 0 1px rgb(150 60 189 / 0.2), 0 18px 38px rgb(5 5 9 / 0.25);
 }
 
 .contact-panel > a,
@@ -735,7 +736,7 @@ a {
   gap: 0.62rem;
   margin: 0;
   padding: 0.34rem 0;
-  border-top: 1px solid rgb(0 47 167 / 0.32);
+  border-top: 1px solid rgb(150 60 189 / 0.34);
 }
 
 .contact-panel > a:hover {
@@ -751,18 +752,18 @@ a {
   font-family: var(--font-body);
   font-weight: 760;
   letter-spacing: 0;
-  color: #002fa7;
+  color: var(--purple);
   text-shadow: 1px 0 rgb(240 78 152 / 0.35);
 }
 
 .contact-flip {
-  justify-content: flex-start !important;
+  justify-content: center !important;
   gap: 0 !important;
-  padding: 0.28rem 0 0 !important;
+  padding: 0 !important;
 }
 
 .contact-flip > div {
-  justify-content: flex-start !important;
+  justify-content: center !important;
   gap: 0.36rem !important;
   padding: 0 !important;
   border-radius: 0 !important;
@@ -785,22 +786,23 @@ a {
 }
 
 .contact-flip-front {
-  background: #002fa7 !important;
+  background: var(--purple) !important;
   color: var(--lime) !important;
   font-family: var(--font-title-en-local), var(--font-mono), monospace !important;
   font-size: clamp(1rem, 1.65vw, 1.42rem) !important;
   font-weight: 400 !important;
   text-shadow: 1px 0 var(--pink);
-  box-shadow: inset 0 0 0 1px rgb(206 220 0 / 0.42) !important;
+  box-shadow: inset 0 0 0 1px rgb(206 220 0 / 0.46) !important;
 }
 
 .contact-flip-back {
   background: var(--lime) !important;
   color: var(--ink) !important;
-  box-shadow: inset 0 0 0 1px #002fa7 !important;
+  box-shadow: inset 0 0 0 1px var(--purple) !important;
 }
 
-.contact-flip-back img {
+.contact-flip-back img,
+.contact-flip-back svg {
   width: 1.08rem !important;
   height: 1.08rem !important;
 }
@@ -1017,6 +1019,51 @@ a {
   font-size: clamp(2rem, 4vw, 4.5rem);
   line-height: 0.86;
   text-transform: uppercase;
+}
+
+.section-image-slot.has-stage-gallery {
+  align-content: start;
+  gap: 0.7rem;
+}
+
+.section-image-slot.has-stage-gallery strong {
+  max-width: none;
+  font-size: clamp(2.4rem, 4.6vw, 5rem);
+}
+
+.theatre-stage-gallery {
+  width: min(100%, 34rem);
+}
+
+.theatre-stage-gallery .photo-slideshow {
+  gap: 0.42rem;
+  min-height: 0;
+}
+
+.theatre-stage-gallery .photo-slideshow-frame {
+  min-height: 0;
+  height: clamp(10rem, 18vw, 16rem);
+  padding: 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--section-color) 58%, transparent);
+  background-color: rgb(5 5 9 / 0.84);
+}
+
+.theatre-stage-gallery .photo-slideshow-image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.theatre-stage-gallery .photo-slideshow-meta {
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.55rem;
+  font-size: 10px;
+}
+
+.theatre-stage-gallery .photo-slideshow-meta em {
+  display: none;
 }
 
 .section-image-slot.slot-1 {
@@ -1964,9 +2011,15 @@ video.photo-slideshow-image {
     pointer-events: none;
   }
 
+  .hero-side {
+    width: 100%;
+    justify-items: start;
+  }
+
   .hero-contact-panel {
     justify-self: start;
-    width: min(88vw, 31rem);
+    width: max-content;
+    max-width: min(88vw, 31rem);
     margin-top: 1rem;
     margin-inline-start: clamp(0.75rem, 3vw, 1.5rem);
   }
@@ -2030,7 +2083,8 @@ video.photo-slideshow-image {
   }
 
   .hero-contact-panel {
-    width: min(92vw, 26rem);
+    width: max-content;
+    max-width: min(92vw, 26rem);
     font-size: clamp(1rem, 5.2vw, 1.28rem);
   }
 
