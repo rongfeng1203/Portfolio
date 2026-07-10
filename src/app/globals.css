@@ -1830,17 +1830,23 @@ video.photo-slideshow-image {
   color: rgb(242 234 215 / 0.58);
 }
 
+.scroll-glitch-text {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: rgb(242 234 215 / 0.62);
+}
+
 .scroll-page-band {
   --active: var(--lime);
   position: relative;
   min-height: auto;
   display: grid;
   align-items: center;
-  border-top: 1px solid rgb(242 234 215 / 0.16);
-  background:
-    radial-gradient(circle, color-mix(in srgb, var(--active) 22%, transparent) 0 1px, transparent 1.45px),
-    var(--ink);
-  background-size: 14px 14px, 100% 100%;
+  border-top: 1px solid color-mix(in srgb, var(--active) 26%, transparent);
+  background: transparent;
+  filter: none;
   overflow: visible;
   animation: scroll-page-rise linear both;
   animation-timeline: view();
@@ -1848,14 +1854,7 @@ video.photo-slideshow-image {
 }
 
 .scroll-page-band::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(90deg, transparent 0 18px, rgb(242 234 215 / 0.05) 18px 19px);
-  mix-blend-mode: screen;
+  content: none;
 }
 
 .scroll-page-link {
@@ -1895,20 +1894,55 @@ video.photo-slideshow-image {
   color: color-mix(in srgb, var(--active) 78%, var(--paper));
 }
 
-.scroll-page-shell h2 {
-  max-width: min(12ch, 100%);
-  font-family: var(--font-display-local), system-ui, sans-serif;
-  font-size: clamp(4.5rem, 15vw, 15.5rem);
-  line-height: 0.86;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--active) 32%, var(--paper));
-  transition: color 500ms ease, transform 500ms ease;
-  overflow-wrap: anywhere;
+.scroll-page-title {
+  max-width: min(62vw, 16ch);
+  margin: 0;
+  transition: transform 500ms ease;
+  overflow: visible;
 }
 
-.scroll-page-link:hover h2,
-.scroll-page-link:focus-visible h2 {
-  color: var(--active);
+.scroll-page-title.is-long {
+  max-width: min(54vw, 100%);
+}
+
+.scroll-page-title-wrap,
+.scroll-page-title-swoosh {
+  text-align: left !important;
+}
+
+.scroll-page-title-wrap {
+  width: max-content !important;
+  max-width: min(62vw, 100%) !important;
+}
+
+.scroll-page-title-swoosh {
+  width: max-content !important;
+  max-width: min(62vw, 100%) !important;
+  font-family: var(--font-display-local), system-ui, sans-serif !important;
+  font-size: clamp(4.2rem, 11.8vw, 13rem) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 0.9 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+  mix-blend-mode: normal;
+  transition: transform 500ms ease !important;
+}
+
+.scroll-page-title.is-long .scroll-page-title-wrap,
+.scroll-page-title.is-long .scroll-page-title-swoosh {
+  max-width: min(54vw, 100%) !important;
+}
+
+.scroll-page-title.is-long .scroll-page-title-swoosh {
+  font-size: clamp(3.2rem, 5.2vw, 7rem) !important;
+}
+
+.scroll-page-link:hover .scroll-page-title,
+.scroll-page-link:focus-visible .scroll-page-title {
   transform: translateX(0.28rem);
 }
 
@@ -1959,17 +1993,14 @@ video.photo-slideshow-image {
   from {
     opacity: 0.12;
     transform: translate3d(0, 14svh, 0);
-    filter: blur(6px) saturate(0.72);
   }
   45% {
     opacity: 0.74;
     transform: translate3d(0, 3svh, 0);
-    filter: blur(1px) saturate(1);
   }
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    filter: blur(0) saturate(1.08);
   }
 }
 

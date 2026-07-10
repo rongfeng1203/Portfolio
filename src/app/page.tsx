@@ -9,9 +9,11 @@ import CircularText from "@/components/CircularText";
 import DecryptedText from "@/components/DecryptedText";
 import Dither from "@/components/Dither";
 import FaultyTerminal from "@/components/FaultyTerminal";
+import SwooshText from "@/components/kokonutui/swoosh-text";
 import PixelTrail from "@/components/PixelTrail";
 import StaggeredMenu from "@/components/StaggeredMenu";
 import TextType from "@/components/TextType";
+import { AsciiGlitchRipple } from "@/components/ui/ascii-glitch-ripple";
 import SocialFlipButton, { type SocialItem } from "@/components/ui/social-flip-button";
 import portrait from "../../assets/Self-portrait.png";
 import banner from "../../assets/icon.png";
@@ -147,6 +149,37 @@ const menuItems = sections.map((section) => ({
   link: section.route,
   ariaLabel: `Open ${section.label}`,
 }));
+
+type SwooshShadowColors = NonNullable<Parameters<typeof SwooshText>[0]["shadowColors"]>;
+
+// Control the scroll-title color rhythm here: order + visible color count.
+const swooshColorSequence = ["#CEDC00", "#963CBD", "#F04E98", "#FF8F1C", "#002FA7"] as const;
+const swooshVisibleColorCount: 1 | 2 | 3 | 4 = 2;
+const sectionColorHex = {
+  games: "#CEDC00",
+  photography: "#7D55C7",
+  visual: "#F04E98",
+  digital: "#FF8F1C",
+  theatre: "#963CBD",
+  making: "#CEDC00",
+  writing: "#F04E98",
+} as const satisfies Record<(typeof sections)[number]["id"], string>;
+
+function getSwooshShadowColors(sectionIndex: number, activeColor: string): SwooshShadowColors {
+  const rotatedColors = Array.from({ length: swooshColorSequence.length }, (_, layerIndex) => (
+    swooshColorSequence[(sectionIndex + layerIndex) % swooshColorSequence.length]
+  ));
+  const colors = rotatedColors.filter((color) => color.toLowerCase() !== activeColor.toLowerCase());
+  const glow = colors[swooshVisibleColorCount - 1] ?? colors[0];
+
+  return {
+    first: colors[0],
+    second: colors[1],
+    third: colors[2],
+    fourth: colors[3],
+    glow,
+  };
+}
 
 function subscribeToHydration(callback: () => void) {
   queueMicrotask(callback);
@@ -474,7 +507,9 @@ export default function Home() {
       <section className="scroll-page-stack relative z-10" aria-label="Scroll portfolio pages">
         <div className="scroll-stack-primer">
           <span>/scroll_index</span>
-          <p>keep scrolling / each room opens slowly / side menu stays live</p>
+          <AsciiGlitchRipple as="p" className="scroll-glitch-text" dur={900} spread={1.18}>
+            keep scrolling / each room opens slowly / side menu stays live
+          </AsciiGlitchRipple>
         </div>
 
         {sections.map((section, index) => (
@@ -489,7 +524,17 @@ export default function Home() {
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <span>{section.code}</span>
                 </div>
-                <h2>{section.label}</h2>
+                <h2 className={`scroll-page-title${section.label.length > 9 ? " is-long" : ""}`}>
+                  <SwooshText
+                    text={section.label}
+                    wrapperClassName="scroll-page-title-wrap"
+                    className="scroll-page-title-swoosh"
+                    shadowOffset={4}
+                    shadowLayerCount={swooshVisibleColorCount}
+                    style={{ color: "var(--active)" }}
+                    shadowColors={getSwooshShadowColors(index, sectionColorHex[section.id])}
+                  />
+                </h2>
                 <p className="scroll-page-cn">{section.cn}</p>
                 <p className="scroll-page-copy">{section.copy}</p>
                 <ul className="scroll-page-scraps" aria-label={`${section.label} topics`}>
@@ -497,7 +542,9 @@ export default function Home() {
                     <li key={scrap}>{scrap}</li>
                   ))}
                 </ul>
-                <span className="scroll-page-enter">enter / {section.id}</span>
+                <AsciiGlitchRipple as="span" className="scroll-page-enter" dur={760} spread={1.32}>
+                  {`enter / ${section.id}`}
+                </AsciiGlitchRipple>
               </div>
             </Link>
           </section>
