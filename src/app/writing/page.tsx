@@ -41,9 +41,9 @@ export default function WritingPage() {
     <main
       className="section-page section-writing writing-library min-h-screen px-4 pb-12 pt-8 text-paper sm:px-6 lg:px-8"
       style={{
-        "--section-color": "#002FA7",
-        "--section-accent": "#F04E98",
-        "--section-text": "#F04E98",
+        "--section-color": "var(--pink)",
+        "--section-accent": "var(--orange)",
+        "--section-text": "var(--orange)",
       } as CSSProperties}
     >
       <div className="section-noise-layer" aria-hidden="true" />

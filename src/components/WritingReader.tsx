@@ -45,9 +45,9 @@ export default function WritingReader({
       className="section-page section-writing writing-reader min-h-screen"
       lang={document.language === "ENGLISH" ? "en" : "zh-CN"}
       style={{
-        "--section-color": "#002FA7",
-        "--section-accent": "#F04E98",
-        "--section-text": "#F04E98",
+        "--section-color": "var(--pink)",
+        "--section-accent": "var(--orange)",
+        "--section-text": "var(--orange)",
       } as CSSProperties}
     >
       <div className="section-noise-layer" aria-hidden="true" />
