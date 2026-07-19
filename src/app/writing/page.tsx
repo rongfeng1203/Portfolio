@@ -66,7 +66,7 @@ export default function WritingPage() {
         </div>
         <div className="writing-library-intro">
           <p>Speculative fiction about consciousness, systems, memory, freedom, and the people caught inside them.</p>
-          <span>10 NEWLY COMPLETED PIECES / 1 WORKING DRAFT</span>
+          <span>20 COMPLETE PIECES / 1 WORKING DRAFT</span>
         </div>
       </section>
 
@@ -167,7 +167,7 @@ export default function WritingPage() {
 
       <footer className="writing-library-footer">
         <span>RONG FENG / WRITING ARCHIVE</span>
-        <span>LAST SIGNAL: 10 COMPLETE / 01 IN PROGRESS</span>
+        <span>LAST SIGNAL: 20 COMPLETE / 01 IN PROGRESS</span>
       </footer>
     </main>
   );
