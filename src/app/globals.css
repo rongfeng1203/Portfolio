@@ -145,6 +145,13 @@ body::before {
   background-size: 7px 7px, 13px 13px;
 }
 
+body:has(.writing-library)::before,
+body:has(.writing-reader)::before {
+  background-image:
+    radial-gradient(circle, rgb(242 234 215 / 0.1) 0 1px, transparent 1.2px),
+    radial-gradient(circle, rgb(150 60 189 / 0.16) 0 1px, transparent 1.3px);
+}
+
 body::after {
   opacity: 0.22;
   background: repeating-linear-gradient(
@@ -2372,6 +2379,16 @@ video.photo-slideshow-image {
     radial-gradient(circle, rgb(240 78 152 / 0.14) 0 1px, transparent 1.35px),
     radial-gradient(circle, rgb(242 234 215 / 0.07) 0 0.8px, transparent 1.2px) !important;
   background-size: 18px 18px, 18px 18px !important;
+}
+
+.writing-library::before,
+.writing-reader::before {
+  opacity: 0.22;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--orange) 24%, transparent) 0 1px,
+    transparent 1.35px
+  );
 }
 
 .writing-library .section-topbar,
