@@ -43,7 +43,7 @@ export default function WritingPage() {
       style={{
         "--section-color": "#002FA7",
         "--section-accent": "#F04E98",
-        "--section-text": "#CEDC00",
+        "--section-text": "#F04E98",
       } as CSSProperties}
     >
       <div className="section-noise-layer" aria-hidden="true" />

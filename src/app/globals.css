@@ -2367,40 +2367,45 @@ video.photo-slideshow-image {
 
 .writing-library {
   min-height: 100svh;
+  background-color: var(--ink) !important;
   background-image:
-    linear-gradient(135deg, rgb(0 47 167 / 0.16), transparent 42%),
-    radial-gradient(circle, rgb(0 47 167 / 0.34) 0 1px, transparent 1.35px),
-    radial-gradient(circle, rgb(242 234 215 / 0.08) 0 0.8px, transparent 1.2px) !important;
-  background-size: auto, 18px 18px, 18px 18px !important;
+    radial-gradient(circle, rgb(240 78 152 / 0.14) 0 1px, transparent 1.35px),
+    radial-gradient(circle, rgb(242 234 215 / 0.07) 0 0.8px, transparent 1.2px) !important;
+  background-size: 18px 18px, 18px 18px !important;
 }
 
 .writing-library .section-topbar,
 .writing-reader-toolbar {
-  color: rgb(206 220 0 / 0.7);
+  color: rgb(242 234 215 / 0.7);
 }
 
 .writing-library .section-back,
 .writing-reader-toolbar a {
-  color: var(--lime);
+  color: var(--pink);
 }
 
 .writing-library-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+  grid-template-columns: minmax(0, 1.4fr) minmax(22rem, 0.6fr);
   align-items: end;
-  gap: clamp(2rem, 7vw, 7rem);
+  gap: clamp(3rem, 6vw, 7rem);
   padding: clamp(4rem, 11vw, 9rem) 0 clamp(2.5rem, 6vw, 5rem);
-  border-bottom: 1px solid rgb(206 220 0 / 0.24);
+  border-bottom: 1px solid rgb(240 78 152 / 0.3);
+}
+
+.writing-library-title {
+  min-width: 0;
 }
 
 .writing-library-title h1 {
   margin: 0;
   font-family: var(--font-display-local), system-ui, sans-serif;
-  font-size: clamp(5rem, 14vw, 13rem);
+  font-size: clamp(5rem, 9.5vw, 11rem);
   line-height: 0.78;
   text-transform: uppercase;
-  color: var(--lime);
-  text-shadow: 4px 4px 0 #002fa7, -2px 0 0 var(--pink);
+  color: var(--pink);
+  text-shadow: 4px 4px 0 #002fa7, -2px 0 0 var(--orange);
+  white-space: nowrap;
 }
 
 .writing-library-title .section-cn {
@@ -2468,9 +2473,9 @@ video.photo-slideshow-image {
   gap: 0.5rem;
   min-height: 2.45rem;
   padding: 0 0.7rem;
-  border: 1px solid rgb(206 220 0 / 0.34);
+  border: 1px solid rgb(240 78 152 / 0.44);
   background: rgb(5 5 9 / 0.72);
-  color: var(--lime);
+  color: var(--orange);
 }
 
 .writing-search:focus-within {
@@ -2512,7 +2517,7 @@ video.photo-slideshow-image {
   place-items: center;
   min-height: 24rem;
   padding: 2rem;
-  border: 1px dashed rgb(206 220 0 / 0.36);
+  border: 1px dashed rgb(240 78 152 / 0.4);
   background: rgb(0 47 167 / 0.09);
   font-family: var(--font-mono);
   text-align: center;
@@ -2542,11 +2547,11 @@ video.photo-slideshow-image {
   min-height: clamp(20rem, 32vw, 28rem);
   padding: clamp(1rem, 2.5vw, 1.8rem);
   overflow: hidden;
-  border: 1px solid rgb(206 220 0 / 0.48);
+  border: 1px solid rgb(240 78 152 / 0.52);
   background-color: #002fa7;
   background-image:
-    linear-gradient(90deg, transparent 49%, rgb(206 220 0 / 0.2) 50%, transparent 51%),
-    linear-gradient(transparent 49%, rgb(206 220 0 / 0.2) 50%, transparent 51%);
+    linear-gradient(90deg, transparent 49%, rgb(255 143 28 / 0.22) 50%, transparent 51%),
+    linear-gradient(transparent 49%, rgb(255 143 28 / 0.22) 50%, transparent 51%);
   background-size: 24px 24px;
   box-shadow: 0.55rem 0.55rem 0 rgb(240 78 152 / 0.84);
   transition: transform 180ms steps(3, end), box-shadow 180ms steps(3, end), border-color 180ms ease;
@@ -2634,7 +2639,7 @@ video.photo-slideshow-image {
   align-items: center;
   gap: 0.3rem;
   padding: 0.35rem 0.45rem;
-  background: var(--lime);
+  background: var(--orange);
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--ink);
@@ -2645,7 +2650,7 @@ video.photo-slideshow-image {
 .writing-doc-card:hover .writing-doc-preview,
 .writing-doc-card:focus-visible .writing-doc-preview {
   border-color: var(--pink);
-  box-shadow: 0.85rem 0.85rem 0 var(--lime);
+  box-shadow: 0.85rem 0.85rem 0 var(--pink);
   transform: translate(-0.2rem, -0.2rem);
 }
 
@@ -2660,7 +2665,7 @@ video.photo-slideshow-image {
 }
 
 .writing-doc-card:focus-visible {
-  outline: 2px solid var(--lime);
+  outline: 2px solid var(--orange);
   outline-offset: 0.7rem;
 }
 
@@ -2707,7 +2712,7 @@ video.photo-slideshow-image {
 
 .writing-doc-meta dd {
   margin: 0;
-  color: var(--lime);
+  color: var(--orange);
 }
 
 .writing-library-footer {
@@ -2747,8 +2752,8 @@ video.photo-slideshow-image {
 .writing-reader-progress span {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, #002fa7, var(--pink), var(--lime));
-  box-shadow: 0 0 0.8rem rgb(206 220 0 / 0.65);
+  background: linear-gradient(90deg, #002fa7, var(--pink), var(--orange));
+  box-shadow: 0 0 0.8rem rgb(240 78 152 / 0.6);
   transition: width 80ms linear;
 }
 
@@ -2762,7 +2767,7 @@ video.photo-slideshow-image {
   gap: 1rem;
   min-height: 3.6rem;
   padding: 0 clamp(1rem, 3vw, 2.5rem);
-  border-bottom: 1px solid rgb(206 220 0 / 0.28);
+  border-bottom: 1px solid rgb(240 78 152 / 0.32);
   background: rgb(5 5 9 / 0.92);
   font-family: var(--font-mono);
   font-size: 11px;
@@ -2788,7 +2793,7 @@ video.photo-slideshow-image {
 
 .writing-reader-toolbar > p {
   justify-self: end;
-  color: var(--lime);
+  color: var(--pink);
 }
 
 .writing-reader-shell {
@@ -2824,7 +2829,7 @@ video.photo-slideshow-image {
   gap: 1rem;
   margin: 0;
   padding-top: 1rem;
-  border-top: 1px solid rgb(206 220 0 / 0.28);
+  border-top: 1px solid rgb(240 78 152 / 0.32);
 }
 
 .writing-reader-rail dt {
@@ -3053,7 +3058,7 @@ video.photo-slideshow-image {
   }
 
   .writing-library-title h1 {
-    font-size: clamp(4.4rem, 24vw, 7rem);
+    font-size: clamp(3.5rem, 17.8vw, 6rem);
   }
 
   .writing-documents-toolbar {
@@ -3119,7 +3124,7 @@ video.photo-slideshow-image {
   font-family: var(--font-mono);
   font-size: 10px;
   line-height: 1.35;
-  color: var(--lime);
+  color: var(--orange);
 }
 
 .writing-search button {
@@ -3144,18 +3149,18 @@ video.photo-slideshow-image {
 }
 
 .writing-doc-card:nth-child(3n + 2) .writing-doc-preview {
-  background-color: #512da8;
-  box-shadow: 0.55rem 0.55rem 0 rgb(206 220 0 / 0.84);
+  background-color: var(--violet);
+  box-shadow: 0.55rem 0.55rem 0 rgb(255 143 28 / 0.84);
 }
 
 .writing-doc-card:nth-child(3n) .writing-doc-preview {
-  background-color: #0b4f4a;
+  background-color: var(--purple);
   box-shadow: 0.55rem 0.55rem 0 rgb(240 78 152 / 0.84);
 }
 
 .writing-doc-card:hover .writing-doc-preview,
 .writing-doc-card:focus-visible .writing-doc-preview {
-  box-shadow: 0.85rem 0.85rem 0 var(--lime);
+  box-shadow: 0.85rem 0.85rem 0 var(--pink);
 }
 
 .writing-doc-flags {
@@ -3171,7 +3176,7 @@ video.photo-slideshow-image {
 
 .writing-doc-flags span {
   padding: 0.14rem 0.3rem;
-  background: var(--lime);
+  background: var(--orange);
 }
 
 .writing-doc-flags span + span {
@@ -3180,11 +3185,11 @@ video.photo-slideshow-image {
 
 .writing-no-results button {
   padding: 0.4rem 0.65rem;
-  border: 1px solid var(--lime);
+  border: 1px solid var(--orange);
   background: transparent;
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--lime);
+  color: var(--orange);
   cursor: pointer;
 }
 
