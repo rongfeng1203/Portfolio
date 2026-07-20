@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import WritingReader from "@/components/WritingReader";
 import { getWritingDocument, writingDocuments } from "@/lib/writingDocuments";
+import { getWritingTranslation } from "@/lib/writingTranslations";
 
 export const metadata: Metadata = {
   title: "瘋狂科学家 × 第一个拥有情感的AI — Rong Feng",
@@ -14,6 +15,7 @@ export default function WritingDocumentPage() {
   return (
     <WritingReader
       document={document}
+      translation={getWritingTranslation(document.slug)}
       index={index}
       total={writingDocuments.length}
       next={writingDocuments[index + 1]}

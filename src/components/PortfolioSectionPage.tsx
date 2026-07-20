@@ -71,7 +71,7 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
         <section className="section-workbench" aria-label={`${section.title} featured work`}>
           {feature}
           <aside className="section-note">
-            <span>playable build loaded</span>
+            <span>{section.slug === "games" ? "game archive loaded" : "playable build loaded"}</span>
             <p>{section.note}</p>
           </aside>
         </section>

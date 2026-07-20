@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import WritingReader from "@/components/WritingReader";
 import { getWritingDocument, writingDocuments } from "@/lib/writingDocuments";
+import { getWritingTranslation } from "@/lib/writingTranslations";
 
 type WritingDocumentPageProps = {
   params: Promise<{ slug: string }>;
@@ -36,6 +37,7 @@ export default async function WritingDocumentPage({ params }: WritingDocumentPag
   return (
     <WritingReader
       document={document}
+      translation={getWritingTranslation(document.slug)}
       index={index}
       total={writingDocuments.length}
       previous={writingDocuments[index - 1]}

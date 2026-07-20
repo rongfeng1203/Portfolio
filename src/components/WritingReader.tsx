@@ -1,14 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileText, Languages } from "lucide-react";
 import { type CSSProperties, useEffect, useState } from "react";
 import type { WritingDocument } from "@/lib/writingDocuments";
+import type { WritingTranslation } from "@/lib/writingTranslations";
 
 type WritingReaderProps = {
   document: WritingDocument;
   index: number;
   total: number;
+  translation?: WritingTranslation;
   previous?: Pick<WritingDocument, "slug" | "title">;
   next?: Pick<WritingDocument, "slug" | "title">;
 };
@@ -17,11 +19,30 @@ export default function WritingReader({
   document,
   index,
   total,
+  translation,
   previous,
   next,
 }: WritingReaderProps) {
   const [progress, setProgress] = useState(0);
+  const [isTranslated, setIsTranslated] = useState(false);
   const documentCode = `DOC_${(index + 1).toString().padStart(3, "0")}`;
+  const showingTranslation = isTranslated && Boolean(translation);
+  const activeContent = showingTranslation && translation ? translation : document;
+  const activeLanguage = showingTranslation ? "ENGLISH TRANSLATION" : document.language;
+
+  const toggleTranslation = () => {
+    const page = window.document.documentElement;
+    const scrollableBefore = page.scrollHeight - window.innerHeight;
+    const position = scrollableBefore > 0 ? window.scrollY / scrollableBefore : 0;
+
+    setIsTranslated((current) => !current);
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        const scrollableAfter = window.document.documentElement.scrollHeight - window.innerHeight;
+        window.scrollTo({ top: Math.max(0, scrollableAfter * position) });
+      });
+    });
+  };
 
   useEffect(() => {
     const updateProgress = () => {
@@ -43,7 +64,7 @@ export default function WritingReader({
   return (
     <main
       className="section-page section-writing writing-reader min-h-screen"
-      lang={document.language === "ENGLISH" ? "en" : "zh-CN"}
+      lang={showingTranslation || document.language === "ENGLISH" ? "en" : "zh-CN"}
       style={{
         "--section-color": "var(--pink)",
         "--section-accent": "var(--orange)",
@@ -60,9 +81,23 @@ export default function WritingReader({
           <ArrowLeft size={15} strokeWidth={1.5} />
           <span>/WRITING</span>
         </Link>
-        <div>
-          <FileText size={14} strokeWidth={1.5} aria-hidden="true" />
-          <span>{documentCode}</span>
+        <div className="writing-reader-toolbar-center">
+          <span className="writing-reader-document-id">
+            <FileText size={14} strokeWidth={1.5} aria-hidden="true" />
+            <span>{documentCode}</span>
+          </span>
+          {translation ? (
+            <button
+              type="button"
+              className="writing-translation-toggle"
+              onClick={toggleTranslation}
+              aria-label={isTranslated ? "Show the original Chinese text" : "Translate this writing into English"}
+              aria-pressed={isTranslated}
+            >
+              <Languages size={16} strokeWidth={1.8} aria-hidden="true" />
+              <span>{isTranslated ? "中文原文" : "TRANSLATE TO ENGLISH"}</span>
+            </button>
+          ) : null}
         </div>
         <p>{Math.round(progress).toString().padStart(2, "0")}% READ</p>
       </header>
@@ -85,19 +120,19 @@ export default function WritingReader({
             </div>
             <div>
               <dt>LANGUAGE</dt>
-              <dd>{document.language}</dd>
+              <dd>{activeLanguage}</dd>
             </div>
           </dl>
         </aside>
 
         <article
-          className={`writing-reader-paper${document.language === "ENGLISH" ? " is-english" : ""}`}
+          className={`writing-reader-paper${showingTranslation || document.language === "ENGLISH" ? " is-english" : ""}`}
           data-document-code={documentCode}
         >
           <header className="writing-article-header">
             <p>{document.genre} / {documentCode}</p>
-            <h1>{document.title}</h1>
-            <p className="writing-article-subtitle">{document.subtitle}</p>
+            <h1>{activeContent.title}</h1>
+            <p className="writing-article-subtitle">{activeContent.subtitle}</p>
             <div>
               <span>RONG FENG / 冯熔</span>
               <span>{document.readingTime}</span>
@@ -105,7 +140,7 @@ export default function WritingReader({
           </header>
 
           <div className="writing-article-body">
-            {document.blocks.map((block, blockIndex) => {
+            {activeContent.blocks.map((block, blockIndex) => {
               if (block.type === "heading") {
                 return block.level === 2 ? (
                   <h2 key={`${block.text}-${blockIndex}`}>{block.text}</h2>

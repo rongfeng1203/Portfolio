@@ -30,7 +30,7 @@ const firstEntryStorageKey = "rong-home-title-intro-seen";
 
 function readFirstEntrySeen() {
   try {
-    return window.sessionStorage.getItem(firstEntryStorageKey) === "true";
+    return window.localStorage.getItem(firstEntryStorageKey) === "true";
   } catch {
     return false;
   }
@@ -38,9 +38,9 @@ function readFirstEntrySeen() {
 
 function writeFirstEntrySeen() {
   try {
-    window.sessionStorage.setItem(firstEntryStorageKey, "true");
+    window.localStorage.setItem(firstEntryStorageKey, "true");
   } catch {
-    // Ignore browsers that block session storage.
+    // Ignore browsers that block persistent storage.
   }
 }
 
@@ -94,7 +94,7 @@ const sections = [
   },
   {
     id: "digital",
-    label: "Digital",
+    label: "Digital Arts",
     cn: "影像",
     code: "MOTION BUFFER",
     color: "var(--orange)",
@@ -140,7 +140,7 @@ const sections = [
 
 const streamRows = [
   "RONGFENG//INDEX//0001//SCROLL//VISUALSYSTEM//",
-  "GAMES PHOTOGRAPHY VISUAL DIGITAL THEATRE MAKING WRITING",
+  "GAMES PHOTOGRAPHY VISUAL DIGITAL ARTS THEATRE MAKING WRITING",
   "ASCII_WASH CHROMA_OFFSET HALFTONE_SCAN RELAXING_THEME",
 ];
 
@@ -165,16 +165,30 @@ const sectionColorHex = {
   writing: "#F04E98",
 } as const satisfies Record<(typeof sections)[number]["id"], string>;
 
-function getSwooshShadowColors(sectionIndex: number, activeColor: string): SwooshShadowColors {
+const sectionVisibleShadowOverrides: Partial<
+  Record<(typeof sections)[number]["id"], readonly [string, string]>
+> = {
+  photography: ["#963CBD", "#FF8F1C"],
+  visual: ["#FF8F1C", "#FF8F1C"],
+  digital: ["#CEDC00", "#CEDC00"],
+  theatre: ["#CEDC00", "#CEDC00"],
+};
+
+function getSwooshShadowColors(
+  sectionIndex: number,
+  sectionId: (typeof sections)[number]["id"],
+  activeColor: string,
+): SwooshShadowColors {
   const rotatedColors = Array.from({ length: swooshColorSequence.length }, (_, layerIndex) => (
     swooshColorSequence[(sectionIndex + layerIndex) % swooshColorSequence.length]
   ));
   const colors = rotatedColors.filter((color) => color.toLowerCase() !== activeColor.toLowerCase());
-  const glow = colors[swooshVisibleColorCount - 1] ?? colors[0];
+  const visibleColors = sectionVisibleShadowOverrides[sectionId] ?? colors;
+  const glow = visibleColors[swooshVisibleColorCount - 1] ?? visibleColors[0];
 
   return {
-    first: colors[0],
-    second: colors[1],
+    first: visibleColors[0],
+    second: visibleColors[1],
     third: colors[2],
     fourth: colors[3],
     glow,
@@ -204,6 +218,11 @@ export default function Home() {
     subscribeToHydration,
     getClientHydrationSnapshot,
     getServerHydrationSnapshot,
+  );
+  const firstEntrySeen = useSyncExternalStore(
+    subscribeToHydration,
+    readFirstEntrySeen,
+    () => true,
   );
   const active = sections[activeIndex];
   const contactFlipItems: SocialItem[] = [
@@ -252,9 +271,17 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setIntroDone(true), 3200);
+    if (firstEntrySeen) {
+      setIntroDone(true);
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setIntroDone(true);
+      writeFirstEntrySeen();
+    }, 3200);
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [firstEntrySeen]);
 
   useEffect(() => {
     const audio = new Audio(relaxingThemeUrl);
@@ -338,7 +365,7 @@ export default function Home() {
 
   return (
     <main className="front-page relative min-h-screen overflow-x-hidden text-paper">
-      {!introDone && (
+      {cursorReady && !firstEntrySeen && !introDone && (
         <div className="fixed inset-0 z-[100] overflow-hidden bg-pink">
           <FaultyTerminal
             className="absolute inset-0"
@@ -524,7 +551,7 @@ export default function Home() {
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <span>{section.code}</span>
                 </div>
-                <h2 className={`scroll-page-title${section.label.length > 9 ? " is-long" : ""}`}>
+                <h2 className={`scroll-page-title${section.label.length > 9 ? " is-long" : ""}${section.label.length > 11 ? " is-wide" : ""}`}>
                   <SwooshText
                     text={section.label}
                     wrapperClassName="scroll-page-title-wrap"
@@ -532,7 +559,7 @@ export default function Home() {
                     shadowOffset={4}
                     shadowLayerCount={swooshVisibleColorCount}
                     style={{ color: "var(--active)" }}
-                    shadowColors={getSwooshShadowColors(index, sectionColorHex[section.id])}
+                    shadowColors={getSwooshShadowColors(index, section.id, sectionColorHex[section.id])}
                   />
                 </h2>
                 <p className="scroll-page-cn">{section.cn}</p>
