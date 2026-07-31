@@ -17,7 +17,7 @@ type Snapshot = {
 };
 
 const BOARD_SIZE = 19;
-const duckBreakerUrl = "/duck-breaker/index.html";
+const duckBreakerUrl = "/duck-breaker-3d/index.html";
 
 const demoVideos = [
   {
@@ -113,7 +113,7 @@ function DuckBreakerEmbed() {
     <article className="game-module" aria-labelledby="duck-breaker-title">
       <header className="game-module-header">
         <div>
-          <span>p5.js / playable browser build</span>
+          <span>unity_webgl / wacky physics build</span>
           <h2 id="duck-breaker-title">Duck Breaker</h2>
         </div>
         <a href={duckBreakerUrl} target="_blank" rel="noreferrer">
@@ -132,16 +132,16 @@ function DuckBreakerEmbed() {
         ) : (
           <button type="button" className="game-web-loader duck-loader" onClick={() => setIsLoaded(true)}>
             <span>load playable build</span>
-            <strong>Catch the ring. Break the grid.</strong>
-            <em>arrow keys / space to start / P to pause</em>
+            <strong>Launch the duck. Break everything.</strong>
+            <em>3D physics playground / click to start</em>
           </button>
         )}
       </div>
 
       <footer className="game-module-meta">
-        <span>course / ICS3U</span>
-        <span>engine / p5.js</span>
-        <span>input / keyboard</span>
+        <span>format / 3d</span>
+        <span>engine / unity</span>
+        <span>build / webgl</span>
       </footer>
     </article>
   );
