@@ -271,10 +271,7 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    if (firstEntrySeen) {
-      setIntroDone(true);
-      return;
-    }
+    if (firstEntrySeen) return;
 
     const timer = window.setTimeout(() => {
       setIntroDone(true);
@@ -282,6 +279,30 @@ export default function Home() {
     }, 3200);
     return () => window.clearTimeout(timer);
   }, [firstEntrySeen]);
+
+  useEffect(() => {
+    if (firstEntrySeen || introDone) return;
+
+    const dismissIntro = () => {
+      setIntroDone(true);
+      writeFirstEntrySeen();
+    };
+    const dismissIntroFromKey = (event: KeyboardEvent) => {
+      if (["ArrowDown", "PageDown", "End", " "].includes(event.key)) {
+        dismissIntro();
+      }
+    };
+
+    window.addEventListener("wheel", dismissIntro, { once: true, passive: true });
+    window.addEventListener("touchmove", dismissIntro, { once: true, passive: true });
+    window.addEventListener("keydown", dismissIntroFromKey);
+
+    return () => {
+      window.removeEventListener("wheel", dismissIntro);
+      window.removeEventListener("touchmove", dismissIntro);
+      window.removeEventListener("keydown", dismissIntroFromKey);
+    };
+  }, [firstEntrySeen, introDone]);
 
   useEffect(() => {
     const audio = new Audio(relaxingThemeUrl);
@@ -366,7 +387,7 @@ export default function Home() {
   return (
     <main className="front-page relative min-h-screen overflow-x-hidden text-paper">
       {cursorReady && !firstEntrySeen && !introDone && (
-        <div className="fixed inset-0 z-[100] overflow-hidden bg-pink">
+        <div className="pointer-events-none fixed inset-0 z-[100] overflow-hidden bg-pink">
           <FaultyTerminal
             className="absolute inset-0"
             style={{}}
