@@ -2070,8 +2070,17 @@ video.photo-slideshow-image {
   background: rgb(5 5 9 / 0.58);
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--lime);
+  color: var(--section-accent);
   text-transform: uppercase;
+}
+
+.contact-sketchbook .contact-sheet-frame > div {
+  background: rgb(5 5 9 / 0.88);
+}
+
+.contact-sketchbook .contact-sheet-frame img {
+  object-fit: contain;
+  padding: 0.25rem;
 }
 
 @media (max-width: 900px) {
@@ -3621,6 +3630,676 @@ video.photo-slideshow-image {
   .writing-preview-paper,
   .writing-open-cue,
   .writing-reader-progress span {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Making archive + document viewer
+   ============================================================ */
+
+.making-library {
+  height: 100svh;
+  overflow: hidden;
+  background-color: var(--ink) !important;
+  background-image:
+    linear-gradient(115deg, rgb(206 220 0 / 0.045), transparent 30%, transparent 72%, rgb(240 78 152 / 0.035)),
+    radial-gradient(circle, rgb(206 220 0 / 0.16) 0 1px, transparent 1.35px),
+    radial-gradient(circle, rgb(242 234 215 / 0.065) 0 0.8px, transparent 1.2px) !important;
+  background-size: auto, 18px 18px, 18px 18px !important;
+}
+
+.making-library::before {
+  opacity: 0.22;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--lime) 28%, transparent) 0 1px,
+    transparent 1.35px
+  );
+}
+
+.making-topbar {
+  height: 3.2rem;
+}
+
+.making-viewer {
+  --making-project-accent: var(--lime);
+  --making-page-width: 100%;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(13.5rem, 17rem) minmax(0, 1fr) minmax(4.5rem, 6.2rem);
+  height: calc(100svh - 5.7rem);
+  margin-top: 0.65rem;
+  overflow: hidden;
+  border: 1px solid rgb(242 234 215 / 0.2);
+  background: rgb(5 5 9 / 0.88);
+  box-shadow:
+    0 0 0 1px rgb(5 5 9 / 0.9),
+    0 0 0 2px rgb(206 220 0 / 0.16);
+}
+
+.making-viewer:fullscreen {
+  width: 100vw;
+  height: 100svh;
+  border: 0;
+}
+
+.making-project-rail {
+  min-width: 0;
+  overflow-y: auto;
+  border-right: 1px solid rgb(242 234 215 / 0.16);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--making-project-accent) 8%, transparent), transparent 24%),
+    rgb(5 5 9 / 0.96);
+  scrollbar-color: var(--making-project-accent) rgb(242 234 215 / 0.06);
+  scrollbar-width: thin;
+}
+
+.making-archive-heading {
+  padding: clamp(1rem, 2.2vw, 1.5rem);
+  border-bottom: 1px solid rgb(242 234 215 / 0.16);
+}
+
+.making-archive-heading > span,
+.making-project-list > p,
+.making-project-details > span,
+.making-project-details dt,
+.making-project-details dd,
+.making-project-details li {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.making-archive-heading > span {
+  display: inline-block;
+  padding: 0.18rem 0.38rem;
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.making-archive-heading h1 {
+  margin: 1.1rem 0 0;
+  font-family: var(--font-display-local), system-ui, sans-serif;
+  font-size: clamp(3.2rem, 5vw, 5.1rem);
+  font-weight: 400;
+  line-height: 0.76;
+  color: var(--paper);
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 var(--purple);
+}
+
+.making-archive-heading .section-cn {
+  margin-top: 0.55rem;
+  font-size: clamp(2.2rem, 3.4vw, 3.5rem);
+  color: var(--lime);
+}
+
+.making-archive-heading > p:last-child {
+  margin-top: 1.25rem;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.04;
+  color: rgb(242 234 215 / 0.68);
+}
+
+.making-project-list {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.85rem;
+  border-bottom: 1px solid rgb(242 234 215 / 0.16);
+}
+
+.making-project-list > p {
+  display: flex;
+  justify-content: space-between;
+  color: rgb(242 234 215 / 0.46);
+}
+
+.making-project-list > p span {
+  color: var(--making-project-accent);
+}
+
+.making-project-list button {
+  --project-card-accent: var(--lime);
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0.65rem;
+  width: 100%;
+  min-width: 0;
+  padding: 0.38rem;
+  border: 1px solid rgb(242 234 215 / 0.16);
+  background: rgb(242 234 215 / 0.035);
+  color: var(--paper);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 150ms steps(3, end), border-color 150ms ease, background-color 150ms ease;
+}
+
+.making-project-list button::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: var(--project-card-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms steps(4, end);
+}
+
+.making-project-list button:hover,
+.making-project-list button:focus-visible {
+  border-color: var(--project-card-accent);
+  outline: 0;
+  transform: translateX(0.15rem);
+}
+
+.making-project-list button.is-active {
+  border-color: var(--project-card-accent);
+  background: color-mix(in srgb, var(--project-card-accent) 11%, transparent);
+}
+
+.making-project-list button.is-active::after {
+  transform: scaleX(1);
+}
+
+.making-project-cover {
+  position: relative;
+  display: block;
+  min-height: 3.35rem;
+  overflow: hidden;
+  border: 1px solid rgb(242 234 215 / 0.16);
+  background: var(--ink);
+}
+
+.making-project-cover img {
+  object-fit: cover;
+}
+
+.making-project-card-copy {
+  display: grid;
+  align-content: center;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.making-project-card-copy small,
+.making-project-card-copy em {
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-style: normal;
+  line-height: 1;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.making-project-card-copy small {
+  color: var(--project-card-accent);
+}
+
+.making-project-card-copy strong {
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 650;
+  line-height: 0.95;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.making-project-card-copy em {
+  color: rgb(242 234 215 / 0.48);
+}
+
+.making-project-details {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+}
+
+.making-project-details > span {
+  width: fit-content;
+  padding: 0.16rem 0.34rem;
+  background: var(--making-project-accent);
+  color: var(--ink);
+}
+
+.making-project-details h2 {
+  margin: 0;
+  font-family: var(--font-display-local), system-ui, sans-serif;
+  font-size: clamp(1.7rem, 2.3vw, 2.45rem);
+  font-weight: 400;
+  line-height: 0.86;
+  color: var(--paper);
+  text-transform: uppercase;
+}
+
+.making-project-details > p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.08;
+  color: rgb(242 234 215 / 0.64);
+}
+
+.making-project-details dl {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgb(242 234 215 / 0.12);
+}
+
+.making-project-details dl > div {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
+  gap: 0.4rem;
+}
+
+.making-project-details dt {
+  color: var(--making-project-accent);
+}
+
+.making-project-details dd {
+  margin: 0;
+  line-height: 1.25;
+  color: rgb(242 234 215 / 0.52);
+}
+
+.making-project-details ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.making-project-details li {
+  padding: 0.18rem 0.3rem;
+  border: 1px solid color-mix(in srgb, var(--making-project-accent) 46%, transparent);
+  color: color-mix(in srgb, var(--making-project-accent) 76%, var(--paper));
+}
+
+.making-document-panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+  min-height: 0;
+}
+
+.making-viewer-toolbar {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0.45rem 0.65rem;
+  border-bottom: 1px solid rgb(242 234 215 / 0.16);
+  background: rgb(5 5 9 / 0.94);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.making-file-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  color: var(--making-project-accent);
+}
+
+.making-file-identity > span {
+  display: grid;
+  min-width: 0;
+}
+
+.making-file-identity strong,
+.making-file-identity small {
+  overflow: hidden;
+  font: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.making-file-identity strong {
+  color: var(--paper);
+}
+
+.making-file-identity small {
+  margin-top: 0.18rem;
+  color: rgb(242 234 215 / 0.42);
+}
+
+.making-page-controls,
+.making-viewer-actions {
+  display: flex;
+  align-items: center;
+}
+
+.making-page-controls {
+  justify-self: center;
+  border: 1px solid rgb(242 234 215 / 0.16);
+}
+
+.making-page-controls > span {
+  min-width: 4.5rem;
+  padding-inline: 0.45rem;
+  color: var(--making-project-accent);
+  text-align: center;
+}
+
+.making-viewer-actions {
+  justify-self: end;
+}
+
+.making-viewer-toolbar button,
+.making-viewer-toolbar a {
+  display: inline-flex;
+  min-width: 2rem;
+  min-height: 2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.35rem;
+  border: 0;
+  border-left: 1px solid rgb(242 234 215 / 0.14);
+  background: transparent;
+  color: rgb(242 234 215 / 0.68);
+  cursor: pointer;
+}
+
+.making-page-controls button:first-child,
+.making-viewer-actions button:first-child {
+  border-left: 0;
+}
+
+.making-viewer-toolbar button:hover:not(:disabled),
+.making-viewer-toolbar button:focus-visible,
+.making-viewer-toolbar a:hover,
+.making-viewer-toolbar a:focus-visible {
+  outline: 0;
+  background: var(--making-project-accent);
+  color: var(--ink);
+}
+
+.making-viewer-toolbar button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.making-page-scroller {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--making-project-accent) rgb(242 234 215 / 0.06);
+  scrollbar-width: thin;
+  background-color: #111117;
+  background-image:
+    linear-gradient(90deg, rgb(242 234 215 / 0.028) 1px, transparent 1px),
+    linear-gradient(rgb(242 234 215 / 0.028) 1px, transparent 1px),
+    radial-gradient(circle, color-mix(in srgb, var(--making-project-accent) 12%, transparent) 0 1px, transparent 1.3px);
+  background-size: 28px 28px, 28px 28px, 14px 14px;
+}
+
+.making-page-stack {
+  display: grid;
+  justify-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  min-width: max(100%, 42rem);
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.making-page-sheet {
+  position: relative;
+  width: min(var(--making-page-width), 92rem);
+  min-width: 32rem;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgb(242 234 215 / 0.16);
+  background: #050509;
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 0.44);
+  opacity: 0.68;
+  transition: opacity 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  scroll-margin: 5rem;
+}
+
+.making-page-sheet::before {
+  content: attr(data-page);
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  padding: 0.2rem 0.35rem;
+  background: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--making-project-accent);
+}
+
+.making-page-sheet.is-current {
+  opacity: 1;
+  border-color: color-mix(in srgb, var(--making-project-accent) 72%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--making-project-accent) 24%, transparent),
+    0 1.5rem 4rem rgb(0 0 0 / 0.52);
+}
+
+.making-page-sheet img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+.making-page-rail {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+  border-left: 1px solid rgb(242 234 215 / 0.16);
+  background: rgb(5 5 9 / 0.96);
+}
+
+.making-page-rail > div:first-child {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem;
+  padding: 0.7rem 0.6rem;
+  border-bottom: 1px solid rgb(242 234 215 / 0.14);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgb(242 234 215 / 0.42);
+}
+
+.making-page-rail > div:first-child strong {
+  color: var(--making-project-accent);
+}
+
+.making-page-thumbnails {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+  min-height: 0;
+  padding: 0.55rem;
+  overflow-y: auto;
+  scrollbar-color: var(--making-project-accent) rgb(242 234 215 / 0.06);
+  scrollbar-width: thin;
+}
+
+.making-page-thumbnails button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgb(242 234 215 / 0.15);
+  background: var(--ink);
+  cursor: pointer;
+  opacity: 0.52;
+  transition: opacity 150ms ease, border-color 150ms ease, transform 150ms steps(3, end);
+}
+
+.making-page-thumbnails button:hover,
+.making-page-thumbnails button:focus-visible,
+.making-page-thumbnails button.is-current {
+  border-color: var(--making-project-accent);
+  outline: 0;
+  opacity: 1;
+  transform: translateX(-0.12rem);
+}
+
+.making-page-thumbnails img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.making-page-thumbnails span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0.1rem 0.2rem;
+  background: rgb(5 5 9 / 0.88);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--making-project-accent);
+}
+
+@media (max-width: 1100px) {
+  .making-viewer {
+    grid-template-columns: minmax(12rem, 15rem) minmax(0, 1fr);
+  }
+
+  .making-page-rail {
+    display: none;
+  }
+
+  .making-viewer-toolbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .making-page-controls {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .making-viewer-actions {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    justify-content: flex-end;
+    border-top: 1px solid rgb(242 234 215 / 0.12);
+  }
+}
+
+@media (max-width: 760px) {
+  .making-library {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+    padding-inline: 0.65rem !important;
+  }
+
+  .making-topbar {
+    height: 2.8rem;
+  }
+
+  .making-topbar .section-banner-mark {
+    width: 9rem;
+  }
+
+  .making-topbar > p {
+    display: none;
+  }
+
+  .making-viewer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    height: calc(100svh - 4.65rem);
+    margin-top: 0.25rem;
+  }
+
+  .making-project-rail {
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-right: 0;
+    border-bottom: 1px solid rgb(242 234 215 / 0.16);
+    white-space: nowrap;
+  }
+
+  .making-archive-heading,
+  .making-project-details {
+    display: none;
+  }
+
+  .making-project-list {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.45rem;
+    border: 0;
+  }
+
+  .making-project-list > p {
+    display: none;
+  }
+
+  .making-project-list button {
+    flex: 0 0 min(80vw, 17rem);
+    grid-template-columns: 4rem minmax(0, 1fr);
+  }
+
+  .making-document-panel {
+    min-height: 0;
+  }
+
+  .making-viewer-toolbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.35rem;
+    padding: 0.35rem;
+  }
+
+  .making-file-identity small {
+    display: none;
+  }
+
+  .making-page-controls {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .making-viewer-actions {
+    display: none;
+  }
+
+  .making-page-stack {
+    min-width: 100%;
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+
+  .making-page-sheet {
+    width: 100%;
+    min-width: 0;
+    scroll-margin: 4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .making-project-list button,
+  .making-project-list button::after,
+  .making-page-sheet,
+  .making-page-thumbnails button {
     transition: none;
   }
 }

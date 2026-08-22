@@ -13,7 +13,7 @@ export type PortfolioSection = {
     meta: string;
     copy: string;
     href?: string;
-    mediaCategory?: "stage" | "scenery" | "humans";
+    mediaCategory?: "stage" | "scenery" | "humans" | "sketchbook";
   }>;
   imageSlots: string[];
   mediaItems?: Array<{
@@ -99,25 +99,40 @@ const photographyMedia = [
   ...photographyCategoryMedia.humans,
 ];
 
-const visualMedia = numberedMedia(
-  "visual",
-  [
-    "001.png",
-    "002.png",
-    "003.png",
-    "004.jpg",
-    "005.jpg",
-    "006.jpg",
-    "007.jpg",
-    "008.jpg",
-    "009.jpg",
-    "010.jpg",
-    "011.jpg",
-    "012.jpg",
-  ],
+const visualSketchbookMedia = numberedMedia(
+  "visual/sketchbook",
+  numberedFiles(6),
   "image",
-  "Visual study",
+  "Sketchbook page",
+  "SKETCHBOOK",
 );
+
+export function getVisualSketchbookMedia() {
+  return visualSketchbookMedia;
+}
+
+const visualMedia = [
+  ...numberedMedia(
+    "visual",
+    [
+      "001.png",
+      "002.png",
+      "003.png",
+      "004.jpg",
+      "005.jpg",
+      "006.jpg",
+      "007.jpg",
+      "008.jpg",
+      "009.jpg",
+      "010.jpg",
+      "011.jpg",
+      "012.jpg",
+    ],
+    "image",
+    "Visual study",
+  ),
+  ...visualSketchbookMedia,
+];
 
 const digitalMedia = [
   ...numberedMedia(
@@ -202,7 +217,7 @@ export const portfolioSections: PortfolioSection[] = [
     buckets: [
       { title: "Illustration", meta: "digital / character / composition", copy: "Finished works and studies with a clear visual voice." },
       { title: "Poster Systems", meta: "type / collage / riso", copy: "Graphic work where text, hierarchy, and texture carry the idea." },
-      { title: "Sketchbook", meta: "process / material / scan", copy: "Raw pages that show how the finished language is built." },
+      { title: "Sketchbook", meta: "process / material / scan", copy: "Raw pages that show how the finished language is built.", href: "/visual/sketchbook", mediaCategory: "sketchbook" },
     ],
     imageSlots: ["poster", "illustration", "sketch scan", "detail"],
     mediaItems: visualMedia,

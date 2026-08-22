@@ -52,12 +52,18 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/portfolio.loader.js";
+      // Keep the Unity filenames stable while forcing browsers past the
+      // long-lived immutable cache whenever a new build is published.
+      var buildVersion = "2026-08-03";
+      var versionedBuildUrl = function(fileName) {
+        return buildUrl + "/" + fileName + "?v=" + buildVersion;
+      };
+      var loaderUrl = versionedBuildUrl("portfolio.loader.js");
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/portfolio.data",
-        frameworkUrl: buildUrl + "/portfolio.framework.js",
-        codeUrl: buildUrl + "/portfolio.wasm",
+        dataUrl: versionedBuildUrl("portfolio.data"),
+        frameworkUrl: versionedBuildUrl("portfolio.framework.js"),
+        codeUrl: versionedBuildUrl("portfolio.wasm"),
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Rong Feng",
         productName: "Duck Breaker",

@@ -12,7 +12,7 @@ export default function UnityWebGLEmbed() {
       <header className="unity-webgl-header">
         <div>
           <span>unity_webgl / live build</span>
-          <h2>Starfall Build 1</h2>
+          <h2>Starfall Build</h2>
         </div>
         <a href={starfallBuildUrl} target="_blank" rel="noreferrer">
           open build
@@ -23,14 +23,14 @@ export default function UnityWebGLEmbed() {
         {isLoaded ? (
           <iframe
             src={starfallBuildUrl}
-            title="Starfall Build 1 Unity WebGL player"
+            title="Starfall Build Unity WebGL player"
             allow="fullscreen; gamepad; autoplay; xr-spatial-tracking"
             allowFullScreen
           />
         ) : (
           <button type="button" className="unity-webgl-loader" onClick={() => setIsLoaded(true)}>
             <span>load playable build</span>
-            <strong>Starfall Build 1</strong>
+            <strong>Starfall Build</strong>
             <em>large unity webgl file / click to start</em>
           </button>
         )}

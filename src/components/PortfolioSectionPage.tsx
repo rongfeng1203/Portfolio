@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { type CSSProperties, type ReactNode } from "react";
 import PhotographySlideshow from "@/components/PhotographySlideshow";
-import { getPhotographyCategoryMedia, type PortfolioSection } from "@/lib/portfolioSections";
+import { getPhotographyCategoryMedia, getVisualSketchbookMedia, type PortfolioSection } from "@/lib/portfolioSections";
 import banner from "../../assets/icon.png";
 
 type MediaItem = NonNullable<PortfolioSection["mediaItems"]>[number];
@@ -16,7 +16,12 @@ const photographyPreviewIndexes = [
 function getBucketPreviewItems(sectionSlug: string, mediaItems: MediaItem[], bucket: PortfolioSection["buckets"][number], bucketIndex: number) {
   if (!mediaItems.length) return [];
 
-  if (sectionSlug !== "photography") return [];
+  if (sectionSlug === "visual" && bucket.mediaCategory === "sketchbook") {
+    const sketchbookItems = getVisualSketchbookMedia();
+    return [0, 3, 5].map((itemIndex) => sketchbookItems[itemIndex]).filter((item) => item?.type === "image");
+  }
+
+  if (sectionSlug !== "photography" || bucket.mediaCategory === "sketchbook") return [];
 
   const sourceItems = bucket.mediaCategory ? [...getPhotographyCategoryMedia(bucket.mediaCategory)] : mediaItems;
 

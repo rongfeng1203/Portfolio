@@ -67,8 +67,8 @@ const sections = [
     color: "var(--lime)",
     route: "/games",
     copy:
-      "Unity worlds, Python experiments, web toys, design notes, and playable prototypes. This is where interaction becomes the first language.",
-    scraps: ["Unity", "Python", "Level design", "Systems"],
+      "Unity games, immersive media, python code visualization, and prototypes. Where code meets art.",
+    scraps: ["Unity", "Python", "Design", "Systems"],
   },
   {
     id: "photography",
@@ -78,8 +78,8 @@ const sections = [
     color: "var(--violet)",
     route: "/photography",
     copy:
-      "Backstage archives, street fragments, portrait sequences, and image walls. This chapter should eventually scroll like a live contact sheet.",
-    scraps: ["Archive", "Series", "Stage", "Street"],
+      "Stage photos, street candids, portrait sequences. Peak in to my film-wannabe-self.",
+    scraps: ["Archive", "Candid", "Stage", "Portrait"],
   },
   {
     id: "visual",
@@ -89,7 +89,7 @@ const sections = [
     color: "var(--pink)",
     route: "/visual",
     copy:
-      "Illustration, graphic studies, painting, drawing, and visual research. I want this section to feel printed, handled, scanned, and reprinted.",
+      "Illustration, graphic collage, painting, drawing, and sketch. Where everything started. ",
     scraps: ["Illustration", "Poster", "Sketchbook", "Texture"],
   },
   {
@@ -100,7 +100,7 @@ const sections = [
     color: "var(--orange)",
     route: "/digital",
     copy:
-      "Motion tests, video loops, shader ideas, sound-adjacent experiments, and digital images that should not stay still.",
+      "Animation, concept design, graphics, and digital collages. Thanks ASM3/4M.",
     scraps: ["Video", "Shader", "Loop", "Screen"],
   },
   {
@@ -111,7 +111,7 @@ const sections = [
     color: "var(--purple)",
     route: "/theatre",
     copy:
-      "Stage management, light, set, and spatial storytelling. This is the bridge between game space and physical performance.",
+      "Stage management, light, cues, and bugeting. I love my team.",
     scraps: ["Light", "Stage", "Cue", "Space"],
   },
   {
@@ -122,7 +122,7 @@ const sections = [
     color: "var(--lime)",
     route: "/making",
     copy:
-      "Interior work, sewing, laser cutting, woodworking, and object experiments. The evidence should stay tactile here.",
+      "Sewing, laser cutting, woodworking, and engineering. I love Arduino:)",
     scraps: ["Wood", "Fabric", "Laser", "Model"],
   },
   {
@@ -133,8 +133,8 @@ const sections = [
     color: "var(--pink)",
     route: "/writing",
     copy:
-      "Fiction, poetry, essays, scripts, and game writing. This is the quieter room inside the noise.",
-    scraps: ["Fiction", "Poetry", "Script", "Essay"],
+      "Fiction, essays, scripts, and dystopia. My dream as a child.",
+    scraps: ["Fiction", "Dreams", "Script", "Essay"],
   },
 ] as const;
 
@@ -578,7 +578,7 @@ export default function Home() {
                     wrapperClassName="scroll-page-title-wrap"
                     className="scroll-page-title-swoosh"
                     shadowOffset={4}
-                    shadowLayerCount={swooshVisibleColorCount}
+                    shadowLayerCount={section.id === "theatre" ? 1 : swooshVisibleColorCount}
                     style={{ color: "var(--active)" }}
                     shadowColors={getSwooshShadowColors(index, section.id, sectionColorHex[section.id])}
                   />
