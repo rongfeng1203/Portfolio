@@ -590,9 +590,7 @@ export default function Home() {
                     <li key={scrap}>{scrap}</li>
                   ))}
                 </ul>
-                <AsciiGlitchRipple as="span" className="scroll-page-enter" dur={760} spread={1.32}>
-                  {`enter / ${section.id}`}
-                </AsciiGlitchRipple>
+                <span className="scroll-page-enter">{`enter / ${section.id}`}</span>
               </div>
             </Link>
           </section>

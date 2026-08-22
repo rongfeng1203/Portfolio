@@ -2429,9 +2429,9 @@ video.photo-slideshow-image {
 .scroll-page-copy {
   max-width: 52rem;
   font-family: var(--font-body);
-  font-size: clamp(1.35rem, 2.7vw, 2.45rem);
-  line-height: 1.02;
-  color: rgb(242 234 215 / 0.82);
+  font-size: clamp(1rem, 1.55vw, 1.4rem);
+  line-height: 1.15;
+  color: var(--active);
 }
 
 .scroll-page-scraps {
