@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function MakingPage() {
   return (
     <main
-      className="section-page section-making making-library min-h-screen px-3 pb-3 pt-5 text-paper sm:px-5 lg:px-6"
+      className="section-page section-making making-library min-h-screen px-4 pb-12 pt-8 text-paper sm:px-6 lg:px-8"
       style={
         {
           "--section-color": "var(--lime)",

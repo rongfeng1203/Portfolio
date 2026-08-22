@@ -579,7 +579,10 @@ export default function Home() {
                     className="scroll-page-title-swoosh"
                     shadowOffset={4}
                     shadowLayerCount={section.id === "theatre" ? 1 : swooshVisibleColorCount}
-                    style={{ color: "var(--active)" }}
+                    style={{
+                      color: "var(--active)",
+                      textShadow: section.id === "theatre" ? "none" : undefined,
+                    }}
                     shadowColors={getSwooshShadowColors(index, section.id, sectionColorHex[section.id])}
                   />
                 </h2>

@@ -5,3 +5,4 @@ assets/Duck-Breaker-Portfolio-WebGL/Build/*.data filter=lfs diff=lfs merge=lfs -
 assets/Duck-Breaker-Portfolio-WebGL/Build/*.wasm filter=lfs diff=lfs merge=lfs -text
 assets/making/*.pdf filter=lfs diff=lfs merge=lfs -text
 assets/making/*.HEIC filter=lfs diff=lfs merge=lfs -text
+public/portfolio-assets/making/*.pdf filter=lfs diff=lfs merge=lfs -text
