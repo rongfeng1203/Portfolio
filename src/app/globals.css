@@ -4381,9 +4381,7 @@ video.photo-slideshow-image {
   min-height: 7.5rem;
   padding: clamp(0.85rem, 2vw, 1.35rem);
   border-bottom: 1px solid rgb(242 234 215 / 0.16);
-  background:
-    linear-gradient(100deg, color-mix(in srgb, var(--making-project-accent) 10%, transparent), transparent 48%),
-    rgb(5 5 9 / 0.94);
+  background: rgb(5 5 9 / 0.94);
 }
 
 .making-slideshow-heading > div:first-child {
@@ -4473,11 +4471,12 @@ video.photo-slideshow-image {
   top: 50%;
   z-index: 4;
   display: grid;
-  width: clamp(2.7rem, 5vw, 4.6rem);
-  height: clamp(3.8rem, 8vw, 7.5rem);
+  width: clamp(2.4rem, 3vw, 3rem);
+  height: clamp(2.4rem, 3vw, 3rem);
   place-items: center;
   padding: 0;
   border: 1px solid rgb(242 234 215 / 0.28);
+  border-radius: 999px;
   background: rgb(5 5 9 / 0.74);
   color: var(--paper);
   cursor: pointer;
@@ -4574,8 +4573,8 @@ video.photo-slideshow-image {
   }
 
   .making-slide-arrow {
-    width: 2.35rem;
-    height: 3.25rem;
+    width: 2.25rem;
+    height: 2.25rem;
   }
 
   .making-slide-arrow.is-previous {

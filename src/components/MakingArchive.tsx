@@ -58,7 +58,7 @@ function MakingPdfSlideshow({ project, projectIndex }: { project: MakingProject;
           disabled={activePage === 0}
           aria-label={`Previous page of ${project.title}`}
         >
-          <ArrowLeft size={24} strokeWidth={1.5} aria-hidden="true" />
+          <ArrowLeft size={18} strokeWidth={1.6} aria-hidden="true" />
         </button>
 
         <Image
@@ -81,7 +81,7 @@ function MakingPdfSlideshow({ project, projectIndex }: { project: MakingProject;
           disabled={activePage === project.pageCount - 1}
           aria-label={`Next page of ${project.title}`}
         >
-          <ArrowRight size={24} strokeWidth={1.5} aria-hidden="true" />
+          <ArrowRight size={18} strokeWidth={1.6} aria-hidden="true" />
         </button>
       </div>
 
