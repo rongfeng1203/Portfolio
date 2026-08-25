@@ -65,6 +65,7 @@ const sections = [
     cn: "遊戲",
     code: "PLAYABLE SYSTEMS",
     color: "var(--lime)",
+    secondaryColor: "var(--pink)",
     route: "/games",
     copy:
       "Unity games, immersive media, python code visualization, and prototypes. Where code meets art.",
@@ -76,6 +77,7 @@ const sections = [
     cn: "攝影",
     code: "CONTACT SHEETS",
     color: "var(--violet)",
+    secondaryColor: "var(--lime)",
     route: "/photography",
     copy:
       "Stage photos, street candids, portrait sequences. Peak in to my film-wannabe-self.",
@@ -87,6 +89,7 @@ const sections = [
     cn: "视觉",
     code: "SCAN / POSTER",
     color: "var(--pink)",
+    secondaryColor: "var(--orange)",
     route: "/visual",
     copy:
       "Illustration, graphic collage, painting, drawing, and sketch. Where everything started. ",
@@ -98,6 +101,7 @@ const sections = [
     cn: "影像",
     code: "MOTION BUFFER",
     color: "var(--orange)",
+    secondaryColor: "var(--lime)",
     route: "/digital",
     copy:
       "Animation, concept design, graphics, and digital collages. Thanks ASM3/4M.",
@@ -109,6 +113,7 @@ const sections = [
     cn: "戲劇",
     code: "SPACE CUE",
     color: "var(--purple)",
+    secondaryColor: "var(--orange)",
     route: "/theatre",
     copy:
       "Stage management, light, cues, and bugeting. I love my team.",
@@ -120,6 +125,7 @@ const sections = [
     cn: "制作",
     code: "MATERIAL LOG",
     color: "var(--lime)",
+    secondaryColor: "var(--pink)",
     route: "/making",
     copy:
       "Sewing, laser cutting, woodworking, and engineering. I love Arduino:)",
@@ -131,6 +137,7 @@ const sections = [
     cn: "写作",
     code: "TEXT ENGINE",
     color: "var(--pink)",
+    secondaryColor: "var(--orange)",
     route: "/writing",
     copy:
       "Fiction, essays, scripts, and dystopia. My dream as a child.",
@@ -149,51 +156,6 @@ const menuItems = sections.map((section) => ({
   link: section.route,
   ariaLabel: `Open ${section.label}`,
 }));
-
-type SwooshShadowColors = NonNullable<Parameters<typeof SwooshText>[0]["shadowColors"]>;
-
-// Control the scroll-title color rhythm here: order + visible color count.
-const swooshColorSequence = ["#CEDC00", "#963CBD", "#F04E98", "#FF8F1C", "#002FA7"] as const;
-const swooshVisibleColorCount: 1 | 2 | 3 | 4 = 2;
-const sectionColorHex = {
-  games: "#CEDC00",
-  photography: "#7D55C7",
-  visual: "#F04E98",
-  digital: "#FF8F1C",
-  theatre: "#963CBD",
-  making: "#CEDC00",
-  writing: "#F04E98",
-} as const satisfies Record<(typeof sections)[number]["id"], string>;
-
-const sectionVisibleShadowOverrides: Partial<
-  Record<(typeof sections)[number]["id"], readonly [string, string]>
-> = {
-  photography: ["#963CBD", "#FF8F1C"],
-  visual: ["#FF8F1C", "#FF8F1C"],
-  digital: ["#CEDC00", "#CEDC00"],
-  theatre: ["#CEDC00", "#CEDC00"],
-};
-
-function getSwooshShadowColors(
-  sectionIndex: number,
-  sectionId: (typeof sections)[number]["id"],
-  activeColor: string,
-): SwooshShadowColors {
-  const rotatedColors = Array.from({ length: swooshColorSequence.length }, (_, layerIndex) => (
-    swooshColorSequence[(sectionIndex + layerIndex) % swooshColorSequence.length]
-  ));
-  const colors = rotatedColors.filter((color) => color.toLowerCase() !== activeColor.toLowerCase());
-  const visibleColors = sectionVisibleShadowOverrides[sectionId] ?? colors;
-  const glow = visibleColors[swooshVisibleColorCount - 1] ?? visibleColors[0];
-
-  return {
-    first: visibleColors[0],
-    second: visibleColors[1],
-    third: colors[2],
-    fourth: colors[3],
-    glow,
-  };
-}
 
 function subscribeToHydration(callback: () => void) {
   queueMicrotask(callback);
@@ -564,7 +526,11 @@ export default function Home() {
           <section
             key={section.id}
             className="scroll-page-band"
-            style={{ "--active": section.color, "--row": index } as CSSProperties}
+            style={{
+              "--active": section.color,
+              "--secondary": section.secondaryColor,
+              "--row": index,
+            } as CSSProperties}
           >
             <Link href={section.route} className="scroll-page-link" aria-label={`Enter ${section.label}`}>
               <div className="scroll-page-shell">
@@ -577,13 +543,10 @@ export default function Home() {
                     text={section.label}
                     wrapperClassName="scroll-page-title-wrap"
                     className="scroll-page-title-swoosh"
-                    shadowOffset={4}
-                    shadowLayerCount={section.id === "theatre" ? 1 : swooshVisibleColorCount}
                     style={{
                       color: "var(--active)",
-                      textShadow: section.id === "theatre" ? "none" : undefined,
+                      textShadow: "none",
                     }}
-                    shadowColors={getSwooshShadowColors(index, section.id, sectionColorHex[section.id])}
                   />
                 </h2>
                 <p className="scroll-page-cn">{section.cn}</p>

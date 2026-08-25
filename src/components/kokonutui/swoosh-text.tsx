@@ -61,6 +61,7 @@ export default function SwooshText({
   return (
     <div className={cn("w-full", wrapperClassName)}>
       <div
+        data-text={text}
         className={cn(
           "w-full cursor-pointer text-center font-bold text-3xl",
           "tracking-widest",

@@ -859,6 +859,16 @@ a {
   background-size: 13px 13px;
 }
 
+.section-page.section-digital {
+  background-image:
+    radial-gradient(circle, rgb(255 143 28 / 0.18) 0 1px, transparent 1.35px),
+    radial-gradient(circle, rgb(242 234 215 / 0.08) 0 0.8px, transparent 1.2px) !important;
+}
+
+.section-page.section-digital::before {
+  background-image: radial-gradient(circle, rgb(255 143 28 / 0.18) 0 1px, transparent 1.35px);
+}
+
 .section-page::after {
   content: "";
   position: fixed;
@@ -2381,6 +2391,8 @@ video.photo-slideshow-image {
 }
 
 .scroll-page-title-swoosh {
+  --title-layer-offset: 7px;
+  position: relative;
   width: max-content !important;
   max-width: min(62vw, 100%) !important;
   font-family: var(--font-display-local), system-ui, sans-serif !important;
@@ -2394,7 +2406,19 @@ video.photo-slideshow-image {
   overflow-wrap: normal;
   word-break: normal;
   mix-blend-mode: normal;
+  isolation: isolate;
   transition: transform 500ms ease !important;
+}
+
+.scroll-page-title-swoosh::before {
+  content: attr(data-text);
+  position: absolute;
+  top: var(--title-layer-offset);
+  left: var(--title-layer-offset);
+  color: var(--secondary);
+  text-shadow: none;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .scroll-page-title.is-long .scroll-page-title-wrap,
@@ -2528,6 +2552,10 @@ video.photo-slideshow-image {
   .scroll-page-title-wrap,
   .scroll-page-title-swoosh {
     max-width: 100% !important;
+  }
+
+  .scroll-page-title-swoosh {
+    --title-layer-offset: 3px;
   }
 
   .scroll-page-title.is-wide .scroll-page-title-swoosh {
@@ -4319,7 +4347,7 @@ video.photo-slideshow-image {
 
 .making-archive-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
   align-items: end;
   gap: clamp(2rem, 6vw, 7rem);
   padding: clamp(1rem, 2vw, 1.6rem) 0 clamp(2.5rem, 6vw, 5.5rem);
@@ -4329,10 +4357,10 @@ video.photo-slideshow-image {
 .making-archive-intro h1 {
   margin: 0.7rem 0 0;
   font-family: var(--font-display-local), system-ui, sans-serif;
-  font-size: clamp(5rem, 13vw, 12.5rem);
+  font-size: clamp(5rem, 11.5vw, 12.5rem);
   font-weight: 400;
   line-height: 0.72;
-  color: var(--paper);
+  color: var(--lime);
   text-transform: uppercase;
   text-shadow: 0.035em 0.035em 0 var(--purple);
 }
@@ -4530,7 +4558,7 @@ video.photo-slideshow-image {
   }
 
   .making-archive-intro h1 {
-    font-size: clamp(4.5rem, 24vw, 8rem);
+    font-size: clamp(4.5rem, 22vw, 7.5rem);
   }
 
   .making-archive-intro > p {

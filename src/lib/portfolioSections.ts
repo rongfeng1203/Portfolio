@@ -227,9 +227,9 @@ export const portfolioSections: PortfolioSection[] = [
     title: "Digital Arts",
     cn: "影像",
     code: "MOTION_BUFFER",
-    color: "var(--purple)",
-    accent: "var(--lime)",
-    textColor: "var(--lime)",
+    color: "var(--orange)",
+    accent: "var(--purple)",
+    textColor: "var(--orange)",
     intro:
       "Motion loops, video, shader experiments, screen-based images, interactive tests, and pieces that should not sit still.",
     note: "Current digital-media assets are loaded, including collage/surreal stills and one motion piece.",
