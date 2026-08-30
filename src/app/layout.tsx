@@ -6,6 +6,7 @@
 
 import type { Metadata } from "next";
 import GlobalNoise from "@/components/GlobalNoise";
+import PortfolioNavbar from "@/components/PortfolioNavbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <PortfolioNavbar />
         {children}
         <GlobalNoise />
       </body>

@@ -125,6 +125,132 @@ html, body {
 
 body {
   overflow-x: hidden;
+  padding-top: 3.75rem;
+}
+
+/* ----- persistent portfolio navigation ----- */
+.portfolio-navbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 180;
+  height: 3.75rem;
+  padding-top: 4px;
+  border-bottom: 1px solid rgb(242 234 215 / 0.18);
+  background: rgb(5 5 9 / 0.97);
+  box-shadow: 0 8px 28px rgb(0 0 0 / 0.28);
+  isolation: isolate;
+}
+
+.portfolio-navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--lime) 0 18%,
+    var(--violet) 18% 36%,
+    var(--pink) 36% 58%,
+    var(--orange) 58% 79%,
+    var(--purple) 79% 100%
+  );
+}
+
+.portfolio-navbar-track {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.portfolio-navbar-track::-webkit-scrollbar {
+  display: none;
+}
+
+.portfolio-navbar-link {
+  --nav-accent: var(--paper);
+  position: relative;
+  display: flex;
+  flex: 1 0 auto;
+  min-width: max-content;
+  align-items: center;
+  justify-content: center;
+  gap: 0.42rem;
+  padding: 0.25rem clamp(0.65rem, 1.45vw, 1.5rem) 0;
+  border-right: 1px solid rgb(242 234 215 / 0.13);
+  color: rgb(242 234 215 / 0.68);
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 0.9vw, 0.9rem);
+  letter-spacing: 0.055em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.portfolio-navbar-link::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  background: var(--nav-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.portfolio-navbar-link:hover,
+.portfolio-navbar-link:focus-visible,
+.portfolio-navbar-link.is-active {
+  color: var(--nav-accent);
+  background: color-mix(in srgb, var(--nav-accent) 9%, transparent);
+}
+
+.portfolio-navbar-link:hover::after,
+.portfolio-navbar-link:focus-visible::after,
+.portfolio-navbar-link.is-active::after {
+  transform: scaleX(1);
+}
+
+.portfolio-navbar-link:focus-visible {
+  z-index: 1;
+  outline: 2px solid var(--nav-accent);
+  outline-offset: -4px;
+}
+
+.portfolio-navbar-index {
+  color: var(--nav-accent);
+  font-size: 0.68em;
+  opacity: 0.78;
+}
+
+.portfolio-navbar-label-short {
+  display: none;
+}
+
+@media (max-width: 780px) {
+  body {
+    padding-top: 3.35rem;
+  }
+
+  .portfolio-navbar {
+    height: 3.35rem;
+  }
+
+  .portfolio-navbar-link {
+    padding-inline: 0.72rem;
+    font-size: 0.78rem;
+  }
+
+  .portfolio-navbar-label-full {
+    display: none;
+  }
+
+  .portfolio-navbar-label-short {
+    display: inline;
+  }
 }
 
 body::before,
@@ -2419,6 +2545,10 @@ video.photo-slideshow-image {
   text-shadow: none;
   pointer-events: none;
   z-index: -1;
+}
+
+.scroll-page-band[data-section="theatre"] .scroll-page-title-swoosh::before {
+  display: none;
 }
 
 .scroll-page-title.is-long .scroll-page-title-wrap,

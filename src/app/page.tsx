@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { FaDiscord, FaEnvelope, FaGithub, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { type CSSProperties, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import ASCIIText from "@/components/ASCIIText";
@@ -9,14 +8,10 @@ import CircularText from "@/components/CircularText";
 import DecryptedText from "@/components/DecryptedText";
 import Dither from "@/components/Dither";
 import FaultyTerminal from "@/components/FaultyTerminal";
-import SwooshText from "@/components/kokonutui/swoosh-text";
 import PixelTrail from "@/components/PixelTrail";
-import StaggeredMenu from "@/components/StaggeredMenu";
 import TextType from "@/components/TextType";
-import { AsciiGlitchRipple } from "@/components/ui/ascii-glitch-ripple";
 import SocialFlipButton, { type SocialItem } from "@/components/ui/social-flip-button";
 import portrait from "../../assets/Self-portrait.png";
-import banner from "../../assets/icon.png";
 import artstationLogo from "../../assets/blackartstation.png";
 
 const relaxingThemeUrl = new URL("../../assets/relaxing theme.mp3", import.meta.url).toString();
@@ -151,12 +146,6 @@ const streamRows = [
   "ASCII_WASH CHROMA_OFFSET HALFTONE_SCAN RELAXING_THEME",
 ];
 
-const menuItems = sections.map((section) => ({
-  label: section.label,
-  link: section.route,
-  ariaLabel: `Open ${section.label}`,
-}));
-
 function subscribeToHydration(callback: () => void) {
   queueMicrotask(callback);
   return () => {};
@@ -175,7 +164,6 @@ export default function Home() {
   const heroNameRef = useRef<HTMLHeadingElement | null>(null);
   const [introDone, setIntroDone] = useState(false);
   const [, setHeroNameText] = useState(scrambledName);
-  const [activeIndex] = useState(0);
   const cursorReady = useSyncExternalStore(
     subscribeToHydration,
     getClientHydrationSnapshot,
@@ -186,7 +174,7 @@ export default function Home() {
     readFirstEntrySeen,
     () => true,
   );
-  const active = sections[activeIndex];
+  const active = sections[0];
   const contactFlipItems: SocialItem[] = [
     {
       letter: "C",
@@ -438,20 +426,6 @@ export default function Home() {
         </div>
       ) : null}
 
-      <StaggeredMenu
-        className="portfolio-staggered-menu"
-        position="right"
-        isFixed={true}
-        logoUrl={banner.src}
-        items={menuItems}
-        colors={["#CEDC00", "#F04E98", "#7D55C7", "#FF8F1C"]}
-        accentColor="#CEDC00"
-        menuButtonColor="#F2EAD7"
-        openMenuButtonColor="#050509"
-        displaySocials={false}
-        displayItemNumbering={true}
-      />
-
       <section id="top" className="relative z-10 flex min-h-[100svh] flex-col px-4 pb-4 pt-4 sm:px-6 sm:pt-5 lg:px-8 lg:pt-6">
         <div className="grid flex-1 gap-8 lg:grid-cols-[1.35fr_0.8fr] lg:items-center">
           <div className="hero-copy relative">
@@ -514,54 +488,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="scroll-page-stack relative z-10" aria-label="Scroll portfolio pages">
-        <div className="scroll-stack-primer">
-          <span>/scroll_index</span>
-          <AsciiGlitchRipple as="p" className="scroll-glitch-text" dur={900} spread={1.18}>
-            keep scrolling / each room opens slowly / side menu stays live
-          </AsciiGlitchRipple>
-        </div>
-
-        {sections.map((section, index) => (
-          <section
-            key={section.id}
-            className="scroll-page-band"
-            style={{
-              "--active": section.color,
-              "--secondary": section.secondaryColor,
-              "--row": index,
-            } as CSSProperties}
-          >
-            <Link href={section.route} className="scroll-page-link" aria-label={`Enter ${section.label}`}>
-              <div className="scroll-page-shell">
-                <div className="scroll-page-kicker">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <span>{section.code}</span>
-                </div>
-                <h2 className={`scroll-page-title${section.label.length > 9 ? " is-long" : ""}${section.label.length > 11 ? " is-wide" : ""}`}>
-                  <SwooshText
-                    text={section.label}
-                    wrapperClassName="scroll-page-title-wrap"
-                    className="scroll-page-title-swoosh"
-                    style={{
-                      color: "var(--active)",
-                      textShadow: "none",
-                    }}
-                  />
-                </h2>
-                <p className="scroll-page-cn">{section.cn}</p>
-                <p className="scroll-page-copy">{section.copy}</p>
-                <ul className="scroll-page-scraps" aria-label={`${section.label} topics`}>
-                  {section.scraps.map((scrap) => (
-                    <li key={scrap}>{scrap}</li>
-                  ))}
-                </ul>
-                <span className="scroll-page-enter">{`enter / ${section.id}`}</span>
-              </div>
-            </Link>
-          </section>
-        ))}
-      </section>
     </main>
   );
 }
