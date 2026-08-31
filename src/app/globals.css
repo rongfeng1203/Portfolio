@@ -319,11 +319,6 @@ a {
   100% { transform: translateY(105%); opacity: 0; }
 }
 
-@keyframes marquee-drift {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-38%); }
-}
-
 @keyframes chroma-jitter {
   0%, 100% { transform: translate3d(0, 0, 0); filter: saturate(1.2) contrast(1.06); }
   24% { transform: translate3d(1px, -1px, 0); filter: saturate(1.5) contrast(1.14); }
@@ -940,22 +935,6 @@ a {
 .contact-flip-back svg {
   width: 1.08rem !important;
   height: 1.08rem !important;
-}
-
-.marquee-line {
-  white-space: nowrap;
-  animation: marquee-drift 18s linear infinite;
-}
-
-.marquee-line:nth-child(2) {
-  animation-duration: 24s;
-  animation-direction: reverse;
-  color: rgb(206 220 0 / 0.66);
-}
-
-.marquee-line:nth-child(3) {
-  animation-duration: 31s;
-  color: rgb(240 78 152 / 0.58);
 }
 
 .section-page {

@@ -140,12 +140,6 @@ const sections = [
   },
 ] as const;
 
-const streamRows = [
-  "RONGFENG//INDEX//0001//SCROLL//VISUALSYSTEM//",
-  "GAMES PHOTOGRAPHY VISUAL DIGITAL ARTS THEATRE MAKING WRITING",
-  "ASCII_WASH CHROMA_OFFSET HALFTONE_SCAN RELAXING_THEME",
-];
-
 function subscribeToHydration(callback: () => void) {
   queueMicrotask(callback);
   return () => {};
@@ -479,13 +473,6 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-stream relative z-10 mt-auto overflow-hidden border-y border-paper/15 py-2">
-          {streamRows.map((row) => (
-            <p key={row} className="marquee-line font-mono text-[11px] uppercase text-paper/45">
-              {row} {row} {row}
-            </p>
-          ))}
-        </div>
       </section>
 
     </main>
