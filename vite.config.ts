@@ -1,3 +1,4 @@
+// @ts-nocheck -- Cloudflare's nested Vite plugin types exceed Next's checker depth.
 import { sites } from "@openai/sites-vite-plugin";
 import tailwindcss from "@tailwindcss/postcss";
 import vinext from "vinext";
