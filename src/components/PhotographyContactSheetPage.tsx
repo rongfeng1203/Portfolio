@@ -43,9 +43,9 @@ export default function PhotographyContactSheetPage({ category }: { category: Ph
         <Link href="/photography" className="section-back" aria-label="Back to photography">
           /photography
         </Link>
-        <div className="section-banner-mark" aria-hidden="true">
+        <Link href="/" className="section-banner-mark" aria-label="Back to home">
           <Image src={banner} alt="" className="section-banner-image" width={1242} height={406} quality={100} />
-        </div>
+        </Link>
         <p>{content.code}</p>
       </header>
 

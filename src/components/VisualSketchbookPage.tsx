@@ -24,9 +24,9 @@ export default function VisualSketchbookPage() {
         <Link href="/visual" className="section-back" aria-label="Back to visual art">
           /visual
         </Link>
-        <div className="section-banner-mark" aria-hidden="true">
+        <Link href="/" className="section-banner-mark" aria-label="Back to home">
           <Image src={banner} alt="" className="section-banner-image" width={1242} height={406} quality={100} />
-        </div>
+        </Link>
         <p>SKETCHBOOK_ARCHIVE</p>
       </header>
 

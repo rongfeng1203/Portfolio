@@ -1038,6 +1038,11 @@ a {
   box-shadow: none;
 }
 
+.section-banner-mark:focus-visible {
+  outline: 2px solid var(--section-accent);
+  outline-offset: 0.35rem;
+}
+
 .section-banner-mark img,
 .section-banner-image {
   display: block !important;
