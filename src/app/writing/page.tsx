@@ -4,10 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, FileText, Search, X } from "lucide-react";
 import { type CSSProperties, useEffect, useRef, useState } from "react";
+import WritingLanguageSelector from "@/components/WritingLanguageSelector";
+import { useWritingLanguage } from "@/hooks/useWritingLanguage";
 import banner from "../../../assets/icon.png";
 import { writingSummaries } from "@/lib/writingDocuments";
 
 export default function WritingPage() {
+  const [language, setLanguage] = useWritingLanguage();
   const [query, setQuery] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
   const normalizedQuery = query.trim().toLocaleLowerCase();
@@ -67,6 +70,7 @@ export default function WritingPage() {
         <div className="writing-library-intro">
           <p>Speculative fiction about consciousness, systems, memory, freedom, and the people caught inside them.</p>
           <span>20 COMPLETE PIECES / 1 WORKING DRAFT</span>
+          <WritingLanguageSelector language={language} onChange={setLanguage} />
         </div>
       </section>
 

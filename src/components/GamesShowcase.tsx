@@ -126,6 +126,7 @@ function DuckBreakerEmbed() {
           <iframe
             src={duckBreakerUrl}
             title="Duck Breaker browser game"
+            onLoad={(event) => event.currentTarget.focus({ preventScroll: true })}
             allow="autoplay; fullscreen"
             allowFullScreen
           />

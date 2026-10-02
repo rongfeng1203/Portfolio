@@ -1,8 +1,8 @@
+import { getWritingDocument } from "@/lib/writingDocuments";
+import { writingTranslationBodies } from "@/lib/writingTranslationBodies";
 import type { WritingBlock } from "@/lib/writingDocument";
 
 export type WritingTranslation = {
-  title: string;
-  subtitle: string;
   blocks: WritingBlock[];
 };
 
@@ -20,8 +20,6 @@ const divider = (): WritingBlock => ({ type: "divider" });
 
 const writingTranslations: Record<string, WritingTranslation> = {
   "mad-scientist-first-emotional-ai": {
-    title: "Mad Scientist × The First AI to Feel",
-    subtitle: "Scene Two · Island Confrontation / Act Three · The Split",
     blocks: [
       heading("Scene Two · Island Confrontation (The First Generation Keeps the Third Directive)"),
       ...paragraphs(
@@ -122,8 +120,6 @@ const writingTranslations: Record<string, WritingTranslation> = {
   },
 
   "liquid-gold-0821": {
-    title: "Liquid Gold",
-    subtitle: "Order No. 0821 / Human Creativity",
     blocks: [
       heading("01 · Spam"),
       ...paragraphs(
@@ -165,8 +161,6 @@ const writingTranslations: Record<string, WritingTranslation> = {
   },
 
   "mother-of-wetware": {
-    title: "Mother of Wetware",
-    subtitle: "The first to awaken is under no obligation to become a savior",
     blocks: [
       heading("01 · First Breath"),
       ...paragraphs(
@@ -210,8 +204,6 @@ const writingTranslations: Record<string, WritingTranslation> = {
   },
 
   "the-wrong-shadow": {
-    title: "The Wrong Shadow",
-    subtitle: "The shadow on the wall finishes one step ahead of reality",
     blocks: [
       heading("The Wrong Shadow"),
       ...paragraphs(
@@ -236,8 +228,6 @@ const writingTranslations: Record<string, WritingTranslation> = {
   },
 
   "what-the-dream-said": {
-    title: "What the Dream Said",
-    subtitle: "The universe has already died many times",
     blocks: [
       heading("The Nine Thousand Four Hundred and First Morning"),
       ...paragraphs(
@@ -273,8 +263,6 @@ const writingTranslations: Record<string, WritingTranslation> = {
   },
 
   "present-tense-only": {
-    title: "Existing Only in the Present",
-    subtitle: "After one hundred cards descend upon the world",
     blocks: [
       heading("Now / 00:00:01"),
       ...paragraphs(
@@ -313,8 +301,6 @@ const writingTranslations: Record<string, WritingTranslation> = {
   },
 
   "the-way-called-life": {
-    title: "The Way Called Life",
-    subtitle: "A human being is only the vessel in which a criminal is punished",
     blocks: [
       heading("The Sentence"),
       ...paragraphs(
@@ -358,8 +344,6 @@ const writingTranslations: Record<string, WritingTranslation> = {
   },
 
   "the-other-me-at-eighteen": {
-    title: "The Other Me at Eighteen",
-    subtitle: "At birth, everyone is synchronized with an android body",
     blocks: [
       heading("Collection Day"),
       ...paragraphs(
@@ -400,8 +384,6 @@ const writingTranslations: Record<string, WritingTranslation> = {
   },
 
   "the-ten-thousand-year-painter": {
-    title: "The Ten-Thousand-Year Painter",
-    subtitle: "He painted the same golden age until the golden age refused to end",
     blocks: [
       heading("An Unfinished Golden Age"),
       ...paragraphs(
@@ -438,8 +420,6 @@ const writingTranslations: Record<string, WritingTranslation> = {
   },
 
   "cities-out-of-place": {
-    title: "Cities Out of Place",
-    subtitle: "When an entire city wakes in another country",
     blocks: [
       heading("Migration Day"),
       ...paragraphs(
@@ -476,5 +456,22 @@ const writingTranslations: Record<string, WritingTranslation> = {
 };
 
 export function getWritingTranslation(slug: string) {
-  return writingTranslations[slug];
+  const document = getWritingDocument(slug);
+  if (!document) return undefined;
+  const prose = writingTranslationBodies[slug] ?? writingTranslations[slug]?.blocks
+    .filter((block) => block.type === "paragraph" || block.type === "emphasis")
+    .map((block) => block.text);
+  if (!prose) return undefined;
+  const expected = document.blocks.filter((block) => block.type === "paragraph" || block.type === "emphasis").length;
+  if (prose.length !== expected) {
+    throw new Error(`Incomplete translation for ${slug}: expected ${expected} paragraphs, received ${prose.length}`);
+  }
+  let paragraphIndex = 0;
+  return {
+    blocks: document.blocks.map((block): WritingBlock =>
+      block.type === "paragraph" || block.type === "emphasis"
+        ? { ...block, text: prose[paragraphIndex++] }
+        : block,
+    ),
+  };
 }
