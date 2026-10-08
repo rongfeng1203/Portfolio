@@ -36,7 +36,7 @@ export default function VisualSketchbookPage() {
           <h1>Sketchbook</h1>
           <p className="section-cn">手稿</p>
         </div>
-        <p>Pages, fragments, material tests, and working drawings gathered from the sketchbook archive.</p>
+        <p>Yall this is what I have, lowkey stick anything black and white in here.</p>
       </section>
 
       <section className="contact-sheet-grid" aria-label="Sketchbook contact sheet">

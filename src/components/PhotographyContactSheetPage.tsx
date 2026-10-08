@@ -8,17 +8,17 @@ const categoryCopy = {
   stage: {
     title: "Stage",
     code: "PHOTO_STAGE",
-    intro: "Temporary photo wall for performance, rehearsal, production, and theatre-adjacent images.",
+    intro: "Ummm can you tell I took photos while operating LX for a musical?",
   },
   scenery: {
     title: "Scenery",
     code: "PHOTO_SCENERY",
-    intro: "Temporary photo wall for places, surfaces, environments, textures, and location fragments.",
+    intro: "IDK why but landscape photogrphy doesn't seem to work for me?",
   },
   humans: {
     title: "Humans",
     code: "PHOTO_HUMANS",
-    intro: "Temporary photo wall for portraits, people, gestures, styling, and character presence.",
+    intro: "Wow I can never trust any cameras out of my hands.",
   },
 } as const;
 
@@ -55,7 +55,7 @@ export default function PhotographyContactSheetPage({ category }: { category: Ph
           <h1>{content.title}</h1>
           <p className="section-cn">攝影</p>
         </div>
-        <p>{content.intro} This page is now scoped to the {content.title.toLowerCase()} folder.</p>
+        <p>{content.intro}</p>
       </section>
 
       <section className="contact-sheet-grid" aria-label={`${content.title} contact sheet`}>

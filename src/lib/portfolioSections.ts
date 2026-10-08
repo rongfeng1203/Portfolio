@@ -175,13 +175,9 @@ export const portfolioSections: PortfolioSection[] = [
     accent: "#002FA7",
     textColor: "var(--pink)",
     intro:
-      "Playable prototypes, Unity scenes, small web experiments, and design studies. This page is the main application-facing archive for systems, level design, and interaction.",
+      "Prototypes, Unity immersive media and Web games. A summarization of past game projects. Experienced from both the code and art side of things.",
     note: "Four projects are now collected here: playable Starfall and Duck Breaker builds, an interactive Text-Go visualization, and two embedded game demo reels.",
-    buckets: [
-      { title: "Playable", meta: "web / python / prototype", copy: "Small loops with a clear mechanic, a readable goal, and room for player curiosity." },
-      { title: "Unity", meta: "3d / lighting / systems", copy: "Worldbuilding, camera tests, spatial interaction, and scenes that show game-design thinking." },
-      { title: "Process", meta: "sketch / test / reflection", copy: "Iterations, failed versions, mechanics maps, and notes about what changed." },
-    ],
+    buckets: [],
     imageSlots: ["gameplay still", "mechanic diagram", "level sketch", "build video"],
   },
   {
@@ -193,11 +189,11 @@ export const portfolioSections: PortfolioSection[] = [
     accent: "var(--lime)",
     textColor: "var(--orange)",
     intro:
-      "Series-based photo archive for portraits, street fragments, theatre documentation, backstage images, and visual research.",
+      "Series-based archive for candids, school activities and theatre shots.",
     note: "Current photography assets are loaded as a living photo wall. Series labels can be added once the archive is sorted.",
     buckets: [
-      { title: "Stage", meta: "theatre / rehearsal / production", copy: "A living record of light, waiting, and the machinery around performance.", href: "/photography/stage", mediaCategory: "stage" },
-      { title: "Scenery", meta: "place / texture / surface", copy: "Found spaces, accidental compositions, locations, and environmental fragments.", href: "/photography/scenery", mediaCategory: "scenery" },
+      { title: "Stage", meta: "theatre / rehearsal / production", copy: "A living record of months of heart and sweat for one great performance.", href: "/photography/stage", mediaCategory: "stage" },
+      { title: "Scenery", meta: "place / texture / surface", copy: "I love environment, can't you tell?", href: "/photography/scenery", mediaCategory: "scenery" },
       { title: "Humans", meta: "people / character / quiet", copy: "Images built around presence, styling, and small emotional clues.", href: "/photography/humans", mediaCategory: "humans" },
     ],
     imageSlots: ["series cover", "masonry image", "contact sheet", "detail crop"],
@@ -212,12 +208,12 @@ export const portfolioSections: PortfolioSection[] = [
     accent: "var(--orange)",
     textColor: "var(--orange)",
     intro:
-      "Illustration, drawing, painting, graphic experiments, posters, and visual systems that feel scanned, printed, handled, and remixed.",
+      "Illustration, drawing, printmaking, acrylic, graphic collages, sketches, watercolor, charcoal, named it all and I tried it --- except oil painting.",
     note: "Current visual-art assets are loaded. Add more scans, posters, and process images when the folder grows.",
     buckets: [
-      { title: "Illustration", meta: "digital / character / composition", copy: "Finished works and studies with a clear visual voice." },
-      { title: "Poster Systems", meta: "type / collage / riso", copy: "Graphic work where text, hierarchy, and texture carry the idea." },
-      { title: "Sketchbook", meta: "process / material / scan", copy: "Raw pages that show how the finished language is built.", href: "/visual/sketchbook", mediaCategory: "sketchbook" },
+      { title: "Mix-Media", meta: "print / collage / material", copy: "Like I get the craze but I don’t." },
+      { title: "Painting", meta: "acrylic / watercolor / color", copy: "My favorite medium no question." },
+      { title: "Sketchbook", meta: "process / material / scan", copy: "Honestly don't like drawing in the sketchbook, don't hate me.", href: "/visual/sketchbook", mediaCategory: "sketchbook" },
     ],
     imageSlots: ["poster", "illustration", "sketch scan", "detail"],
     mediaItems: visualMedia,
@@ -231,12 +227,12 @@ export const portfolioSections: PortfolioSection[] = [
     accent: "var(--purple)",
     textColor: "var(--orange)",
     intro:
-      "Motion loops, video, shader experiments, screen-based images, interactive tests, and pieces that should not sit still.",
+      "Animation, graphic design, failed yearbook covers, blender renders and to be coming a projected installation.",
     note: "Current digital-media assets are loaded, including collage/surreal stills and one motion piece.",
     buckets: [
-      { title: "Motion", meta: "video / loop / edit", copy: "Moving-image pieces with rhythm, cut, and atmosphere." },
-      { title: "Shader Tests", meta: "webgl / dither / glitch", copy: "Small technical experiments that can become visual systems." },
-      { title: "Screen Images", meta: "digital / composite / texture", copy: "Still images made for a monitor rather than a wall." },
+      { title: "Motion", meta: "video / loop / edit", copy: "Moving images." },
+      { title: "Graphic", meta: "design / collage / composition", copy: "I love compositions. Satisfying." },
+      { title: "3D", meta: "blender / modeling / render", copy: "I know I gotta work on 3D modeling skills ahhhhh." },
     ],
     imageSlots: ["video still", "shader capture", "loop preview", "process frame"],
     mediaItems: digitalMedia,
@@ -250,12 +246,12 @@ export const portfolioSections: PortfolioSection[] = [
     accent: "var(--violet)",
     textColor: "var(--purple)",
     intro:
-      "Performance, stage management, set and lighting concepts, spatial storytelling, and theatre work as game-space thinking.",
+      "Performances, stage management, set and lighting concepts, and all the dirty work (literally) I have done for theatre.",
     note: "Stage photos live in a compact automatic screen for now. Cue sheets, light plots, and process documentation can be added when those assets arrive.",
     buckets: [
-      { title: "Production", meta: "stage / rehearsal / cue", copy: "The practical systems that make a live event hold together." },
-      { title: "Space", meta: "set / light / movement", copy: "How bodies, objects, and light teach an audience where to look." },
-      { title: "Documentation", meta: "photo / note / archive", copy: "Images and records that preserve work after the performance disappears." },
+      { title: "Dirty Work", meta: "", copy: "" },
+      { title: "Paperwork", meta: "", copy: "" },
+      { title: "Photos", meta: "", copy: "", href: "#theatre-photos" },
     ],
     imageSlots: ["stage photo", "cue sheet", "set sketch", "lighting test"],
     mediaItems: theatreStageMedia,

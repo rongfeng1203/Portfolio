@@ -75,10 +75,10 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
       {feature ? (
         <section className="section-workbench" aria-label={`${section.title} featured work`}>
           {feature}
-          <aside className="section-note">
+          {section.slug !== "theatre" && <aside className="section-note">
             <span>{section.slug === "games" ? "game archive loaded" : "playable build loaded"}</span>
             <p>{section.note}</p>
-          </aside>
+          </aside>}
         </section>
       ) : !usesGalleryLayout ? (
         <section className="section-workbench" aria-label={`${section.title} work slots`}>
@@ -142,7 +142,7 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
         </section>
       ) : null}
 
-      <section className="section-buckets" aria-label={`${section.title} categories`}>
+      {section.buckets.length > 0 && <section className="section-buckets" aria-label={`${section.title} categories`}>
         {section.buckets.map((bucket, index) => {
           const previewItems = getBucketPreviewItems(section.slug, mediaItems, bucket, index);
           const preview = previewItems.length ? (
@@ -166,20 +166,20 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
               {preview}
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h2>{bucket.title}</h2>
-              <p className="bucket-meta">{bucket.meta}</p>
-              <p>{bucket.copy}</p>
+              {bucket.meta && <p className="bucket-meta">{bucket.meta}</p>}
+              {bucket.copy && <p>{bucket.copy}</p>}
             </Link>
           ) : (
             <article key={bucket.title}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h2>{bucket.title}</h2>
-              <p className="bucket-meta">{bucket.meta}</p>
-              <p>{bucket.copy}</p>
+              {bucket.meta && <p className="bucket-meta">{bucket.meta}</p>}
+              {bucket.copy && <p>{bucket.copy}</p>}
               {preview}
             </article>
           );
         })}
-      </section>
+      </section>}
     </main>
   );
 }

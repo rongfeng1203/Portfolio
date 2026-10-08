@@ -106,7 +106,7 @@ export default function MakingArchive() {
           <p className="section-cn">制作</p>
         </div>
         <p>
-          Process books from material experiments, fabrication, product design, and collaborative builds. Use the arrows on each file to turn its pages.
+          Did you know I wanna be a fashion designer until I discovered Arduino? Wow heatpress and lasercutting and woodworking are especially helpful for theatre, no explanation :)
         </p>
       </section>
 
