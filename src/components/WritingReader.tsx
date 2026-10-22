@@ -7,6 +7,7 @@ import type { WritingDocument } from "@/lib/writingDocuments";
 import WritingLanguageSelector from "@/components/WritingLanguageSelector";
 import { useWritingLanguage, type WritingLanguage } from "@/hooks/useWritingLanguage";
 import type { WritingTranslation } from "@/lib/writingTranslations";
+import { getWritingSummaryTranslation } from "@/lib/writingSummaryTranslations";
 
 type WritingReaderProps = {
   document: WritingDocument;
@@ -31,7 +32,9 @@ export default function WritingReader({
   const documentCode = `DOC_${(index + 1).toString().padStart(3, "0")}`;
   const showingTranslation = language !== originalLanguage && Boolean(translation);
   const activeContent = showingTranslation && translation ? translation : document;
-  const activeLanguage = language === "en" ? "ENGLISH" : "中文";
+  const contentLanguage = showingTranslation ? language : originalLanguage;
+  const activeLanguage = contentLanguage === "en" ? "ENGLISH" : "中文";
+  const activeSummary = (showingTranslation && getWritingSummaryTranslation(document.slug)) || document;
 
   const changeLanguage = (value: WritingLanguage) => {
     if (value === language) return;
@@ -119,20 +122,20 @@ export default function WritingReader({
         </aside>
 
         <article
-          className={`writing-reader-paper${language === "en" ? " is-english" : ""}`}
+          className={`writing-reader-paper${contentLanguage === "en" ? " is-english" : ""}`}
           data-document-code={documentCode}
         >
-          <header className="writing-article-header" lang={originalLanguage}>
+          <header className="writing-article-header" lang={contentLanguage}>
             <p>{document.genre} / {documentCode}</p>
-            <h1>{document.title}</h1>
-            <p className="writing-article-subtitle">{document.subtitle}</p>
+            <h1>{activeSummary.title}</h1>
+            <p className="writing-article-subtitle">{activeSummary.subtitle}</p>
             <div>
               <span>RONG FENG / 冯熔</span>
               <span>{document.readingTime}</span>
             </div>
           </header>
 
-          <div className="writing-article-body" lang={language}>
+          <div className="writing-article-body" lang={contentLanguage}>
             {activeContent.blocks.map((block, blockIndex) => {
               if (block.type === "heading") {
                 return block.level === 2 ? (

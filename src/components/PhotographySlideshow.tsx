@@ -38,13 +38,14 @@ export default function PhotographySlideshow({
   }, [items, shuffle]);
 
   useEffect(() => {
-    if (displayItems.length <= 1) return;
-    const timer = window.setInterval(() => {
+    const active = displayItems[activeIndex % displayItems.length];
+    if (displayItems.length <= 1 || active?.type === "video") return;
+    const timer = window.setTimeout(() => {
       setActiveIndex((index) => (index + 1) % displayItems.length);
     }, 4200);
 
-    return () => window.clearInterval(timer);
-  }, [displayItems.length]);
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, displayItems]);
 
   if (!displayItems.length) return null;
 
@@ -60,7 +61,9 @@ export default function PhotographySlideshow({
             className="photo-slideshow-image"
             muted
             autoPlay
-            loop
+            loop={displayItems.length === 1}
+            onEnded={() => setActiveIndex((index) => (index + 1) % displayItems.length)}
+            onError={() => setActiveIndex((index) => (index + 1) % displayItems.length)}
             playsInline
             controls
           />

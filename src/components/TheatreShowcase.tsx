@@ -8,7 +8,7 @@ import type { PortfolioSection } from "@/lib/portfolioSections";
 
 const pageCount = 13;
 
-export default function TheatreShowcase({ photos }: { photos: NonNullable<PortfolioSection["mediaItems"]> }) {
+export default function TheatreShowcase({ photos, processItems }: { photos: NonNullable<PortfolioSection["mediaItems"]>; processItems: NonNullable<PortfolioSection["mediaItems"]> }) {
   const [page, setPage] = useState(0);
   const turnPage = (direction: number) => setPage((current) => Math.max(0, Math.min(pageCount - 1, current + direction)));
 
@@ -50,6 +50,12 @@ export default function TheatreShowcase({ photos }: { photos: NonNullable<Portfo
           <strong>Theatre</strong>
         </div>
       </article>
+      <section id="theatre-process" aria-label="Dirty Work and Paper Work">
+        <header className="making-slideshow-heading">
+          <div><span>THEATRE / PROCESS</span><h2>Dirty Work &amp; Paper Work</h2></div>
+        </header>
+        <PhotographySlideshow items={processItems} label="Dirty Work and Paper Work slideshow" />
+      </section>
       <section id="theatre-photos" aria-label="Theatre photos">
         <header className="making-slideshow-heading">
           <div><span>THEATRE / PHOTOGRAPHY</span><h2>Photos</h2></div>

@@ -19,16 +19,27 @@ type Snapshot = {
 const BOARD_SIZE = 19;
 const duckBreakerUrl = "/duck-breaker-3d/index.html";
 
-const demoVideos = [
+const demoVideos: Array<{ title: string; id: string; meta: string; start?: number }> = [
   {
     title: "Pentamania: Alchemy Madness",
-    id: "Yx6oVf_GKwM",
+    id: "1WuFgiql-Ec",
     meta: "game demo / alchemy systems",
   },
   {
     title: "Drillage",
-    id: "lnslRH507K4",
+    id: "X8iElp297t4",
     meta: "game demo / drilling prototype",
+  },
+  {
+    title: "Pentamania Presentation NHSGA 2025",
+    id: "Gf-IH0M28K0",
+    meta: "NHSGA / original round",
+  },
+  {
+    title: "Drillage Presentation NHSGA 2025",
+    id: "pYihGif4wH0",
+    meta: "NHSGA / interims / starts at 3:37:11",
+    start: 13031,
   },
 ];
 
@@ -266,7 +277,7 @@ function TextGoVisualization() {
       <header className="game-module-header">
         <div>
           <span>python logic / interactive visualization</span>
-          <h2 id="text-go-title">Text-Go</h2>
+          <h2 id="text-go-title">Text-Go — ICS3U Project</h2>
         </div>
         <p>19 × 19</p>
       </header>
@@ -332,15 +343,61 @@ function TextGoVisualization() {
   );
 }
 
+function GameStoreLinks() {
+  const games = [
+    {
+      title: "Domain Echoing",
+      image: "/portfolio-assets/games/domain-echoing.webp",
+      alt: "Domain Echoing rhythm game screenshot",
+      href: "https://apps.apple.com/us/app/domain-echoing/id6740004105",
+      store: "App Store",
+      note: "My contribution: a small amount of art.",
+    },
+    {
+      title: "Pentamania: Alchemy Madness",
+      image: "/portfolio-assets/games/pentamania.png",
+      alt: "Pentamania: Alchemy Madness title screen",
+      href: "https://store.steampowered.com/app/4033240/Pentamania_Alchemy_Madness/",
+      store: "Steam",
+    },
+  ];
+
+  return (
+    <section className="game-demo-section" aria-labelledby="game-store-title">
+      <header className="game-module-header">
+        <div>
+          <span>games / store links</span>
+          <h2 id="game-store-title">Find the Games</h2>
+        </div>
+      </header>
+      <div className="game-demo-grid">
+        {games.map((game) => (
+          <article key={game.href} className="game-demo-card">
+            <a className="game-store-image" href={game.href} target="_blank" rel="noreferrer" aria-label={`View ${game.title} on ${game.store}`}>
+              <img src={game.image} alt={game.alt} loading="lazy" />
+            </a>
+            <div className="game-demo-caption">
+              <span>{game.store}</span>
+              <h3>{game.title}</h3>
+              {game.note && <p className="game-store-credit">{game.note}</p>}
+              <a href={game.href} target="_blank" rel="noreferrer">view on {game.store} ↗</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function GameDemoReels() {
   return (
     <section className="game-demo-section" aria-labelledby="game-demo-title">
       <header className="game-module-header">
         <div>
-          <span>video archive / two project demos</span>
+          <span>video archive / project demos & presentations</span>
           <h2 id="game-demo-title">Demo Reels</h2>
         </div>
-        <p>02 videos</p>
+        <p>{String(demoVideos.length).padStart(2, "0")} videos</p>
       </header>
 
       <div className="game-demo-grid">
@@ -348,8 +405,8 @@ function GameDemoReels() {
           <article key={video.id} className="game-demo-card">
             <div className="game-video-frame">
               <iframe
-                src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0`}
-                title={`${video.title} game demo`}
+                src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0${video.start ? `&start=${video.start}` : ""}`}
+                title={video.title}
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
@@ -359,7 +416,7 @@ function GameDemoReels() {
             <div className="game-demo-caption">
               <span>0{index + 1} / {video.meta}</span>
               <h3>{video.title}</h3>
-              <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noreferrer">
+              <a href={`https://www.youtube.com/watch?v=${video.id}${video.start ? `&t=${video.start}` : ""}`} target="_blank" rel="noreferrer">
                 watch on youtube ↗
               </a>
             </div>
@@ -370,13 +427,12 @@ function GameDemoReels() {
   );
 }
 
-export default function GamesShowcase() {
+export default function GamesShowcase({ category }: { category?: "play" | "releases" | "demos" }) {
   return (
     <div className="games-showcase">
-      <UnityWebGLEmbed />
-      <DuckBreakerEmbed />
-      <TextGoVisualization />
-      <GameDemoReels />
+      {(!category || category === "releases") && <GameStoreLinks />}
+      {(!category || category === "play") && <><UnityWebGLEmbed /><DuckBreakerEmbed /><TextGoVisualization /></>}
+      {(!category || category === "demos") && <GameDemoReels />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Languages } from "lucide-react";
+import { Check, Languages } from "lucide-react";
 import type { WritingLanguage } from "@/hooks/useWritingLanguage";
 
 export default function WritingLanguageSelector({ language, onChange }: {
@@ -13,7 +13,10 @@ export default function WritingLanguageSelector({ language, onChange }: {
       {([ ["en", "English"], ["zh-CN", "中文"] ] as const).map(([value, label]) => (
         <button key={value} type="button" lang={value}
           className="writing-translation-toggle" aria-pressed={language === value}
-          onClick={() => onChange(value)}>{label}</button>
+          onClick={() => onChange(value)}>
+          <Check size={14} aria-hidden="true" style={{ visibility: language === value ? "visible" : "hidden" }} />
+          {label}
+        </button>
       ))}
     </div>
   );

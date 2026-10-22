@@ -11,7 +11,7 @@ const navigation = [
   { label: "Visual Art", shortLabel: "Visual", href: "/visual", color: "var(--pink)" },
   { label: "Digital Arts", shortLabel: "Digital", href: "/digital", color: "var(--orange)" },
   { label: "Theatre", shortLabel: "Theatre", href: "/theatre", color: "var(--purple)" },
-  { label: "Making", shortLabel: "Making", href: "/making", color: "var(--lime)" },
+  { label: "Tech Design", shortLabel: "Tech Design", href: "/making", color: "var(--lime)" },
   { label: "Writing", shortLabel: "Writing", href: "/writing", color: "var(--pink)" },
 ] as const;
 

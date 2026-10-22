@@ -118,3 +118,10 @@ export const makingProjects: MakingProject[] = [
 export function getMakingPageImage(project: MakingProject, pageIndex: number) {
   return `${project.pageDirectory}/page-${String(pageIndex + 1).padStart(2, "0")}.jpg`;
 }
+
+export const makingCategories = {
+  objects: { title: "Objects", ids: ["fashion-design", "tote-bag", "chocolate-making"] },
+  fabrication: { title: "Fabrication", ids: ["arduboy-box", "woodworking"] },
+  product: { title: "Product", ids: ["bss-aura-forum"] },
+};
+export type MakingCategory = keyof typeof makingCategories;

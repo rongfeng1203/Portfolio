@@ -30,9 +30,6 @@
   --font-body:        var(--font-body-local), system-ui, sans-serif;
   --font-body-cn:     var(--font-body-cn-fallback), sans-serif;
   --font-mono:        var(--font-mono-local), ui-monospace, monospace;
-  --font-y2k:         var(--font-y2k-local), sans-serif;
-  --font-y2k-cn:      var(--font-y2k-cn-fallback), sans-serif;
-  --font-term:        var(--font-term-local), monospace;
 }
 
 :root {
@@ -50,7 +47,6 @@
   --font-display-local: "Black Ops One Local";
   --font-body-local: "Handjet Local";
   --font-mono-local: "Micro 5 Local";
-  --font-y2k-local: "Barrio Local";
   --font-title-en-local: "Tiny 5 Local";
   --font-title-cn-local: "ZLabs Pixel Local";
   --font-display-cn-local: "Chinese Handwriting Name";
@@ -79,12 +75,6 @@
 }
 
 @font-face {
-  font-family: "Barrio Local";
-  src: url("../../assets/Barrio-Regular.ttf") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Tiny 5 Local";
   src: url("../../assets/Tiny5-Regular.ttf") format("truetype");
   font-display: swap;
@@ -103,13 +93,6 @@
   font-weight: 400;
 }
 
-@font-face {
-  font-family: "Chinese Title Name";
-  src: url("/fonts/chinese-handwriting-name.woff2?v=title-2") format("woff2");
-  font-display: swap;
-  font-weight: 400;
-}
-
 /* ----- base reset ----- */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -121,6 +104,8 @@ html, body {
   color: var(--paper);
   font-family: var(--font-body);
   text-rendering: geometricPrecision;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -964,14 +949,33 @@ a {
   background-size: 13px 13px;
 }
 
-.section-page.section-digital {
-  background-image:
-    radial-gradient(circle, rgb(255 143 28 / 0.18) 0 1px, transparent 1.35px),
-    radial-gradient(circle, rgb(242 234 215 / 0.08) 0 0.8px, transparent 1.2px) !important;
+.section-digital .photo-slideshow-frame {
+  border-block: 1px solid rgb(242 234 215 / 0.16);
 }
 
-.section-page.section-digital::before {
-  background-image: radial-gradient(circle, rgb(255 143 28 / 0.18) 0 1px, transparent 1.35px);
+.section-digital .photo-slideshow-meta > span {
+  padding: 0.2rem 0.45rem;
+  background: var(--section-color);
+  color: var(--ink);
+}
+
+.section-digital .photo-slideshow-meta strong {
+  color: var(--section-accent);
+}
+
+.section-digital .section-hero {
+  border-bottom-color: var(--section-color);
+}
+
+.section-digital .section-hero h1 {
+  color: var(--orange);
+  text-shadow: none;
+}
+
+.section-digital .section-intro {
+  padding-left: 1rem;
+  border-left: 3px solid var(--section-color);
+  color: var(--lime);
 }
 
 .section-page::after {
@@ -1010,6 +1014,8 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid var(--section-color);
   font-family: var(--font-mono);
   font-size: 12px;
   text-transform: uppercase;
@@ -1778,6 +1784,33 @@ a {
   margin: 0;
 }
 
+.game-store-image {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 2 / 1;
+  background: var(--ink);
+  border: 1px solid color-mix(in srgb, var(--section-color) 42%, transparent);
+}
+
+.game-store-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+}
+
+.game-store-image:focus-visible {
+  outline: 2px solid var(--section-text);
+  outline-offset: 4px;
+}
+
+.game-store-credit {
+  margin: 0.4rem 0;
+  color: var(--section-text);
+  line-height: 1.5;
+}
+
 .game-video-frame {
   position: relative;
   aspect-ratio: 16 / 9;
@@ -2100,7 +2133,7 @@ video.photo-slideshow-image {
   min-height: 0;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--section-color) 52%, transparent);
+  border: none;
   background: var(--ink);
 }
 
@@ -2614,31 +2647,6 @@ video.photo-slideshow-image {
     display: none !important;
   }
 
-  .hero-portrait {
-    position: absolute;
-    right: -12vw;
-    top: 68svh;
-    bottom: auto;
-    z-index: 0;
-    width: min(68vw, 28rem);
-    min-height: auto;
-    opacity: 0.34;
-    pointer-events: none;
-  }
-
-  .hero-side {
-    width: 100%;
-    justify-items: start;
-  }
-
-  .hero-contact-panel {
-    justify-self: start;
-    width: max-content;
-    max-width: min(88vw, 31rem);
-    margin-top: 1rem;
-    margin-inline-start: clamp(0.75rem, 3vw, 1.5rem);
-  }
-
   .index-row-link {
     grid-template-columns: 2.25rem minmax(0, 1fr);
   }
@@ -2703,21 +2711,6 @@ video.photo-slideshow-image {
     padding-inline-start: clamp(0.75rem, 3vw, 1.5rem);
   }
 
-  .hero-portrait {
-    right: -20vw;
-    top: 72svh;
-    bottom: auto;
-    width: 86vw;
-    min-height: auto;
-    opacity: 0.24;
-  }
-
-  .hero-contact-panel {
-    width: max-content;
-    max-width: min(92vw, 26rem);
-    font-size: clamp(1rem, 5.2vw, 1.28rem);
-  }
-
   .contact-panel > a,
   .contact-panel > p {
     grid-template-columns: 1fr;
@@ -2734,6 +2727,79 @@ video.photo-slideshow-image {
 
   .row-title {
     font-size: clamp(2.2rem, 9.2cqw, 3.75rem);
+  }
+}
+
+/* Match the hero's lg grid breakpoint, including phones in landscape. */
+@media (max-width: 1023px) {
+  .front-page #top {
+    min-height: calc(100svh - 3.75rem);
+  }
+
+  .front-page #top > div {
+    flex: none;
+    align-content: start;
+    gap: clamp(3.5rem, 12vw, 5rem);
+  }
+
+  .hero-copy {
+    min-width: 0;
+    padding-inline: 0;
+  }
+
+  .hero-side {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    justify-items: center;
+  }
+
+  .hero-portrait {
+    width: min(100%, 28rem);
+  }
+
+  .hero-contact-panel {
+    width: min(100%, 28rem);
+    margin-top: 1rem;
+  }
+
+  .contact-flip > div {
+    flex-wrap: wrap;
+  }
+
+  .contact-flip-item {
+    flex: 0 0 2.75rem;
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+  }
+
+  .hero-contact-panel .contact-flip > div {
+    gap: 0.25rem !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1366px) {
+  .front-page .hero-copy {
+    padding-inline: 0;
+    text-align: center;
+  }
+
+  .front-page .hero-copy > div {
+    justify-content: center;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .contact-flip-item > div {
+    transform: none !important;
+  }
+
+  .contact-flip-front {
+    visibility: hidden;
+  }
+
+  .contact-flip-back {
+    transform: none !important;
   }
 }
 
@@ -3009,14 +3075,14 @@ video.photo-slideshow-image {
   line-height: 0.78;
   text-transform: uppercase;
   color: var(--pink);
-  text-shadow: 4px 4px 0 var(--purple), -2px 0 0 var(--orange);
+  text-shadow: none;
   white-space: nowrap;
 }
 
 .writing-library-title .section-cn {
   width: fit-content;
   margin-top: 1rem;
-  color: var(--pink);
+  color: var(--orange);
   transform: rotate(-2deg);
 }
 
@@ -3419,7 +3485,7 @@ video.photo-slideshow-image {
   background: var(--orange);
   box-shadow: 3px 3px 0 var(--pink);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.035em;
   line-height: 1;
@@ -3438,7 +3504,7 @@ video.photo-slideshow-image {
 .writing-translation-toggle[aria-pressed="true"] {
   background: var(--pink);
   box-shadow: 3px 3px 0 var(--violet);
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .writing-translation-toggle:focus-visible {
@@ -3785,10 +3851,9 @@ video.photo-slideshow-image {
   overflow: hidden;
   background-color: var(--ink) !important;
   background-image:
-    linear-gradient(115deg, rgb(206 220 0 / 0.045), transparent 30%, transparent 72%, rgb(240 78 152 / 0.035)),
     radial-gradient(circle, rgb(206 220 0 / 0.16) 0 1px, transparent 1.35px),
     radial-gradient(circle, rgb(242 234 215 / 0.065) 0 0.8px, transparent 1.2px) !important;
-  background-size: auto, 18px 18px, 18px 18px !important;
+  background-size: 18px 18px, 18px 18px !important;
 }
 
 .making-library::before {
@@ -3801,7 +3866,7 @@ video.photo-slideshow-image {
 }
 
 .making-topbar {
-  height: 3.2rem;
+  min-height: 3.2rem;
 }
 
 .making-viewer {
@@ -4476,13 +4541,13 @@ video.photo-slideshow-image {
   line-height: 0.72;
   color: var(--lime);
   text-transform: uppercase;
-  text-shadow: 0.035em 0.035em 0 var(--purple);
+  text-shadow: none;
 }
 
 .making-archive-intro .section-cn {
   margin: 0.8rem 0 0;
   font-size: clamp(2.6rem, 5vw, 5rem);
-  color: var(--lime);
+  color: var(--purple);
 }
 
 .making-archive-intro > p {
@@ -4491,7 +4556,7 @@ video.photo-slideshow-image {
   font-family: var(--font-body);
   font-size: clamp(1.35rem, 2.5vw, 2.3rem);
   line-height: 0.98;
-  color: rgb(242 234 215 / 0.72);
+  color: var(--lime);
 }
 
 .making-slideshow-list {
@@ -4548,13 +4613,13 @@ video.photo-slideshow-image {
   font-size: clamp(2.6rem, 6vw, 6.6rem);
   font-weight: 400;
   line-height: 0.76;
-  color: var(--paper);
+  color: var(--purple);
   text-transform: uppercase;
 }
 
 .making-slideshow-heading p {
   margin: 0.65rem 0 0;
-  color: rgb(242 234 215 / 0.5);
+  color: color-mix(in srgb, var(--purple) 70%, var(--paper));
 }
 
 .making-slideshow-actions {
@@ -4747,6 +4812,7 @@ video.photo-slideshow-image {
 /* Writing archive extensions: multi-document collection */
 .writing-library-intro p {
   margin: 0;
+  color: var(--section-text);
 }
 
 .writing-library-intro span {
@@ -4919,4 +4985,21 @@ video.photo-slideshow-image {
   .writing-reader-pagination > span:empty {
     display: none;
   }
+}
+
+/* Keep the established category cards and contact sheets on new collections. */
+.digital-video-grid { grid-template-columns: minmax(0, 1fr); }
+.digital-video-grid .contact-sheet-frame { grid-column: auto; }
+.digital-video-grid .contact-sheet-frame > div { aspect-ratio: 16 / 9; }
+.section-digital .contact-sheet-frame img { object-fit: contain; }
+.making-library > .section-buckets,
+.writing-library > .section-buckets { margin-top: 2rem; }
+.section-bucket-link:focus-visible { outline: 2px solid var(--section-text); outline-offset: -2px; }
+.bucket-preview-frame video { width: 100%; height: 100%; object-fit: cover; }
+.making-archive-intro h1.making-title-long { font-size: clamp(2.5rem, 6vw, 7rem); line-height: 0.9; }
+@media (max-width: 720px) {
+  .contact-sheet-hero h1 { font-size: clamp(2rem, 10.5vw, 5rem); }
+  .section-hero h1 { font-size: clamp(2rem, 12vw, 5rem); }
+  .section-hero h1.section-title-long,
+  .making-archive-intro h1.making-title-long { font-size: clamp(2rem, 10vw, 4.5rem); }
 }

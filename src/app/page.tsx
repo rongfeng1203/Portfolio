@@ -81,7 +81,7 @@ const sections = [
   {
     id: "visual",
     label: "Visual Art",
-    cn: "视觉",
+    cn: "画画",
     code: "SCAN / POSTER",
     color: "var(--pink)",
     secondaryColor: "var(--orange)",
@@ -93,7 +93,7 @@ const sections = [
   {
     id: "digital",
     label: "Digital Arts",
-    cn: "影像",
+    cn: "媒体艺术",
     code: "MOTION BUFFER",
     color: "var(--orange)",
     secondaryColor: "var(--lime)",
@@ -116,7 +116,7 @@ const sections = [
   },
   {
     id: "making",
-    label: "Making",
+    label: "Tech Design",
     cn: "制作",
     code: "MATERIAL LOG",
     color: "var(--lime)",

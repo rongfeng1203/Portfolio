@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ArrowDownToLine, ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { type CSSProperties, type KeyboardEvent, useState } from "react";
-import { getMakingPageImage, makingProjects, type MakingProject } from "@/lib/makingProjects";
+import { getMakingPageImage, makingProjects, type MakingProject, makingCategories, type MakingCategory } from "@/lib/makingProjects";
 
 function MakingPdfSlideshow({ project, projectIndex }: { project: MakingProject; projectIndex: number }) {
   const [activePage, setActivePage] = useState(0);
@@ -96,13 +96,14 @@ function MakingPdfSlideshow({ project, projectIndex }: { project: MakingProject;
   );
 }
 
-export default function MakingArchive() {
+export default function MakingArchive({ category }: { category?: MakingCategory }) {
+  const projects = category ? makingProjects.filter(project => makingCategories[category].ids.includes(project.id)) : makingProjects;
   return (
     <div className="making-archive">
       <section className="making-archive-intro">
         <div>
-          <p className="section-code">MATERIAL_LOG / 06 FILES</p>
-          <h1>Making</h1>
+          <p className="section-code">MATERIAL_LOG / {String(projects.length).padStart(2, "0")} FILES</p>
+          <h1 className={category && makingCategories[category].title.length > 9 ? "making-title-long" : undefined}>{category ? makingCategories[category].title : "Tech Design"}</h1>
           <p className="section-cn">制作</p>
         </div>
         <p>
@@ -110,8 +111,8 @@ export default function MakingArchive() {
         </p>
       </section>
 
-      <section className="making-slideshow-list" aria-label="Making project PDF slideshows">
-        {makingProjects.map((project, projectIndex) => (
+      <section className="making-slideshow-list" aria-label="Tech Design project PDF slideshows">
+        {projects.map((project, projectIndex) => (
           <MakingPdfSlideshow key={project.id} project={project} projectIndex={projectIndex} />
         ))}
       </section>

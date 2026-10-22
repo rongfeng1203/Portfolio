@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type CSSProperties } from "react";
-import { getPortfolioSection, getVisualSketchbookMedia } from "@/lib/portfolioSections";
+import { getPortfolioSection, getVisualCategoryMedia, type VisualCategory } from "@/lib/portfolioSections";
 import banner from "../../assets/icon.png";
 
-export default function VisualSketchbookPage() {
+export default function VisualSketchbookPage({ category }: { category: VisualCategory }) {
   const section = getPortfolioSection("visual")!;
-  const mediaItems = getVisualSketchbookMedia();
+  const mediaItems = getVisualCategoryMedia(category);
+  const title = { charcoal: "Charcoal", colors: "Colors", ideation: "Ideation" }[category];
+  const code = `VISUAL_${category.toUpperCase()}`;
 
   return (
     <main
@@ -27,25 +29,26 @@ export default function VisualSketchbookPage() {
         <Link href="/" className="section-banner-mark" aria-label="Back to home">
           <Image src={banner} alt="" className="section-banner-image" width={1242} height={406} quality={100} />
         </Link>
-        <p>SKETCHBOOK_ARCHIVE</p>
+        <p>{code}</p>
       </header>
 
       <section className="contact-sheet-hero">
         <div>
-          <p className="section-code">SKETCHBOOK_ARCHIVE</p>
-          <h1>Sketchbook</h1>
-          <p className="section-cn">手稿</p>
+          <p className="section-code">{code}</p>
+          <h1>{title}</h1>
+          <p className="section-cn">画画</p>
         </div>
-        <p>Yall this is what I have, lowkey stick anything black and white in here.</p>
+        {category === "colors" && <p>My favorite medium no question.</p>}
       </section>
 
-      <section className="contact-sheet-grid" aria-label="Sketchbook contact sheet">
+      <section className="contact-sheet-grid" aria-label={`${title} contact sheet`}>
+        {!mediaItems.length && <p>No work added yet.</p>}
         {mediaItems.map((item, index) => (
           <figure key={item.src} className="contact-sheet-frame">
             <div>
               <Image
                 src={item.src}
-                alt={`Sketchbook page ${index + 1}`}
+                alt={`${title} work ${index + 1}`}
                 fill
                 sizes="(max-width: 720px) 50vw, 20vw"
               />

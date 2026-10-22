@@ -1,34 +1,12 @@
+import SectionBuckets from "@/components/SectionBuckets";
 import Link from "next/link";
 import Image from "next/image";
 import { type CSSProperties, type ReactNode } from "react";
 import PhotographySlideshow from "@/components/PhotographySlideshow";
-import { getPhotographyCategoryMedia, getVisualSketchbookMedia, type PortfolioSection } from "@/lib/portfolioSections";
+import { type PortfolioSection } from "@/lib/portfolioSections";
 import banner from "../../assets/icon.png";
 
 type MediaItem = NonNullable<PortfolioSection["mediaItems"]>[number];
-
-const photographyPreviewIndexes = [
-  [1, 14, 27],
-  [6, 35, 52],
-  [11, 43, 68],
-];
-
-function getBucketPreviewItems(sectionSlug: string, mediaItems: MediaItem[], bucket: PortfolioSection["buckets"][number], bucketIndex: number) {
-  if (!mediaItems.length) return [];
-
-  if (sectionSlug === "visual" && bucket.mediaCategory === "sketchbook") {
-    const sketchbookItems = getVisualSketchbookMedia();
-    return [0, 3, 5].map((itemIndex) => sketchbookItems[itemIndex]).filter((item) => item?.type === "image");
-  }
-
-  if (sectionSlug !== "photography" || bucket.mediaCategory === "sketchbook") return [];
-
-  const sourceItems = bucket.mediaCategory ? [...getPhotographyCategoryMedia(bucket.mediaCategory)] : mediaItems;
-
-  return photographyPreviewIndexes[bucketIndex % photographyPreviewIndexes.length]
-    .map((itemIndex) => sourceItems[(itemIndex - 1) % sourceItems.length])
-    .filter((item) => item.type === "image");
-}
 
 export default function PortfolioSectionPage({ section, feature }: { section: PortfolioSection; feature?: ReactNode }) {
   const mediaItems = section.mediaItems ?? [];
@@ -142,44 +120,7 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
         </section>
       ) : null}
 
-      {section.buckets.length > 0 && <section className="section-buckets" aria-label={`${section.title} categories`}>
-        {section.buckets.map((bucket, index) => {
-          const previewItems = getBucketPreviewItems(section.slug, mediaItems, bucket, index);
-          const preview = previewItems.length ? (
-            <div className="bucket-preview" aria-hidden="true">
-              {previewItems.map((item, previewIndex) => (
-                <div key={`${bucket.title}-${item.src}-${previewIndex}`} className="bucket-preview-frame">
-                  <Image
-                    src={item.src}
-                    alt=""
-                    fill
-                    sizes="(max-width: 720px) 28vw, 12vw"
-                    unoptimized
-                  />
-                </div>
-              ))}
-            </div>
-          ) : null;
-
-          return bucket.href ? (
-            <Link key={bucket.title} href={bucket.href} className="section-bucket-link">
-              {preview}
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h2>{bucket.title}</h2>
-              {bucket.meta && <p className="bucket-meta">{bucket.meta}</p>}
-              {bucket.copy && <p>{bucket.copy}</p>}
-            </Link>
-          ) : (
-            <article key={bucket.title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h2>{bucket.title}</h2>
-              {bucket.meta && <p className="bucket-meta">{bucket.meta}</p>}
-              {bucket.copy && <p>{bucket.copy}</p>}
-              {preview}
-            </article>
-          );
-        })}
-      </section>}
+      <SectionBuckets section={section} />
     </main>
   );
 }

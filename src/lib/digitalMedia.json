@@ -1,0 +1,270 @@
+{
+  "videos": [
+    {
+      "src": "/portfolio-assets/digital/videos/Rina_Feng_ASM4M_Video_v6.mp4",
+      "type": "video",
+      "title": "Videos 01",
+      "meta": "DIGITAL_VIDEOS_01"
+    }
+  ],
+  "graphics": [
+    {
+      "src": "/portfolio-assets/digital/graphics/3.jpg",
+      "type": "image",
+      "title": "Graphics 01",
+      "meta": "DIGITAL_GRAPHICS_01",
+      "width": 1500,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/4.jpg",
+      "type": "image",
+      "title": "Graphics 02",
+      "meta": "DIGITAL_GRAPHICS_02",
+      "width": 1500,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Collage 2.jpg",
+      "type": "image",
+      "title": "Graphics 03",
+      "meta": "DIGITAL_GRAPHICS_03",
+      "width": 2000,
+      "height": 1500
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Collage 3.jpg",
+      "type": "image",
+      "title": "Graphics 04",
+      "meta": "DIGITAL_GRAPHICS_04",
+      "width": 2000,
+      "height": 1500
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Collage 4.jpg",
+      "type": "image",
+      "title": "Graphics 05",
+      "meta": "DIGITAL_GRAPHICS_05",
+      "width": 2000,
+      "height": 1500
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Collage 6.jpg",
+      "type": "image",
+      "title": "Graphics 06",
+      "meta": "DIGITAL_GRAPHICS_06",
+      "width": 2000,
+      "height": 1500
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Collage 7.jpg",
+      "type": "image",
+      "title": "Graphics 07",
+      "meta": "DIGITAL_GRAPHICS_07",
+      "width": 2000,
+      "height": 1500
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Collage 8.jpg",
+      "type": "image",
+      "title": "Graphics 08",
+      "meta": "DIGITAL_GRAPHICS_08",
+      "width": 2000,
+      "height": 1500
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Collage.jpg",
+      "type": "image",
+      "title": "Graphics 09",
+      "meta": "DIGITAL_GRAPHICS_09",
+      "width": 2000,
+      "height": 1500
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Surreal.jpg",
+      "type": "image",
+      "title": "Graphics 10",
+      "meta": "DIGITAL_GRAPHICS_10",
+      "width": 2000,
+      "height": 1365
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Surreal3.jpg",
+      "type": "image",
+      "title": "Graphics 11",
+      "meta": "DIGITAL_GRAPHICS_11",
+      "width": 2000,
+      "height": 923
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Surreal5.jpg",
+      "type": "image",
+      "title": "Graphics 12",
+      "meta": "DIGITAL_GRAPHICS_12",
+      "width": 2000,
+      "height": 1399
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Surreal6.jpg",
+      "type": "image",
+      "title": "Graphics 13",
+      "meta": "DIGITAL_GRAPHICS_13",
+      "width": 2000,
+      "height": 1881
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM3M_Feng_Rina_Surreal7.jpg",
+      "type": "image",
+      "title": "Graphics 14",
+      "meta": "DIGITAL_GRAPHICS_14",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM4M_Feng_Rina_TextureAndText real collage final maybe.jpg",
+      "type": "image",
+      "title": "Graphics 15",
+      "meta": "DIGITAL_GRAPHICS_15",
+      "width": 2000,
+      "height": 1500
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM4M_Feng_Rina_TextureAndText test.jpg",
+      "type": "image",
+      "title": "Graphics 16",
+      "meta": "DIGITAL_GRAPHICS_16",
+      "width": 2000,
+      "height": 1498
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/ASM4M_Feng_Rina_TextureAndText.jpg",
+      "type": "image",
+      "title": "Graphics 17",
+      "meta": "DIGITAL_GRAPHICS_17",
+      "width": 2000,
+      "height": 1599
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/color1.1.1.jpg",
+      "type": "image",
+      "title": "Graphics 18",
+      "meta": "DIGITAL_GRAPHICS_18",
+      "width": 1500,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/digital/graphics/Prism Yearbook Cover template.jpg",
+      "type": "image",
+      "title": "Graphics 19",
+      "meta": "DIGITAL_GRAPHICS_19",
+      "width": 1442,
+      "height": 945
+    }
+  ],
+  "concept": [
+    {
+      "src": "/portfolio-assets/digital/concept/city details .jpg",
+      "type": "image",
+      "title": "Concept 01",
+      "meta": "DIGITAL_CONCEPT_01",
+      "width": 2400,
+      "height": 1350
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/city details more.jpg",
+      "type": "image",
+      "title": "Concept 02",
+      "meta": "DIGITAL_CONCEPT_02",
+      "width": 2400,
+      "height": 1350
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/draftstage1.jpg",
+      "type": "image",
+      "title": "Concept 03",
+      "meta": "DIGITAL_CONCEPT_03",
+      "width": 2400,
+      "height": 1423
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/Final 3 copy.jpg",
+      "type": "image",
+      "title": "Concept 04",
+      "meta": "DIGITAL_CONCEPT_04",
+      "width": 2400,
+      "height": 1728
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/Final 4 copy 2.jpg",
+      "type": "image",
+      "title": "Concept 05",
+      "meta": "DIGITAL_CONCEPT_05",
+      "width": 1631,
+      "height": 2195
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/Final 5 copy 2.jpg",
+      "type": "image",
+      "title": "Concept 06",
+      "meta": "DIGITAL_CONCEPT_06",
+      "width": 1983,
+      "height": 2400
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/FINAL.jpg",
+      "type": "image",
+      "title": "Concept 07",
+      "meta": "DIGITAL_CONCEPT_07",
+      "width": 2138,
+      "height": 1295
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/fine.jpg",
+      "type": "image",
+      "title": "Concept 08",
+      "meta": "DIGITAL_CONCEPT_08",
+      "width": 2400,
+      "height": 1350
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/render.jpg",
+      "type": "image",
+      "title": "Concept 09",
+      "meta": "DIGITAL_CONCEPT_09",
+      "width": 2400,
+      "height": 1350
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/Screenshot 2026-08-08 at 5.12.09 PM.jpg",
+      "type": "image",
+      "title": "Concept 10",
+      "meta": "DIGITAL_CONCEPT_10",
+      "width": 1310,
+      "height": 628
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/Screenshot 2026-09-01 at 5.09.42 PM.jpg",
+      "type": "image",
+      "title": "Concept 11",
+      "meta": "DIGITAL_CONCEPT_11",
+      "width": 778,
+      "height": 916
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/Screenshot 2026-09-06 at 11.16.09 AM.jpg",
+      "type": "image",
+      "title": "Concept 12",
+      "meta": "DIGITAL_CONCEPT_12",
+      "width": 1716,
+      "height": 1166
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/Untitled_Artwork copy.jpg",
+      "type": "image",
+      "title": "Concept 13",
+      "meta": "DIGITAL_CONCEPT_13",
+      "width": 1920,
+      "height": 1080
+    }
+  ]
+}

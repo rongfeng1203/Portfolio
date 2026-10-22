@@ -3,5 +3,5 @@ import GamesShowcase from "@/components/GamesShowcase";
 import { getPortfolioSection } from "@/lib/portfolioSections";
 
 export default function GamesPage() {
-  return <PortfolioSectionPage section={getPortfolioSection("games")!} feature={<GamesShowcase />} />;
+  return <PortfolioSectionPage section={{ ...getPortfolioSection("games")!, buckets: [] }} feature={<GamesShowcase />} />;
 }

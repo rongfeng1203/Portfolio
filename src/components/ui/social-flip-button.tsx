@@ -60,6 +60,7 @@ const SocialFlipNode = ({
     return (
         <Wrapper
             {...wrapperProps}
+            aria-label={item.label}
             className={cn("relative h-10 w-10", item.href || item.onClick ? "cursor-pointer" : "cursor-default", itemClassName)}
             style={{ perspective: "1000px" }}
             onMouseEnter={() => setTooltipIndex(index)}
@@ -100,7 +101,7 @@ const SocialFlipNode = ({
                         "absolute inset-0 flex items-center justify-center rounded-lg bg-neutral-100 text-lg font-bold text-neutral-800 shadow-sm dark:bg-neutral-900 dark:text-neutral-200",
                         frontClassName
                     )}
-                    style={{ backfaceVisibility: "hidden" }}
+                    style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
                     
                 >
                     {item.letter}
@@ -114,6 +115,7 @@ const SocialFlipNode = ({
                     )}
                     style={{
                         backfaceVisibility: "hidden",
+                        WebkitBackfaceVisibility: "hidden",
                         transform: "rotateY(180deg)",
                     }}
                 >

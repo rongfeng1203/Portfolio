@@ -4,6 +4,14 @@ const nextConfig: NextConfig = {
   images: {
     qualities: [75, 100],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/starfallbuild1/Build/StarfallBuild1.data.br",
+        destination: "https://media.githubusercontent.com/media/rongfeng1203/Portfolio/main/public/starfallbuild1/Build/StarfallBuild1.data.br",
+      },
+    ];
+  },
   async headers() {
     return [
       {

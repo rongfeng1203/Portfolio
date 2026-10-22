@@ -1,0 +1,600 @@
+{
+  "stage": [
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5440.jpg",
+      "type": "image",
+      "title": "Theatre 01",
+      "meta": "PHOTOGRAPHY_STAGE_01",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5460.jpg",
+      "type": "image",
+      "title": "Theatre 02",
+      "meta": "PHOTOGRAPHY_STAGE_02",
+      "width": 1333,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5498.jpg",
+      "type": "image",
+      "title": "Theatre 03",
+      "meta": "PHOTOGRAPHY_STAGE_03",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5508.jpg",
+      "type": "image",
+      "title": "Theatre 04",
+      "meta": "PHOTOGRAPHY_STAGE_04",
+      "width": 1333,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5513.jpg",
+      "type": "image",
+      "title": "Theatre 05",
+      "meta": "PHOTOGRAPHY_STAGE_05",
+      "width": 1201,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5548.jpg",
+      "type": "image",
+      "title": "Theatre 06",
+      "meta": "PHOTOGRAPHY_STAGE_06",
+      "width": 2000,
+      "height": 1403
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5575.jpg",
+      "type": "image",
+      "title": "Theatre 07",
+      "meta": "PHOTOGRAPHY_STAGE_07",
+      "width": 1264,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5597.jpg",
+      "type": "image",
+      "title": "Theatre 08",
+      "meta": "PHOTOGRAPHY_STAGE_08",
+      "width": 1333,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5717.jpg",
+      "type": "image",
+      "title": "Theatre 09",
+      "meta": "PHOTOGRAPHY_STAGE_09",
+      "width": 2000,
+      "height": 1130
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5732.jpg",
+      "type": "image",
+      "title": "Theatre 10",
+      "meta": "PHOTOGRAPHY_STAGE_10",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5760.jpg",
+      "type": "image",
+      "title": "Theatre 11",
+      "meta": "PHOTOGRAPHY_STAGE_11",
+      "width": 2000,
+      "height": 1369
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5854.jpg",
+      "type": "image",
+      "title": "Theatre 12",
+      "meta": "PHOTOGRAPHY_STAGE_12",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5864.jpg",
+      "type": "image",
+      "title": "Theatre 13",
+      "meta": "PHOTOGRAPHY_STAGE_13",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5916.jpg",
+      "type": "image",
+      "title": "Theatre 14",
+      "meta": "PHOTOGRAPHY_STAGE_14",
+      "width": 2000,
+      "height": 1291
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5923.jpg",
+      "type": "image",
+      "title": "Theatre 15",
+      "meta": "PHOTOGRAPHY_STAGE_15",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5936.jpg",
+      "type": "image",
+      "title": "Theatre 16",
+      "meta": "PHOTOGRAPHY_STAGE_16",
+      "width": 2000,
+      "height": 1126
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_5973.jpg",
+      "type": "image",
+      "title": "Theatre 17",
+      "meta": "PHOTOGRAPHY_STAGE_17",
+      "width": 2000,
+      "height": 1365
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6041.jpg",
+      "type": "image",
+      "title": "Theatre 18",
+      "meta": "PHOTOGRAPHY_STAGE_18",
+      "width": 1420,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6056.jpg",
+      "type": "image",
+      "title": "Theatre 19",
+      "meta": "PHOTOGRAPHY_STAGE_19",
+      "width": 2000,
+      "height": 1899
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6061.jpg",
+      "type": "image",
+      "title": "Theatre 20",
+      "meta": "PHOTOGRAPHY_STAGE_20",
+      "width": 2000,
+      "height": 1436
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6062.jpg",
+      "type": "image",
+      "title": "Theatre 21",
+      "meta": "PHOTOGRAPHY_STAGE_21",
+      "width": 2000,
+      "height": 1338
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6063.jpg",
+      "type": "image",
+      "title": "Theatre 22",
+      "meta": "PHOTOGRAPHY_STAGE_22",
+      "width": 1255,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6188.jpg",
+      "type": "image",
+      "title": "Theatre 23",
+      "meta": "PHOTOGRAPHY_STAGE_23",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6220.jpg",
+      "type": "image",
+      "title": "Theatre 24",
+      "meta": "PHOTOGRAPHY_STAGE_24",
+      "width": 2000,
+      "height": 1228
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6232.jpg",
+      "type": "image",
+      "title": "Theatre 25",
+      "meta": "PHOTOGRAPHY_STAGE_25",
+      "width": 2000,
+      "height": 1097
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6238.jpg",
+      "type": "image",
+      "title": "Theatre 26",
+      "meta": "PHOTOGRAPHY_STAGE_26",
+      "width": 2000,
+      "height": 1317
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6279.jpg",
+      "type": "image",
+      "title": "Theatre 27",
+      "meta": "PHOTOGRAPHY_STAGE_27",
+      "width": 2000,
+      "height": 1934
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6291.jpg",
+      "type": "image",
+      "title": "Theatre 28",
+      "meta": "PHOTOGRAPHY_STAGE_28",
+      "width": 2000,
+      "height": 1184
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6298.jpg",
+      "type": "image",
+      "title": "Theatre 29",
+      "meta": "PHOTOGRAPHY_STAGE_29",
+      "width": 2000,
+      "height": 1184
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6303.jpg",
+      "type": "image",
+      "title": "Theatre 30",
+      "meta": "PHOTOGRAPHY_STAGE_30",
+      "width": 1328,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6309.jpg",
+      "type": "image",
+      "title": "Theatre 31",
+      "meta": "PHOTOGRAPHY_STAGE_31",
+      "width": 2000,
+      "height": 1168
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6334.jpg",
+      "type": "image",
+      "title": "Theatre 32",
+      "meta": "PHOTOGRAPHY_STAGE_32",
+      "width": 2000,
+      "height": 1187
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6349.jpg",
+      "type": "image",
+      "title": "Theatre 33",
+      "meta": "PHOTOGRAPHY_STAGE_33",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6355.jpg",
+      "type": "image",
+      "title": "Theatre 34",
+      "meta": "PHOTOGRAPHY_STAGE_34",
+      "width": 2000,
+      "height": 1116
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6357.jpg",
+      "type": "image",
+      "title": "Theatre 35",
+      "meta": "PHOTOGRAPHY_STAGE_35",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/stage/IMG_6362.jpg",
+      "type": "image",
+      "title": "Theatre 36",
+      "meta": "PHOTOGRAPHY_STAGE_36",
+      "width": 2000,
+      "height": 1160
+    }
+  ],
+  "scenery": [
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_2517.jpg",
+      "type": "image",
+      "title": "Landscape 01",
+      "meta": "PHOTOGRAPHY_SCENERY_01",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4373.jpg",
+      "type": "image",
+      "title": "Landscape 02",
+      "meta": "PHOTOGRAPHY_SCENERY_02",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4575.jpg",
+      "type": "image",
+      "title": "Landscape 03",
+      "meta": "PHOTOGRAPHY_SCENERY_03",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4587.jpg",
+      "type": "image",
+      "title": "Landscape 04",
+      "meta": "PHOTOGRAPHY_SCENERY_04",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4638.jpg",
+      "type": "image",
+      "title": "Landscape 05",
+      "meta": "PHOTOGRAPHY_SCENERY_05",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4640.jpg",
+      "type": "image",
+      "title": "Landscape 06",
+      "meta": "PHOTOGRAPHY_SCENERY_06",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4653 copy.jpg",
+      "type": "image",
+      "title": "Landscape 07",
+      "meta": "PHOTOGRAPHY_SCENERY_07",
+      "width": 2000,
+      "height": 1108
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4671.jpg",
+      "type": "image",
+      "title": "Landscape 08",
+      "meta": "PHOTOGRAPHY_SCENERY_08",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4682 copy.jpg",
+      "type": "image",
+      "title": "Landscape 09",
+      "meta": "PHOTOGRAPHY_SCENERY_09",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4701.jpg",
+      "type": "image",
+      "title": "Landscape 10",
+      "meta": "PHOTOGRAPHY_SCENERY_10",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4822.jpg",
+      "type": "image",
+      "title": "Landscape 11",
+      "meta": "PHOTOGRAPHY_SCENERY_11",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4836.jpg",
+      "type": "image",
+      "title": "Landscape 12",
+      "meta": "PHOTOGRAPHY_SCENERY_12",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4842.jpg",
+      "type": "image",
+      "title": "Landscape 13",
+      "meta": "PHOTOGRAPHY_SCENERY_13",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4846.jpg",
+      "type": "image",
+      "title": "Landscape 14",
+      "meta": "PHOTOGRAPHY_SCENERY_14",
+      "width": 2000,
+      "height": 1365
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4852.jpg",
+      "type": "image",
+      "title": "Landscape 15",
+      "meta": "PHOTOGRAPHY_SCENERY_15",
+      "width": 2000,
+      "height": 923
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4856.jpg",
+      "type": "image",
+      "title": "Landscape 16",
+      "meta": "PHOTOGRAPHY_SCENERY_16",
+      "width": 2000,
+      "height": 1186
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_4858.jpg",
+      "type": "image",
+      "title": "Landscape 17",
+      "meta": "PHOTOGRAPHY_SCENERY_17",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_5100.jpg",
+      "type": "image",
+      "title": "Landscape 18",
+      "meta": "PHOTOGRAPHY_SCENERY_18",
+      "width": 2000,
+      "height": 1569
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_5101.jpg",
+      "type": "image",
+      "title": "Landscape 19",
+      "meta": "PHOTOGRAPHY_SCENERY_19",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/scenery/IMG_5218.jpg",
+      "type": "image",
+      "title": "Landscape 20",
+      "meta": "PHOTOGRAPHY_SCENERY_20",
+      "width": 2000,
+      "height": 1333
+    }
+  ],
+  "humans": [
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4377.jpg",
+      "type": "image",
+      "title": "Humans 01",
+      "meta": "PHOTOGRAPHY_HUMANS_01",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4386.jpg",
+      "type": "image",
+      "title": "Humans 02",
+      "meta": "PHOTOGRAPHY_HUMANS_02",
+      "width": 1379,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4426.jpg",
+      "type": "image",
+      "title": "Humans 03",
+      "meta": "PHOTOGRAPHY_HUMANS_03",
+      "width": 2000,
+      "height": 1150
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4464.jpg",
+      "type": "image",
+      "title": "Humans 04",
+      "meta": "PHOTOGRAPHY_HUMANS_04",
+      "width": 2000,
+      "height": 1382
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4517.jpg",
+      "type": "image",
+      "title": "Humans 05",
+      "meta": "PHOTOGRAPHY_HUMANS_05",
+      "width": 2000,
+      "height": 1673
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4519.jpg",
+      "type": "image",
+      "title": "Humans 06",
+      "meta": "PHOTOGRAPHY_HUMANS_06",
+      "width": 2000,
+      "height": 1459
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4526.jpg",
+      "type": "image",
+      "title": "Humans 07",
+      "meta": "PHOTOGRAPHY_HUMANS_07",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4538.jpg",
+      "type": "image",
+      "title": "Humans 08",
+      "meta": "PHOTOGRAPHY_HUMANS_08",
+      "width": 2000,
+      "height": 1259
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4548.jpg",
+      "type": "image",
+      "title": "Humans 09",
+      "meta": "PHOTOGRAPHY_HUMANS_09",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4550.jpg",
+      "type": "image",
+      "title": "Humans 10",
+      "meta": "PHOTOGRAPHY_HUMANS_10",
+      "width": 2000,
+      "height": 1396
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4565.jpg",
+      "type": "image",
+      "title": "Humans 11",
+      "meta": "PHOTOGRAPHY_HUMANS_11",
+      "width": 2000,
+      "height": 1382
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4751.jpg",
+      "type": "image",
+      "title": "Humans 12",
+      "meta": "PHOTOGRAPHY_HUMANS_12",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4752.jpg",
+      "type": "image",
+      "title": "Humans 13",
+      "meta": "PHOTOGRAPHY_HUMANS_13",
+      "width": 2000,
+      "height": 1333
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4760.jpg",
+      "type": "image",
+      "title": "Humans 14",
+      "meta": "PHOTOGRAPHY_HUMANS_14",
+      "width": 1333,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4770.jpg",
+      "type": "image",
+      "title": "Humans 15",
+      "meta": "PHOTOGRAPHY_HUMANS_15",
+      "width": 1143,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4772.jpg",
+      "type": "image",
+      "title": "Humans 16",
+      "meta": "PHOTOGRAPHY_HUMANS_16",
+      "width": 1333,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_4999.jpg",
+      "type": "image",
+      "title": "Humans 17",
+      "meta": "PHOTOGRAPHY_HUMANS_17",
+      "width": 1367,
+      "height": 2000
+    },
+    {
+      "src": "/portfolio-assets/photography/humans/IMG_5206.jpg",
+      "type": "image",
+      "title": "Humans 18",
+      "meta": "PHOTOGRAPHY_HUMANS_18",
+      "width": 2000,
+      "height": 1333
+    }
+  ]
+}

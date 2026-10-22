@@ -6,12 +6,12 @@ import banner from "../../assets/icon.png";
 
 const categoryCopy = {
   stage: {
-    title: "Stage",
+    title: "Theatre",
     code: "PHOTO_STAGE",
     intro: "Ummm can you tell I took photos while operating LX for a musical?",
   },
   scenery: {
-    title: "Scenery",
+    title: "Landscape",
     code: "PHOTO_SCENERY",
     intro: "IDK why but landscape photogrphy doesn't seem to work for me?",
   },

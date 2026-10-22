@@ -1,0 +1,160 @@
+{
+  "charcoal": [
+    {
+      "src": "/portfolio-assets/visual/charcoal/IMG_0198 copy.jpg",
+      "type": "image",
+      "title": "Charcoal 01",
+      "meta": "VISUAL_CHARCOAL_01",
+      "width": 1800,
+      "height": 2400
+    },
+    {
+      "src": "/portfolio-assets/visual/charcoal/IMG_1529 copy.jpg",
+      "type": "image",
+      "title": "Charcoal 02",
+      "meta": "VISUAL_CHARCOAL_02",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/visual/charcoal/IMG_3308.jpg",
+      "type": "image",
+      "title": "Charcoal 03",
+      "meta": "VISUAL_CHARCOAL_03",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/visual/charcoal/IMG_4235.jpg",
+      "type": "image",
+      "title": "Charcoal 04",
+      "meta": "VISUAL_CHARCOAL_04",
+      "width": 2400,
+      "height": 574
+    },
+    {
+      "src": "/portfolio-assets/visual/charcoal/IMG_5089.jpg",
+      "type": "image",
+      "title": "Charcoal 05",
+      "meta": "VISUAL_CHARCOAL_05",
+      "width": 1785,
+      "height": 2400
+    },
+    {
+      "src": "/portfolio-assets/visual/charcoal/IMG_9715.jpg",
+      "type": "image",
+      "title": "Charcoal 06",
+      "meta": "VISUAL_CHARCOAL_06",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/visual/charcoal/IMG_9916 copy.jpg",
+      "type": "image",
+      "title": "Charcoal 07",
+      "meta": "VISUAL_CHARCOAL_07",
+      "width": 1800,
+      "height": 2400
+    }
+  ],
+  "colors": [
+    {
+      "src": "/portfolio-assets/visual/colors/4 copy.jpg",
+      "type": "image",
+      "title": "Colors 01",
+      "meta": "VISUAL_COLORS_01",
+      "width": 2400,
+      "height": 1898
+    },
+    {
+      "src": "/portfolio-assets/visual/colors/6final copy.jpg",
+      "type": "image",
+      "title": "Colors 02",
+      "meta": "VISUAL_COLORS_02",
+      "width": 1812,
+      "height": 2400
+    },
+    {
+      "src": "/portfolio-assets/visual/colors/FullSizeRender 2 copy.jpg",
+      "type": "image",
+      "title": "Colors 03",
+      "meta": "VISUAL_COLORS_03",
+      "width": 2400,
+      "height": 1598
+    },
+    {
+      "src": "/portfolio-assets/visual/colors/IMG_1377 copy.jpg",
+      "type": "image",
+      "title": "Colors 04",
+      "meta": "VISUAL_COLORS_04",
+      "width": 1887,
+      "height": 2400
+    },
+    {
+      "src": "/portfolio-assets/visual/colors/IMG_2281.jpg",
+      "type": "image",
+      "title": "Colors 05",
+      "meta": "VISUAL_COLORS_05",
+      "width": 2400,
+      "height": 1884
+    },
+    {
+      "src": "/portfolio-assets/visual/colors/IMG_3441.jpg",
+      "type": "image",
+      "title": "Colors 06",
+      "meta": "VISUAL_COLORS_06",
+      "width": 2400,
+      "height": 2268
+    },
+    {
+      "src": "/portfolio-assets/visual/colors/Rong Feng copy.jpg",
+      "type": "image",
+      "title": "Colors 07",
+      "meta": "VISUAL_COLORS_07",
+      "width": 2400,
+      "height": 1909
+    },
+    {
+      "src": "/portfolio-assets/visual/colors/S1 copy.jpg",
+      "type": "image",
+      "title": "Colors 08",
+      "meta": "VISUAL_COLORS_08",
+      "width": 1805,
+      "height": 2400
+    },
+    {
+      "src": "/portfolio-assets/visual/colors/Screenshot 2026-06-26 at 1.27.09 PM.jpg",
+      "type": "image",
+      "title": "Colors 09",
+      "meta": "VISUAL_COLORS_09",
+      "width": 2400,
+      "height": 1351
+    },
+    {
+      "src": "/portfolio-assets/visual/colors/Screenshot 2026-06-26 at 1.27.20 PM.jpg",
+      "type": "image",
+      "title": "Colors 10",
+      "meta": "VISUAL_COLORS_10",
+      "width": 2400,
+      "height": 1343
+    },
+    {
+      "src": "/portfolio-assets/visual/colors/Screenshot 2026-06-26 at 1.27.34 PM.jpg",
+      "type": "image",
+      "title": "Colors 11",
+      "meta": "VISUAL_COLORS_11",
+      "width": 2400,
+      "height": 1352
+    }
+  ],
+  "ideation": [
+    {
+      "src": "/portfolio-assets/visual/ideation/Untitled_Artwork.jpg",
+      "type": "image",
+      "title": "Ideation 01",
+      "meta": "VISUAL_IDEATION_01",
+      "width": 1239,
+      "height": 1933
+    }
+  ]
+}

@@ -1,5 +1,5 @@
-import VisualSketchbookPage from "@/components/VisualSketchbookPage";
+import { redirect } from "next/navigation";
 
 export default function SketchbookPage() {
-  return <VisualSketchbookPage />;
+  redirect("/visual/charcoal");
 }
