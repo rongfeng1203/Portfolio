@@ -5003,3 +5003,16 @@ video.photo-slideshow-image {
   .section-hero h1.section-title-long,
   .making-archive-intro h1.making-title-long { font-size: clamp(2rem, 10vw, 4.5rem); }
 }
+
+.game-testimonial-pages {
+  display: grid;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 1rem auto;
+}
+.game-testimonial-pages img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}

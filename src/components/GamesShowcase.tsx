@@ -17,7 +17,8 @@ type Snapshot = {
 };
 
 const BOARD_SIZE = 19;
-const duckBreakerUrl = "/duck-breaker-3d/index.html";
+const duckBreakerUrl = "https://rongfeng1203.itch.io/wacky-physics-duckbbreaker";
+const duckBreakerEmbedUrl = "https://itch.io/embed-upload/18665393?color=0a0a0f";
 
 const demoVideos: Array<{ title: string; id: string; meta: string; start?: number }> = [
   {
@@ -135,7 +136,7 @@ function DuckBreakerEmbed() {
       <div className="game-web-stage">
         {isLoaded ? (
           <iframe
-            src={duckBreakerUrl}
+            src={duckBreakerEmbedUrl}
             title="Duck Breaker browser game"
             onLoad={(event) => event.currentTarget.focus({ preventScroll: true })}
             allow="autoplay; fullscreen"

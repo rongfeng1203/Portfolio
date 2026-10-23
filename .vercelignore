@@ -1,4 +1,6 @@
-public/starfallbuild1/Build/StarfallBuild1.data.br
+public/starfallbuild1
+public/duck-breaker-3d
+public/duck-breaker
 dist
 .wrangler
 *.tsbuildinfo
@@ -8,3 +10,4 @@ assets/digital media
 assets/visual art
 assets/theatre
 assets/making
+/Feng_Rong.pdf

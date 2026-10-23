@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 
-const starfallBuildUrl = "/starfallbuild1/index.html";
+const starfallBuildUrl = "https://rongfeng1203.itch.io/starfall";
+const starfallEmbedUrl = "https://itch.io/embed-upload/18686937?color=0a0a0f";
 
 export default function UnityWebGLEmbed() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -22,7 +23,7 @@ export default function UnityWebGLEmbed() {
       <div className="unity-webgl-stage">
         {isLoaded ? (
           <iframe
-            src={starfallBuildUrl}
+            src={starfallEmbedUrl}
             title="Starfall Build Unity WebGL player"
             allow="fullscreen; gamepad; autoplay; xr-spatial-tracking"
             allowFullScreen
@@ -39,7 +40,7 @@ export default function UnityWebGLEmbed() {
       <footer className="unity-webgl-meta" aria-label="Starfall build metadata">
         <span>build / starfallbuild1</span>
         <span>unity / webgl</span>
-        <span>compressed / brotli</span>
+        <span>hosted / itch.io</span>
       </footer>
     </section>
   );

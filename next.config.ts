@@ -1,49 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    qualities: [75, 100],
-  },
-  async rewrites() {
+  images: { qualities: [75, 100] },
+  async redirects() {
     return [
-      {
-        source: "/starfallbuild1/Build/StarfallBuild1.data.br",
-        destination: "https://media.githubusercontent.com/media/rongfeng1203/Portfolio/main/public/starfallbuild1/Build/StarfallBuild1.data.br",
-      },
-    ];
-  },
-  async headers() {
-    return [
-      {
-        source: "/starfallbuild1/Build/StarfallBuild1.data.br",
-        headers: [
-          { key: "Content-Type", value: "application/octet-stream" },
-          { key: "Content-Encoding", value: "br" },
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
-      },
-      {
-        source: "/starfallbuild1/Build/StarfallBuild1.framework.js.br",
-        headers: [
-          { key: "Content-Type", value: "application/javascript" },
-          { key: "Content-Encoding", value: "br" },
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
-      },
-      {
-        source: "/starfallbuild1/Build/StarfallBuild1.wasm.br",
-        headers: [
-          { key: "Content-Type", value: "application/wasm" },
-          { key: "Content-Encoding", value: "br" },
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
-      },
-      {
-        source: "/duck-breaker-3d/Build/:path*",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
-      },
+      { source: "/starfallbuild1/:path*", destination: "https://rongfeng1203.itch.io/starfall", permanent: false },
+      { source: "/duck-breaker-3d/:path*", destination: "https://rongfeng1203.itch.io/wacky-physics-duckbbreaker", permanent: false },
+      { source: "/duck-breaker/:path*", destination: "https://rongfeng1203.itch.io/wacky-physics-duckbbreaker", permanent: false },
     ];
   },
 };
