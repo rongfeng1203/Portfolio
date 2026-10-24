@@ -7,7 +7,7 @@ export default function GamesPage() {
     <GamesShowcase />
     <section className="game-module" aria-labelledby="nhsga-testimonial-title">
       <header className="game-module-header">
-        <div><span>Carnegie Mellon University / 2025</span><h2 id="nhsga-testimonial-title">National High School Game Academy Testimonial</h2></div>
+        <div><span>Carnegie Mellon University / 2025</span><h2 id="nhsga-testimonial-title">NHSGA Testimonial</h2></div>
         <a href="/portfolio-assets/games/Feng_Rong.pdf" target="_blank" rel="noreferrer">open PDF ↗</a>
       </header>
       <div className="game-testimonial-pages" aria-label="National High School Game Academy testimonial for Rong Feng">

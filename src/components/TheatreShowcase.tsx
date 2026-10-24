@@ -50,17 +50,17 @@ export default function TheatreShowcase({ photos, processItems }: { photos: NonN
           <strong>Theatre</strong>
         </div>
       </article>
-      <section id="theatre-process" aria-label="Dirty Work and Paper Work">
-        <header className="making-slideshow-heading">
-          <div><span>THEATRE / PROCESS</span><h2>Dirty Work &amp; Paper Work</h2></div>
-        </header>
-        <PhotographySlideshow items={processItems} label="Dirty Work and Paper Work slideshow" />
-      </section>
       <section id="theatre-photos" aria-label="Theatre photos">
         <header className="making-slideshow-heading">
           <div><span>THEATRE / PHOTOGRAPHY</span><h2>Photos</h2></div>
         </header>
         <PhotographySlideshow items={photos} label="Theatre photo slideshow" />
+      </section>
+      <section id="theatre-process" aria-label="Dirty Work and Paper Work">
+        <header className="making-slideshow-heading">
+          <div><span>THEATRE / PROCESS</span><h2>Dirty Work &amp; Paper Work</h2></div>
+        </header>
+        <PhotographySlideshow items={processItems} label="Dirty Work and Paper Work slideshow" />
       </section>
     </div>
   );
