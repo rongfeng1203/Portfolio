@@ -9,7 +9,7 @@ const groups = {
   digital: { videos: ['digital media/Video', 'Videos'], graphics: ['digital media/Graphics', 'Graphics'], concept: ['digital media/Concept', 'Concept'] },
   visual: { charcoal: ['visual art/Charcoal', 'Charcoal'], colors: ['visual art/Colored', 'Colors'], ideation: ['visual art/Ideation', 'Ideation'] },
   photography: { stage: ['photography/stage', 'Theatre'], scenery: ['photography/scenery', 'Landscape'], humans: ['photography/humans', 'Humans'] },
-  theatre: { dirtywork: ['theatre/dirtywork', 'Dirty Work'], paperwork: ['theatre/paperwork', 'Paperwork'], photos: ['theatre/photos', 'Photos'] },
+  theatre: { dirtywork: ['theatre/dirtywork', 'Dirty Work'], paperwork: ['theatre/paperwork', 'Paperwork'], lx: ['theatre/LX', 'LX'] },
 };
 for (const [section, categories] of Object.entries(groups)) {
   const manifest = {};

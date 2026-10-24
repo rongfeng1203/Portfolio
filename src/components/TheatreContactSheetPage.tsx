@@ -7,13 +7,13 @@ import banner from "../../assets/icon.png";
 const categoryCopy = {
   dirtywork: { title: "Dirty Work", code: "THEATRE_DIRTYWORK", intro: "" },
   paperwork: { title: "Paperwork", code: "THEATRE_PAPERWORK", intro: "" },
-  photos: { title: "Photos", code: "THEATRE_PHOTOS", intro: "" },
+  lx: { title: "LX", code: "THEATRE_LX", intro: "" },
 } as const;
 
 export default function TheatreContactSheetPage({ category }: { category: TheatreCategory }) {
   const section = getPortfolioSection("theatre")!;
-  const mediaItems = category === "photos"
-    ? [...getTheatreCategoryMedia("photos"), ...getPhotographyCategoryMedia("stage")]
+  const mediaItems = category === "lx"
+    ? [...getTheatreCategoryMedia("lx"), ...getPhotographyCategoryMedia("stage")]
     : getTheatreCategoryMedia(category);
   const content = categoryCopy[category];
 

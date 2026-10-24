@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import TheatreContactSheetPage from "@/components/TheatreContactSheetPage";
 
-const categories = ["dirtywork", "paperwork", "photos"] as const;
+const categories = ["dirtywork", "paperwork", "lx"] as const;
 
 export function generateStaticParams() {
   return categories.map((category) => ({ category }));

@@ -28,7 +28,7 @@ const demoVideos: Array<{ title: string; id: string; meta: string; start?: numbe
   },
   {
     title: "Drillage",
-    id: "X8iElp297t4",
+    id: "CP2vOhsDMV8",
     meta: "game demo / drilling prototype",
   },
   {

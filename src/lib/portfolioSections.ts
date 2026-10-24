@@ -77,7 +77,7 @@ export function getTheatreCategoryMedia(category: TheatreCategory): MediaItem[] 
 const theatreStageMedia = [
   ...getTheatreCategoryMedia("dirtywork"),
   ...getTheatreCategoryMedia("paperwork"),
-  ...getTheatreCategoryMedia("photos"),
+  ...getTheatreCategoryMedia("lx"),
   ...getPhotographyCategoryMedia("stage"),
 ];
 
@@ -174,7 +174,7 @@ export const portfolioSections: PortfolioSection[] = [
     buckets: [
       { title: "Dirty Work", meta: "", copy: "", href: "/theatre/dirtywork", theatreCategory: "dirtywork" },
       { title: "Paperwork", meta: "", copy: "", href: "/theatre/paperwork", theatreCategory: "paperwork" },
-      { title: "Photos", meta: "", copy: "", href: "/theatre/photos", theatreCategory: "photos" },
+      { title: "LX", meta: "", copy: "", href: "/theatre/lx", theatreCategory: "lx" },
     ],
     imageSlots: ["stage photo", "cue sheet", "set sketch", "lighting test"],
     mediaItems: theatreStageMedia,

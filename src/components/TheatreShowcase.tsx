@@ -6,7 +6,7 @@ import { useState } from "react";
 import PhotographySlideshow from "@/components/PhotographySlideshow";
 import type { PortfolioSection } from "@/lib/portfolioSections";
 
-const pageCount = 13;
+const pageCount = 12;
 
 export default function TheatreShowcase({ photos, processItems }: { photos: NonNullable<PortfolioSection["mediaItems"]>; processItems: NonNullable<PortfolioSection["mediaItems"]> }) {
   const [page, setPage] = useState(0);
@@ -33,7 +33,7 @@ export default function TheatreShowcase({ photos, processItems }: { photos: NonN
             <ArrowLeft size={18} aria-hidden="true" />
           </button>
           <Image
-            src={`/portfolio-assets/theatre/portfolio/page-${String(page + 1).padStart(2, "0")}.jpg`}
+            src={`/portfolio-assets/theatre/portfolio/v2-page-${String(page + 1).padStart(2, "0")}.jpg?v=2d67cc4bac`}
             alt={`Theatre portfolio, page ${page + 1} of ${pageCount}`}
             width={1800}
             height={1013}
