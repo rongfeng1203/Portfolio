@@ -10,7 +10,11 @@
     "build:sites": "vinext build",
     "start": "next start",
     "start:sites": "wrangler dev --config dist/server/wrangler.json",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync:content": "node scripts/sync-portfolio-assets.mjs",
+    "prebuild": "npm run sync:content",
+    "prebuild:sites": "npm run sync:content",
+    "setup:hooks": "git config core.hooksPath .githooks"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

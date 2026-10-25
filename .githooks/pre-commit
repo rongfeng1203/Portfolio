@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+cd "$(git rev-parse --show-toplevel)"
+npm run sync:content
+# Only stage the generated folder galleries and their indexes.
+# Original artwork stays local and unrelated edits are left untouched.
+git add -- src/lib/digitalMedia.json src/lib/visualMedia.json src/lib/photographyMedia.json src/lib/theatreMedia.json \
+  public/portfolio-assets/digital/videos public/portfolio-assets/digital/graphics public/portfolio-assets/digital/concept \
+  public/portfolio-assets/visual/charcoal public/portfolio-assets/visual/colors public/portfolio-assets/visual/ideation \
+  public/portfolio-assets/photography public/portfolio-assets/theatre/dirtywork public/portfolio-assets/theatre/paperwork public/portfolio-assets/theatre/lx
