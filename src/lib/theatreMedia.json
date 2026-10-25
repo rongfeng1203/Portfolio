@@ -61,8 +61,8 @@
       "type": "image",
       "title": "Dirty Work 08",
       "meta": "THEATRE_DIRTYWORK_08",
-      "width": 2200,
-      "height": 1650
+      "width": 2400,
+      "height": 1800
     },
     {
       "src": "/portfolio-assets/theatre/dirtywork/IMG_3221.jpg",
@@ -105,43 +105,43 @@
       "height": 1650
     },
     {
-      "src": "/portfolio-assets/theatre/dirtywork/IMG_3706.jpg",
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_3521.jpg",
       "type": "image",
       "title": "Dirty Work 14",
       "meta": "THEATRE_DIRTYWORK_14",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_3706.jpg",
+      "type": "image",
+      "title": "Dirty Work 15",
+      "meta": "THEATRE_DIRTYWORK_15",
       "width": 2200,
       "height": 1650
     },
     {
       "src": "/portfolio-assets/theatre/dirtywork/IMG_3755.mp4",
       "type": "video",
-      "title": "Dirty Work 15",
-      "meta": "THEATRE_DIRTYWORK_15"
+      "title": "Dirty Work 16",
+      "meta": "THEATRE_DIRTYWORK_16"
     },
     {
       "src": "/portfolio-assets/theatre/dirtywork/IMG_3829.jpg",
       "type": "image",
-      "title": "Dirty Work 16",
-      "meta": "THEATRE_DIRTYWORK_16",
+      "title": "Dirty Work 17",
+      "meta": "THEATRE_DIRTYWORK_17",
       "width": 2200,
       "height": 1650
     },
     {
       "src": "/portfolio-assets/theatre/dirtywork/IMG_3852.mp4",
       "type": "video",
-      "title": "Dirty Work 17",
-      "meta": "THEATRE_DIRTYWORK_17"
+      "title": "Dirty Work 18",
+      "meta": "THEATRE_DIRTYWORK_18"
     },
     {
       "src": "/portfolio-assets/theatre/dirtywork/IMG_3921.jpg",
-      "type": "image",
-      "title": "Dirty Work 18",
-      "meta": "THEATRE_DIRTYWORK_18",
-      "width": 2200,
-      "height": 1650
-    },
-    {
-      "src": "/portfolio-assets/theatre/dirtywork/IMG_3922.jpg",
       "type": "image",
       "title": "Dirty Work 19",
       "meta": "THEATRE_DIRTYWORK_19",
@@ -149,7 +149,7 @@
       "height": 1650
     },
     {
-      "src": "/portfolio-assets/theatre/dirtywork/IMG_3923.jpg",
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_3922.jpg",
       "type": "image",
       "title": "Dirty Work 20",
       "meta": "THEATRE_DIRTYWORK_20",
@@ -157,7 +157,7 @@
       "height": 1650
     },
     {
-      "src": "/portfolio-assets/theatre/dirtywork/IMG_4128.jpg",
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_3923.jpg",
       "type": "image",
       "title": "Dirty Work 21",
       "meta": "THEATRE_DIRTYWORK_21",
@@ -165,7 +165,7 @@
       "height": 1650
     },
     {
-      "src": "/portfolio-assets/theatre/dirtywork/IMG_4163.jpg",
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_4128.jpg",
       "type": "image",
       "title": "Dirty Work 22",
       "meta": "THEATRE_DIRTYWORK_22",
@@ -173,7 +173,7 @@
       "height": 1650
     },
     {
-      "src": "/portfolio-assets/theatre/dirtywork/IMG_9360.jpg",
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_4163.jpg",
       "type": "image",
       "title": "Dirty Work 23",
       "meta": "THEATRE_DIRTYWORK_23",
@@ -181,7 +181,7 @@
       "height": 1650
     },
     {
-      "src": "/portfolio-assets/theatre/dirtywork/IMG_9374.jpg",
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_9360.jpg",
       "type": "image",
       "title": "Dirty Work 24",
       "meta": "THEATRE_DIRTYWORK_24",
@@ -189,15 +189,15 @@
       "height": 1650
     },
     {
-      "src": "/portfolio-assets/theatre/dirtywork/IMG_9379.jpg",
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_9367.jpg",
       "type": "image",
       "title": "Dirty Work 25",
       "meta": "THEATRE_DIRTYWORK_25",
-      "width": 2200,
-      "height": 1650
+      "width": 2400,
+      "height": 1800
     },
     {
-      "src": "/portfolio-assets/theatre/dirtywork/IMG_9382.jpg",
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_9374.jpg",
       "type": "image",
       "title": "Dirty Work 26",
       "meta": "THEATRE_DIRTYWORK_26",
@@ -205,7 +205,7 @@
       "height": 1650
     },
     {
-      "src": "/portfolio-assets/theatre/dirtywork/IMG_9385.jpg",
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_9379.jpg",
       "type": "image",
       "title": "Dirty Work 27",
       "meta": "THEATRE_DIRTYWORK_27",
@@ -213,10 +213,26 @@
       "height": 1650
     },
     {
-      "src": "/portfolio-assets/theatre/dirtywork/IMG_9583.jpg",
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_9382.jpg",
       "type": "image",
       "title": "Dirty Work 28",
       "meta": "THEATRE_DIRTYWORK_28",
+      "width": 2200,
+      "height": 1650
+    },
+    {
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_9385.jpg",
+      "type": "image",
+      "title": "Dirty Work 29",
+      "meta": "THEATRE_DIRTYWORK_29",
+      "width": 2200,
+      "height": 1650
+    },
+    {
+      "src": "/portfolio-assets/theatre/dirtywork/IMG_9583.jpg",
+      "type": "image",
+      "title": "Dirty Work 30",
+      "meta": "THEATRE_DIRTYWORK_30",
       "width": 2200,
       "height": 1650
     }
@@ -635,47 +651,47 @@
       "height": 1650
     },
     {
-      "src": "/portfolio-assets/theatre/lx/Screenshot 2026-04-06 at 11.05.41 PM.jpg",
+      "src": "/portfolio-assets/theatre/lx/Screenshot 2026-10-15 at 10.39.33 PM.jpg",
       "type": "image",
       "title": "LX 26",
       "meta": "THEATRE_LX_26",
-      "width": 1651,
-      "height": 2200
-    },
-    {
-      "src": "/portfolio-assets/theatre/lx/Screenshot 2026-04-09 at 9.45.23 AM.jpg",
-      "type": "image",
-      "title": "LX 27",
-      "meta": "THEATRE_LX_27",
-      "width": 2200,
-      "height": 727
-    },
-    {
-      "src": "/portfolio-assets/theatre/lx/Screenshot 2026-10-15 at 10.39.33 PM.jpg",
-      "type": "image",
-      "title": "LX 28",
-      "meta": "THEATRE_LX_28",
       "width": 2200,
       "height": 2032
     },
     {
       "src": "/portfolio-assets/theatre/lx/Screenshot 2026-10-15 at 10.40.17 PM.jpg",
       "type": "image",
-      "title": "LX 29",
-      "meta": "THEATRE_LX_29",
+      "title": "LX 27",
+      "meta": "THEATRE_LX_27",
       "width": 2200,
       "height": 1243
     },
     {
       "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 0409.jpg",
       "type": "image",
-      "title": "LX 30",
-      "meta": "THEATRE_LX_30",
+      "title": "LX 28",
+      "meta": "THEATRE_LX_28",
       "width": 2200,
       "height": 1276
     },
     {
       "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 0743.jpg",
+      "type": "image",
+      "title": "LX 29",
+      "meta": "THEATRE_LX_29",
+      "width": 2200,
+      "height": 1466
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 0746.jpg",
+      "type": "image",
+      "title": "LX 30",
+      "meta": "THEATRE_LX_30",
+      "width": 2200,
+      "height": 1466
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 1559.jpg",
       "type": "image",
       "title": "LX 31",
       "meta": "THEATRE_LX_31",
@@ -683,15 +699,15 @@
       "height": 1466
     },
     {
-      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 0746.jpg",
+      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 1692.jpg",
       "type": "image",
       "title": "LX 32",
       "meta": "THEATRE_LX_32",
       "width": 2200,
-      "height": 1466
+      "height": 1329
     },
     {
-      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 1559.jpg",
+      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 2011.jpg",
       "type": "image",
       "title": "LX 33",
       "meta": "THEATRE_LX_33",
@@ -699,15 +715,15 @@
       "height": 1466
     },
     {
-      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 1692.jpg",
+      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 2019.jpg",
       "type": "image",
       "title": "LX 34",
       "meta": "THEATRE_LX_34",
       "width": 2200,
-      "height": 1329
+      "height": 1256
     },
     {
-      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 2011.jpg",
+      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 2614.jpg",
       "type": "image",
       "title": "LX 35",
       "meta": "THEATRE_LX_35",
@@ -715,52 +731,196 @@
       "height": 1466
     },
     {
-      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 2019.jpg",
+      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 3032.jpg",
       "type": "image",
       "title": "LX 36",
       "meta": "THEATRE_LX_36",
-      "width": 2200,
-      "height": 1256
-    },
-    {
-      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 2614.jpg",
-      "type": "image",
-      "title": "LX 37",
-      "meta": "THEATRE_LX_37",
-      "width": 2200,
-      "height": 1466
-    },
-    {
-      "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 3032.jpg",
-      "type": "image",
-      "title": "LX 38",
-      "meta": "THEATRE_LX_38",
       "width": 2200,
       "height": 1466
     },
     {
       "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 3391.jpg",
       "type": "image",
-      "title": "LX 39",
-      "meta": "THEATRE_LX_39",
+      "title": "LX 37",
+      "meta": "THEATRE_LX_37",
       "width": 2200,
       "height": 999
     },
     {
       "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 3547.jpg",
       "type": "image",
-      "title": "LX 40",
-      "meta": "THEATRE_LX_40",
+      "title": "LX 38",
+      "meta": "THEATRE_LX_38",
       "width": 2200,
       "height": 1361
     },
     {
       "src": "/portfolio-assets/theatre/lx/Twelfth Night Play - Photos by ED_PARA - Web Size - 3626.jpg",
       "type": "image",
-      "title": "LX 41",
-      "meta": "THEATRE_LX_41",
+      "title": "LX 39",
+      "meta": "THEATRE_LX_39",
       "width": 2200,
       "height": 1332
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 1.jpg",
+      "type": "image",
+      "title": "LX 40",
+      "meta": "THEATRE_LX_40",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 2.jpg",
+      "type": "image",
+      "title": "LX 41",
+      "meta": "THEATRE_LX_41",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 3.jpg",
+      "type": "image",
+      "title": "LX 42",
+      "meta": "THEATRE_LX_42",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 4.jpg",
+      "type": "image",
+      "title": "LX 43",
+      "meta": "THEATRE_LX_43",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 5.jpg",
+      "type": "image",
+      "title": "LX 44",
+      "meta": "THEATRE_LX_44",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 6.jpg",
+      "type": "image",
+      "title": "LX 45",
+      "meta": "THEATRE_LX_45",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 7.jpg",
+      "type": "image",
+      "title": "LX 46",
+      "meta": "THEATRE_LX_46",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 8.jpg",
+      "type": "image",
+      "title": "LX 47",
+      "meta": "THEATRE_LX_47",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 9.jpg",
+      "type": "image",
+      "title": "LX 48",
+      "meta": "THEATRE_LX_48",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 10.jpg",
+      "type": "image",
+      "title": "LX 49",
+      "meta": "THEATRE_LX_49",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 11.jpg",
+      "type": "image",
+      "title": "LX 50",
+      "meta": "THEATRE_LX_50",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 12.jpg",
+      "type": "image",
+      "title": "LX 51",
+      "meta": "THEATRE_LX_51",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 13.jpg",
+      "type": "image",
+      "title": "LX 52",
+      "meta": "THEATRE_LX_52",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 14.jpg",
+      "type": "image",
+      "title": "LX 53",
+      "meta": "THEATRE_LX_53",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 15.jpg",
+      "type": "image",
+      "title": "LX 54",
+      "meta": "THEATRE_LX_54",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 16.jpg",
+      "type": "image",
+      "title": "LX 55",
+      "meta": "THEATRE_LX_55",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 17.jpg",
+      "type": "image",
+      "title": "LX 56",
+      "meta": "THEATRE_LX_56",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 18.jpg",
+      "type": "image",
+      "title": "LX 57",
+      "meta": "THEATRE_LX_57",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork 19.jpg",
+      "type": "image",
+      "title": "LX 58",
+      "meta": "THEATRE_LX_58",
+      "width": 2400,
+      "height": 1800
+    },
+    {
+      "src": "/portfolio-assets/theatre/lx/Untitled_Artwork.jpg",
+      "type": "image",
+      "title": "LX 59",
+      "meta": "THEATRE_LX_59",
+      "width": 2400,
+      "height": 1800
     }
   ]
 }

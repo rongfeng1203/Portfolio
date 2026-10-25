@@ -227,42 +227,58 @@
       "height": 1350
     },
     {
-      "src": "/portfolio-assets/digital/concept/render.jpg",
+      "src": "/portfolio-assets/digital/concept/finqlcity.jpg",
       "type": "image",
       "title": "Concept 09",
       "meta": "DIGITAL_CONCEPT_09",
+      "width": 1573,
+      "height": 818
+    },
+    {
+      "src": "/portfolio-assets/digital/concept/render.jpg",
+      "type": "image",
+      "title": "Concept 10",
+      "meta": "DIGITAL_CONCEPT_10",
       "width": 2400,
       "height": 1350
     },
     {
+      "src": "/portfolio-assets/digital/concept/Screenshot 2026-08-08 at 2.38.49 PM.jpg",
+      "type": "image",
+      "title": "Concept 11",
+      "meta": "DIGITAL_CONCEPT_11",
+      "width": 1414,
+      "height": 1108
+    },
+    {
       "src": "/portfolio-assets/digital/concept/Screenshot 2026-08-08 at 5.12.09 PM.jpg",
       "type": "image",
-      "title": "Concept 10",
-      "meta": "DIGITAL_CONCEPT_10",
+      "title": "Concept 12",
+      "meta": "DIGITAL_CONCEPT_12",
       "width": 1310,
       "height": 628
     },
     {
       "src": "/portfolio-assets/digital/concept/Screenshot 2026-09-01 at 5.09.42 PM.jpg",
       "type": "image",
-      "title": "Concept 11",
-      "meta": "DIGITAL_CONCEPT_11",
+      "title": "Concept 13",
+      "meta": "DIGITAL_CONCEPT_13",
       "width": 778,
       "height": 916
     },
     {
       "src": "/portfolio-assets/digital/concept/Screenshot 2026-09-06 at 11.16.09 AM.jpg",
       "type": "image",
-      "title": "Concept 12",
-      "meta": "DIGITAL_CONCEPT_12",
+      "title": "Concept 14",
+      "meta": "DIGITAL_CONCEPT_14",
       "width": 1716,
       "height": 1166
     },
     {
       "src": "/portfolio-assets/digital/concept/Untitled_Artwork copy.jpg",
       "type": "image",
-      "title": "Concept 13",
-      "meta": "DIGITAL_CONCEPT_13",
+      "title": "Concept 15",
+      "meta": "DIGITAL_CONCEPT_15",
       "width": 1920,
       "height": 1080
     }

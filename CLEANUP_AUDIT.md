@@ -26,7 +26,7 @@ Backup: `../cleanup-backups/unused-ui-fonts-2026-10-18.zip` (includes pre-cleanu
 - `assets/Barrio-Regular.ttf`
 - `public/fonts/chinese-handwriting-style.ttf`
 
-The original Chinese font in `assets/` is retained as the source for regenerating the active WOFF2 subset. Original art, PDF sources, game build files, and alternate hosting configuration are retained.
+The original Chinese font in `assets/` was initially retained as the source for regenerating the active WOFF2 subset. During the subsequent font cleanup, the unused, Git-ignored `assets/chinese-handwriting-style.ttf` (about 20 MB) was removed at the user's request. The active `public/fonts/chinese-handwriting-name.woff2` subset remains. All other remaining font files are referenced by site CSS or the archived Duck Breaker game. Original art, PDF sources, game build files, and alternate hosting configuration are retained.
 
 Also removed five unreferenced Next.js starter SVGs: `public/file.svg`, `public/globe.svg`, `public/next.svg`, `public/vercel.svg`, `public/window.svg`.
 
