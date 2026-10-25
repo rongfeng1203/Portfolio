@@ -53,7 +53,7 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
       {feature ? (
         <section className="section-workbench" aria-label={`${section.title} featured work`}>
           {feature}
-          {section.slug !== "theatre" && <aside className="section-note">
+          {!["theatre", "digital"].includes(section.slug) && <aside className="section-note">
             <span>{section.slug === "games" ? "game archive loaded" : "playable build loaded"}</span>
             <p>{section.note}</p>
           </aside>}
