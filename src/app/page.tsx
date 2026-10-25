@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { FaDiscord, FaEnvelope, FaGithub, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
-import { type CSSProperties, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import ASCIIText from "@/components/ASCIIText";
 import CircularText from "@/components/CircularText";
 import DecryptedText from "@/components/DecryptedText";
@@ -11,7 +11,7 @@ import FaultyTerminal from "@/components/FaultyTerminal";
 import PixelTrail from "@/components/PixelTrail";
 import TextType from "@/components/TextType";
 import SocialFlipButton, { type SocialItem } from "@/components/ui/social-flip-button";
-import portrait from "../../assets/Self-portrait.png";
+import PortraitResume from "@/components/PortraitResume";
 import artstationLogo from "../../assets/blackartstation.png";
 
 const relaxingThemeUrl = new URL("../../assets/relaxing theme.mp3", import.meta.url).toString();
@@ -453,13 +453,7 @@ export default function Home() {
           </div>
 
           <div className="hero-side">
-            <div className="hero-portrait" style={{ "--active": "var(--lime)" } as CSSProperties}>
-              <Image src={portrait} alt="Self portrait" className="portrait-chroma h-full w-full object-contain" priority />
-              <div className="portrait-caption">
-                <span>active signal</span>
-                <span>{active.label}</span>
-              </div>
-            </div>
+            <PortraitResume activeLabel={active.label} />
             <div className="contact-panel hero-contact-panel" aria-label="Contact links">
               <SocialFlipButton
                 items={contactFlipItems}
