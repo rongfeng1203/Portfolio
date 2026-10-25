@@ -210,7 +210,7 @@ export default function Home() {
       letter: "T",
       icon: <FaDiscord aria-hidden="true" />,
       label: "Discord",
-      href: "https://discord.gg/rHFK8PS6",
+      href: "https://discord.com/users/1045030526697865216",
     },
   ];
 
