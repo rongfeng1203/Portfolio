@@ -2056,7 +2056,7 @@ video.photo-slideshow-image {
 
 .section-page:not(.section-photography) .section-bucket-link:is(:hover, :focus-visible, :active) {
   background: var(--section-color);
-  color: var(--ink);
+  color: var(--section-text);
   box-shadow: inset 0 0 0 1px var(--section-color);
 }
 
