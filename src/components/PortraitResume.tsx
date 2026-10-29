@@ -4,7 +4,7 @@ import Image from "next/image";
 import { type CSSProperties, useRef, useState } from "react";
 import portrait from "../../assets/Self-portrait.png";
 
-export default function PortraitResume({ activeLabel }: { activeLabel: string }) {
+export default function PortraitResume() {
   const [flipped, setFlipped] = useState(false);
   const front = useRef<HTMLButtonElement>(null);
   const back = useRef<HTMLButtonElement>(null);
@@ -40,8 +40,7 @@ export default function PortraitResume({ activeLabel }: { activeLabel: string })
           }}
         >
           <Image src={portrait} alt="Self portrait" className="portrait-chroma h-full w-full object-contain" priority />
-          <span className="portrait-resume-hint">Hover or tap for résumé ↗</span>
-          <span className="portrait-caption"><span>active signal</span><span>{activeLabel}</span></span>
+          <span className="portrait-resume-hint">Résumé ↗</span>
         </button>
         <div id="portrait-resume-back" className="portrait-resume-back" aria-hidden={!flipped} inert={!flipped}>
           <div className="portrait-resume-toolbar">

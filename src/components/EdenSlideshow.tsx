@@ -23,7 +23,7 @@ export default function EdenSlideshow() {
         }}
       >
         <header className="making-slideshow-heading">
-          <div><span>DIGITAL ARTS / CONCEPT WORLD</span><h2>Eden</h2></div>
+          <div><h2>Eden</h2></div>
         </header>
         <div className="photo-slideshow-frame making-slideshow-frame">
           <button className="making-slide-arrow is-previous" type="button" aria-label="Previous Eden page" disabled={page === 0} onClick={() => turnPage(-1)}>
@@ -44,7 +44,6 @@ export default function EdenSlideshow() {
         </div>
         <div className="photo-slideshow-meta making-slideshow-meta">
           <span aria-live="polite">{String(page + 1).padStart(2, "0")} / {pageCount}</span>
-          <strong>Eden</strong>
         </div>
       </article>
     </div>

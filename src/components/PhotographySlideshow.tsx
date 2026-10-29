@@ -77,11 +77,6 @@ export default function PhotographySlideshow({
           />
         )}
       </div>
-      <div className="photo-slideshow-meta">
-        <span>{String(activeIndex + 1).padStart(2, "0")} / {String(displayItems.length).padStart(2, "0")}</span>
-        <strong>{active.title}</strong>
-        <em>{active.meta}</em>
-      </div>
     </section>
   );
 }

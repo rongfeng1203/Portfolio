@@ -12,7 +12,6 @@ export default function UnityWebGLEmbed() {
     <section className="unity-webgl-panel" aria-label="Starfall Unity WebGL build">
       <header className="unity-webgl-header">
         <div>
-          <span>unity_webgl / live build</span>
           <h2>Starfall Build</h2>
         </div>
         <a href={starfallBuildUrl} target="_blank" rel="noreferrer">
@@ -30,18 +29,11 @@ export default function UnityWebGLEmbed() {
           />
         ) : (
           <button type="button" className="unity-webgl-loader" onClick={() => setIsLoaded(true)}>
-            <span>load playable build</span>
+            <span>Play ↗</span>
             <strong>Starfall Build</strong>
-            <em>large unity webgl file / click to start</em>
           </button>
         )}
       </div>
-
-      <footer className="unity-webgl-meta" aria-label="Starfall build metadata">
-        <span>build / starfallbuild1</span>
-        <span>unity / webgl</span>
-        <span>hosted / itch.io</span>
-      </footer>
     </section>
   );
 }

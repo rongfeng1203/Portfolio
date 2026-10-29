@@ -34,7 +34,7 @@ function MakingPdfSlideshow({ project, projectIndex }: { project: MakingProject;
     >
       <header className="making-slideshow-heading">
         <div>
-          <span>{project.code} / {project.year}</span>
+          <span>{project.year}</span>
           <h2>{project.title}</h2>
           <p>{project.subtitle}</p>
         </div>
@@ -89,8 +89,6 @@ function MakingPdfSlideshow({ project, projectIndex }: { project: MakingProject;
         <span aria-live="polite">
           {String(activePage + 1).padStart(2, "0")} / {String(project.pageCount).padStart(2, "0")}
         </span>
-        <strong>{project.title}</strong>
-        <em>{project.discipline}</em>
       </div>
     </article>
   );
@@ -102,13 +100,9 @@ export default function MakingArchive({ category }: { category?: MakingCategory 
     <div className="making-archive">
       <section className="making-archive-intro">
         <div>
-          <p className="section-code">MATERIAL_LOG / {String(projects.length).padStart(2, "0")} FILES</p>
           <h1 className={category && makingCategories[category].title.length > 9 ? "making-title-long" : undefined}>{category ? makingCategories[category].title : "Tech Design"}</h1>
           <p className="section-cn">制作</p>
         </div>
-        <p>
-          Did you know I wanna be a fashion designer until I discovered Arduino? Wow heatpress and lasercutting and woodworking are especially helpful for theatre, no explanation :)
-        </p>
       </section>
 
       <section className="making-slideshow-list" aria-label="Tech Design project PDF slideshows">

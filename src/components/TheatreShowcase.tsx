@@ -26,7 +26,7 @@ export default function TheatreShowcase({ photos, processItems }: { photos: NonN
         }}
       >
         <header className="making-slideshow-heading">
-          <div><span>THEATRE / PORTFOLIO</span><h2>Portfolio</h2></div>
+          <div><h2>Portfolio</h2></div>
         </header>
         <div className="photo-slideshow-frame making-slideshow-frame">
           <button className="making-slide-arrow is-previous" type="button" aria-label="Previous theatre portfolio page" disabled={page === 0} onClick={() => turnPage(-1)}>
@@ -47,18 +47,17 @@ export default function TheatreShowcase({ photos, processItems }: { photos: NonN
         </div>
         <div className="photo-slideshow-meta making-slideshow-meta">
           <span aria-live="polite">{String(page + 1).padStart(2, "0")} / {pageCount}</span>
-          <strong>Theatre</strong>
         </div>
       </article>
       <section id="theatre-photos" aria-label="Theatre photos">
         <header className="making-slideshow-heading">
-          <div><span>THEATRE / PHOTOGRAPHY</span><h2>Photos</h2></div>
+          <div><h2>Photos</h2></div>
         </header>
         <PhotographySlideshow items={photos} label="Theatre photo slideshow" />
       </section>
       <section id="theatre-process" aria-label="Dirty Work and Paper Work">
         <header className="making-slideshow-heading">
-          <div><span>THEATRE / PROCESS</span><h2>Dirty Work &amp; Paper Work</h2></div>
+          <div><h2>Dirty Work &amp; Paper Work</h2></div>
         </header>
         <PhotographySlideshow items={processItems} label="Dirty Work and Paper Work slideshow" />
       </section>

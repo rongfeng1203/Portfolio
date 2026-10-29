@@ -125,7 +125,6 @@ function DuckBreakerEmbed() {
     <article className="game-module" aria-labelledby="duck-breaker-title">
       <header className="game-module-header">
         <div>
-          <span>unity_webgl / wacky physics build</span>
           <h2 id="duck-breaker-title">Duck Breaker</h2>
         </div>
         <a href={duckBreakerUrl} target="_blank" rel="noreferrer">
@@ -144,18 +143,11 @@ function DuckBreakerEmbed() {
           />
         ) : (
           <button type="button" className="game-web-loader duck-loader" onClick={() => setIsLoaded(true)}>
-            <span>load playable build</span>
+            <span>Play ↗</span>
             <strong>Launch the duck. Break everything.</strong>
-            <em>3D physics playground / click to start</em>
           </button>
         )}
       </div>
-
-      <footer className="game-module-meta">
-        <span>format / 3d</span>
-        <span>engine / unity</span>
-        <span>build / webgl</span>
-      </footer>
     </article>
   );
 }
@@ -277,7 +269,6 @@ function TextGoVisualization() {
     <article className="game-module text-go-module" aria-labelledby="text-go-title">
       <header className="game-module-header">
         <div>
-          <span>python logic / interactive visualization</span>
           <h2 id="text-go-title">Text-Go — ICS3U Project</h2>
         </div>
         <p>19 × 19</p>
@@ -334,12 +325,6 @@ function TextGoVisualization() {
           </div>
         </aside>
       </div>
-
-      <footer className="game-module-meta">
-        <span>course / ICS3U</span>
-        <span>source / python</span>
-        <span>rules / capture + undo + pass</span>
-      </footer>
     </article>
   );
 }
@@ -367,7 +352,6 @@ function GameStoreLinks() {
     <section className="game-demo-section" aria-labelledby="game-store-title">
       <header className="game-module-header">
         <div>
-          <span>games / store links</span>
           <h2 id="game-store-title">Find the Games</h2>
         </div>
       </header>
@@ -378,7 +362,6 @@ function GameStoreLinks() {
               <img src={game.image} alt={game.alt} loading="lazy" />
             </a>
             <div className="game-demo-caption">
-              <span>{game.store}</span>
               <h3>{game.title}</h3>
               {game.note && <p className="game-store-credit">{game.note}</p>}
               <a href={game.href} target="_blank" rel="noreferrer">view on {game.store} ↗</a>
@@ -395,14 +378,12 @@ function GameDemoReels() {
     <section className="game-demo-section" aria-labelledby="game-demo-title">
       <header className="game-module-header">
         <div>
-          <span>video archive / project demos & presentations</span>
           <h2 id="game-demo-title">Demo Reels</h2>
         </div>
-        <p>{String(demoVideos.length).padStart(2, "0")} videos</p>
       </header>
 
       <div className="game-demo-grid">
-        {demoVideos.map((video, index) => (
+        {demoVideos.map((video) => (
           <article key={video.id} className="game-demo-card">
             <div className="game-video-frame">
               <iframe
@@ -415,7 +396,6 @@ function GameDemoReels() {
               />
             </div>
             <div className="game-demo-caption">
-              <span>0{index + 1} / {video.meta}</span>
               <h3>{video.title}</h3>
               <a href={`https://www.youtube.com/watch?v=${video.id}${video.start ? `&t=${video.start}` : ""}`} target="_blank" rel="noreferrer">
                 watch on youtube ↗

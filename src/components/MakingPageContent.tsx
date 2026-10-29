@@ -25,7 +25,6 @@ export default function MakingPageContent({ category }: { category?: MakingCateg
         <Link href="/" className="section-banner-mark" aria-label="Back to home">
           <Image src={banner} alt="" className="section-banner-image" width={1242} height={406} quality={100} />
         </Link>
-        <p>MATERIAL_LOG</p>
       </header>
       <MakingArchive category={category} />
     </main>

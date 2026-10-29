@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { type CSSProperties, useEffect, useState } from "react";
 import type { WritingDocument } from "@/lib/writingDocuments";
 import WritingLanguageSelector from "@/components/WritingLanguageSelector";
@@ -20,8 +20,6 @@ type WritingReaderProps = {
 
 export default function WritingReader({
   document,
-  index,
-  total,
   translation,
   previous,
   next,
@@ -29,11 +27,9 @@ export default function WritingReader({
   const [progress, setProgress] = useState(0);
   const [language, setLanguage] = useWritingLanguage();
   const originalLanguage = document.language === "ENGLISH" ? "en" : "zh-CN";
-  const documentCode = `DOC_${(index + 1).toString().padStart(3, "0")}`;
   const showingTranslation = language !== originalLanguage && Boolean(translation);
   const activeContent = showingTranslation && translation ? translation : document;
   const contentLanguage = showingTranslation ? language : originalLanguage;
-  const activeLanguage = contentLanguage === "en" ? "ENGLISH" : "中文";
   const activeSummary = (showingTranslation && getWritingSummaryTranslation(document.slug)) || document;
 
   const changeLanguage = (value: WritingLanguage) => {
@@ -89,44 +85,16 @@ export default function WritingReader({
           <span>/WRITING</span>
         </Link>
         <div className="writing-reader-toolbar-center">
-          <span className="writing-reader-document-id">
-            <FileText size={14} strokeWidth={1.5} aria-hidden="true" />
-            <span>{documentCode}</span>
-          </span>
           {translation ? <WritingLanguageSelector language={language} onChange={changeLanguage} /> : null}
         </div>
-        <p>{Math.round(progress).toString().padStart(2, "0")}% READ</p>
       </header>
 
       <div className="writing-reader-shell">
-        <aside className="writing-reader-rail" aria-label="Document information">
-          <span>TEXT_ENGINE</span>
-          <dl>
-            <div>
-              <dt>TYPE</dt>
-              <dd>{document.genre}</dd>
-            </div>
-            <div>
-              <dt>LENGTH</dt>
-              <dd>{document.readingTime}</dd>
-            </div>
-            <div>
-              <dt>STATUS</dt>
-              <dd>{document.status}</dd>
-            </div>
-            <div>
-              <dt>LANGUAGE</dt>
-              <dd>{activeLanguage}</dd>
-            </div>
-          </dl>
-        </aside>
-
         <article
           className={`writing-reader-paper${contentLanguage === "en" ? " is-english" : ""}`}
-          data-document-code={documentCode}
         >
           <header className="writing-article-header" lang={contentLanguage}>
-            <p>{document.genre} / {documentCode}</p>
+            <p>{document.genre}</p>
             <h1>{activeSummary.title}</h1>
             <p className="writing-article-subtitle">{activeSummary.subtitle}</p>
             <div>
@@ -155,7 +123,6 @@ export default function WritingReader({
           </div>
 
           <footer className="writing-article-end">
-            <span>END OF DOCUMENT / {index + 1} OF {total}</span>
             <Link href="/writing">RETURN TO LIBRARY ↗</Link>
           </footer>
 
@@ -174,11 +141,6 @@ export default function WritingReader({
             ) : <span />}
           </nav>
         </article>
-
-        <aside className="writing-reader-chapter" aria-hidden="true">
-          <span>{(index + 1).toString().padStart(2, "0")}</span>
-          <p>{document.genre}<br />→ {document.status}</p>
-        </aside>
       </div>
     </main>
   );

@@ -21,7 +21,7 @@ export default function PortfolioNavbar() {
   return (
     <header className="portfolio-navbar">
       <nav className="portfolio-navbar-track" aria-label="Portfolio sections">
-        {navigation.map((item, index) => {
+        {navigation.map((item) => {
           const isActive = item.href === "/"
             ? pathname === "/"
             : pathname === item.href || pathname.startsWith(`${item.href}/`);
@@ -34,9 +34,6 @@ export default function PortfolioNavbar() {
               aria-current={isActive ? "page" : undefined}
               style={{ "--nav-accent": item.color } as CSSProperties}
             >
-              <span className="portfolio-navbar-index" aria-hidden="true">
-                {String(index).padStart(2, "0")}
-              </span>
               <span className="portfolio-navbar-label">
                 <span className="portfolio-navbar-label-full">{item.label}</span>
                 <span className="portfolio-navbar-label-short">{item.shortLabel}</span>

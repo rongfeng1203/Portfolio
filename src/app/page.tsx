@@ -5,7 +5,6 @@ import { FaDiscord, FaEnvelope, FaGithub, FaInstagram, FaLinkedin, FaYoutube } f
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import ASCIIText from "@/components/ASCIIText";
 import CircularText from "@/components/CircularText";
-import DecryptedText from "@/components/DecryptedText";
 import Dither from "@/components/Dither";
 import FaultyTerminal from "@/components/FaultyTerminal";
 import PixelTrail from "@/components/PixelTrail";
@@ -53,93 +52,6 @@ function scrambleName(revealedCount: number) {
     .join("");
 }
 
-const sections = [
-  {
-    id: "games",
-    label: "Games",
-    cn: "遊戲",
-    code: "PLAYABLE SYSTEMS",
-    color: "var(--lime)",
-    secondaryColor: "var(--pink)",
-    route: "/games",
-    copy:
-      "Unity games, immersive media, python code visualization, and prototypes. Where code meets art.",
-    scraps: ["Unity", "Python", "Design", "Systems"],
-  },
-  {
-    id: "photography",
-    label: "Photography",
-    cn: "攝影",
-    code: "CONTACT SHEETS",
-    color: "var(--violet)",
-    secondaryColor: "var(--lime)",
-    route: "/photography",
-    copy:
-      "Stage photos, street candids, portrait sequences. Peak in to my film-wannabe-self.",
-    scraps: ["Archive", "Candid", "Stage", "Portrait"],
-  },
-  {
-    id: "visual",
-    label: "Visual Art",
-    cn: "画画",
-    code: "SCAN / POSTER",
-    color: "var(--pink)",
-    secondaryColor: "var(--orange)",
-    route: "/visual",
-    copy:
-      "Illustration, graphic collage, painting, drawing, and sketch. Where everything started. ",
-    scraps: ["Illustration", "Poster", "Sketchbook", "Texture"],
-  },
-  {
-    id: "digital",
-    label: "Digital Arts",
-    cn: "媒体艺术",
-    code: "MOTION BUFFER",
-    color: "var(--orange)",
-    secondaryColor: "var(--lime)",
-    route: "/digital",
-    copy:
-      "Animation, concept design, graphics, and digital collages. Thanks ASM3/4M.",
-    scraps: ["Video", "Shader", "Loop", "Screen"],
-  },
-  {
-    id: "theatre",
-    label: "Theatre",
-    cn: "戲劇",
-    code: "SPACE CUE",
-    color: "var(--purple)",
-    secondaryColor: "var(--orange)",
-    route: "/theatre",
-    copy:
-      "Stage management, light, cues, and bugeting. I love my team.",
-    scraps: ["Light", "Stage", "Cue", "Space"],
-  },
-  {
-    id: "making",
-    label: "Tech Design",
-    cn: "制作",
-    code: "MATERIAL LOG",
-    color: "var(--lime)",
-    secondaryColor: "var(--pink)",
-    route: "/making",
-    copy:
-      "Sewing, laser cutting, woodworking, and engineering. I love Arduino:)",
-    scraps: ["Wood", "Fabric", "Laser", "Model"],
-  },
-  {
-    id: "writing",
-    label: "Writing",
-    cn: "写作",
-    code: "TEXT ENGINE",
-    color: "var(--pink)",
-    secondaryColor: "var(--orange)",
-    route: "/writing",
-    copy:
-      "Fiction, essays, scripts, and dystopia. My dream as a child.",
-    scraps: ["Fiction", "Dreams", "Script", "Essay"],
-  },
-] as const;
-
 function subscribeToHydration(callback: () => void) {
   queueMicrotask(callback);
   return () => {};
@@ -168,7 +80,6 @@ export default function Home() {
     readFirstEntrySeen,
     () => true,
   );
-  const active = sections[0];
   const contactFlipItems: SocialItem[] = [
     {
       letter: "C",
@@ -353,7 +264,6 @@ export default function Home() {
             brightness={1.12}
           />
           <div className="ascii-reveal absolute inset-0" />
-
           <div className="absolute inset-0 grid items-center px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12">
             <div className="relative h-[48vh] min-h-[320px] lg:translate-x-12 xl:translate-x-20">
               <ASCIIText
@@ -372,19 +282,6 @@ export default function Home() {
                 onHover="speedUp"
                 className="text-lime"
               />
-              <p className="max-w-sm font-mono text-xs uppercase text-lime">
-                <DecryptedText
-                  text="loading assets / washing text / opening the index"
-                  animateOn="view"
-                  sequential={true}
-                  revealDirection="start"
-                  speed={24}
-                  maxIterations={14}
-                  characters="01█▓▒░<>/_$#@RONGFENG"
-                  className="text-lime"
-                  encryptedClassName="text-pink"
-                />
-              </p>
             </div>
           </div>
         </div>
@@ -453,7 +350,7 @@ export default function Home() {
           </div>
 
           <div className="hero-side">
-            <PortraitResume activeLabel={active.label} />
+            <PortraitResume />
             <div className="contact-panel hero-contact-panel" aria-label="Contact links">
               <SocialFlipButton
                 items={contactFlipItems}
@@ -466,7 +363,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
       </section>
 
     </main>

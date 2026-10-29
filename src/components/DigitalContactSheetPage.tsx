@@ -33,16 +33,13 @@ export default function DigitalContactSheetPage({ category }: { category: Digita
         <Link href="/" className="section-banner-mark" aria-label="Back to home">
           <Image src={banner} alt="" className="section-banner-image" width={1242} height={406} quality={100} />
         </Link>
-        <p>{content.code}</p>
       </header>
 
       <section className="contact-sheet-hero">
         <div>
-          <p className="section-code">{content.code}</p>
           <h1>{content.title}</h1>
           <p className="section-cn">媒体艺术</p>
         </div>
-        {content.intro && <p>{content.intro}</p>}
       </section>
 
       <section className={`contact-sheet-grid${category === "videos" ? " digital-video-grid" : ""}`} aria-label={`${content.title} contact sheet`}>
@@ -55,7 +52,7 @@ export default function DigitalContactSheetPage({ category }: { category: Digita
                 <Image src={item.src} alt={`${content.title} contact ${index + 1}`} fill sizes="(max-width: 720px) 33vw, 12vw" />
               )}
             </div>
-            <figcaption>{String(index + 1).padStart(2, "0")}</figcaption>
+
           </figure>
         ))}
       </section>

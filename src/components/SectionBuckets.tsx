@@ -40,14 +40,6 @@ export default function SectionBuckets({ section }: { section: PortfolioSection 
   return (<>
       {section.buckets.length > 0 && <section className="section-buckets" aria-label={`${section.title} categories`}>
         {section.buckets.map((bucket, index) => {
-          const emphasisIndex = bucket.copyEmphasis ? bucket.copy.indexOf(bucket.copyEmphasis) : -1;
-          const copy = bucket.copyEmphasis && emphasisIndex >= 0 ? (
-            <>
-              {bucket.copy.slice(0, emphasisIndex)}
-              <em>{bucket.copyEmphasis}</em>
-              {bucket.copy.slice(emphasisIndex + bucket.copyEmphasis.length)}
-            </>
-          ) : bucket.copy;
           const previewItems = getBucketPreviewItems(section.slug, mediaItems, bucket, index);
           const preview = previewItems.length ? (
             <div className="bucket-preview" aria-hidden="true">
@@ -68,17 +60,13 @@ export default function SectionBuckets({ section }: { section: PortfolioSection 
           return bucket.href ? (
             <Link key={bucket.title} href={bucket.href} className="section-bucket-link">
               {preview}
-              <span>{String(index + 1).padStart(2, "0")}</span>
+
               <h2>{bucket.title}</h2>
-              {bucket.meta && <p className="bucket-meta">{bucket.meta}</p>}
-              {bucket.copy && <p>{copy}</p>}
             </Link>
           ) : (
             <article key={bucket.title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
               <h2>{bucket.title}</h2>
-              {bucket.meta && <p className="bucket-meta">{bucket.meta}</p>}
-              {bucket.copy && <p>{copy}</p>}
+
               {preview}
             </article>
           );

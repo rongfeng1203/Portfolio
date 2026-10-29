@@ -65,7 +65,6 @@ export default function WritingLibrary({ category }: { category?: "chinese" | "e
       } as CSSProperties}
     >
       <div className="section-noise-layer" aria-hidden="true" />
-
       <header className="section-topbar">
         <Link href={category ? "/writing" : "/"} className="section-back" aria-label={category ? "Back to Writing" : "Back to home"}>
           {category ? "/writing" : "/index"}
@@ -73,18 +72,15 @@ export default function WritingLibrary({ category }: { category?: "chinese" | "e
         <Link href="/" className="section-banner-mark" aria-label="Back to home">
           <Image src={banner} alt="" className="section-banner-image" width={1242} height={406} quality={100} />
         </Link>
-        <p>TEXT_ENGINE</p>
       </header>
 
       <section className="writing-library-hero">
         <div className="writing-library-title">
-          <p className="section-code">TEXT_ENGINE / LIBRARY</p>
           <h1>{category ? { chinese: "中文", english: "English", drafts: "Drafts" }[category] : "Writing"}</h1>
           <p className="section-cn">写作</p>
         </div>
         <div className="writing-library-intro">
-          <p>Just some weird ideas...ps it sounds weird cause the auto tranlation used chat;</p>
-          <span>{documents.length} PIECES</span>
+          <p className="writing-translation-note">Translations assisted by AI.</p>
           <WritingLanguageSelector language={language} onChange={setLanguage} />
         </div>
       </section>
@@ -101,7 +97,7 @@ export default function WritingLibrary({ category }: { category?: "chinese" | "e
             <input
               ref={searchRef}
               type="search"
-              placeholder="SEARCH TITLE, THEME, LANGUAGE"
+              placeholder="Search writing"
               aria-label="Search documents"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
@@ -114,14 +110,11 @@ export default function WritingLibrary({ category }: { category?: "chinese" | "e
               <kbd>⌘ K</kbd>
             )}
           </label>
-          <p>GRID_VIEW / {documents.length.toString().padStart(2, "0")} FILES</p>
         </div>
 
         <div className="writing-doc-grid">
           {filteredDocuments.length ? (
             filteredDocuments.map((document) => {
-              const documentIndex = writingSummaries.findIndex((item) => item.slug === document.slug);
-              const documentCode = `DOC_${(documentIndex + 1).toString().padStart(3, "0")}`;
 
               return (
                 <Link
@@ -135,11 +128,8 @@ export default function WritingLibrary({ category }: { category?: "chinese" | "e
                     <div className="writing-preview-paper">
                       <div className="writing-preview-header">
                         <FileText size={15} strokeWidth={1.5} />
-                        <span>{documentCode}</span>
                       </div>
-                      <p className="writing-preview-genre">{document.genre}</p>
                       <h3>{document.title}</h3>
-                      <p>{document.subtitle}</p>
                       <div className="writing-preview-lines">
                         <i />
                         <i />
@@ -149,13 +139,13 @@ export default function WritingLibrary({ category }: { category?: "chinese" | "e
                       <strong>{document.previewLine}</strong>
                     </div>
                     <span className="writing-open-cue">
-                      OPEN <ArrowUpRight size={14} strokeWidth={1.5} />
+                      <ArrowUpRight size={14} strokeWidth={1.5} />
                     </span>
                   </div>
                   <div className="writing-doc-meta">
                     <div>
                       <div className="writing-doc-flags">
-                        <span>{document.status}</span>
+                        {document.status !== "COMPLETE" && <span>{document.status}</span>}
                         <span>{document.language}</span>
                       </div>
                       <h3>{document.title}</h3>
@@ -163,11 +153,11 @@ export default function WritingLibrary({ category }: { category?: "chinese" | "e
                     </div>
                     <dl>
                       <div>
-                        <dt>TYPE</dt>
+                        <dt className="sr-only">Genre</dt>
                         <dd>{document.genre}</dd>
                       </div>
                       <div>
-                        <dt>LENGTH</dt>
+                        <dt className="sr-only">Reading time</dt>
                         <dd>{document.readingTime}</dd>
                       </div>
                     </dl>
@@ -178,18 +168,12 @@ export default function WritingLibrary({ category }: { category?: "chinese" | "e
           ) : (
             <div className="writing-no-results" role="status">
               <span>00 RESULTS</span>
-              <p>No document signal matches “{query}”.</p>
+              <p>No results for “{query}”.</p>
               <button type="button" onClick={() => setQuery("")}>RESET SEARCH</button>
             </div>
           )}
         </div>
       </section>
-
-
-      <footer className="writing-library-footer">
-        <span>RONG FENG / WRITING ARCHIVE</span>
-        <span>LAST SIGNAL: 20 COMPLETE / 01 IN PROGRESS</span>
-      </footer>
     </main>
   );
 }

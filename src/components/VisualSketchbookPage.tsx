@@ -8,7 +8,6 @@ export default function VisualSketchbookPage({ category }: { category: VisualCat
   const section = getPortfolioSection("visual")!;
   const mediaItems = getVisualCategoryMedia(category);
   const title = { charcoal: "Charcoal", colors: "Colors", ideation: "Ideation" }[category];
-  const code = `VISUAL_${category.toUpperCase()}`;
 
   return (
     <main
@@ -29,16 +28,13 @@ export default function VisualSketchbookPage({ category }: { category: VisualCat
         <Link href="/" className="section-banner-mark" aria-label="Back to home">
           <Image src={banner} alt="" className="section-banner-image" width={1242} height={406} quality={100} />
         </Link>
-        <p>{code}</p>
       </header>
 
       <section className="contact-sheet-hero">
         <div>
-          <p className="section-code">{code}</p>
           <h1>{title}</h1>
           <p className="section-cn">画画</p>
         </div>
-        {category === "colors" && <p>My favorite medium no question.</p>}
       </section>
 
       <section className="contact-sheet-grid" aria-label={`${title} contact sheet`}>
@@ -53,7 +49,7 @@ export default function VisualSketchbookPage({ category }: { category: VisualCat
                 sizes="(max-width: 720px) 50vw, 20vw"
               />
             </div>
-            <figcaption>{String(index + 1).padStart(2, "0")}</figcaption>
+
           </figure>
         ))}
       </section>

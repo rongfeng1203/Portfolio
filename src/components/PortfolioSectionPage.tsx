@@ -34,7 +34,6 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
         <Link href="/" className="section-banner-mark" aria-label="Back to home">
           <Image src={banner} alt="" className="section-banner-image" width={1242} height={406} quality={100} />
         </Link>
-        <p>{section.code}</p>
       </header>
 
       {usesGalleryLayout && hasMedia ? (
@@ -43,20 +42,14 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
 
       <section className="section-hero">
         <div>
-          <p className="section-code">{section.code}</p>
           <h1 className={section.title.length > 9 ? "section-title-long" : undefined}>{section.title}</h1>
           <p className="section-cn">{section.cn}</p>
         </div>
-        <p className="section-intro">{section.intro}</p>
       </section>
 
       {feature ? (
         <section className="section-workbench" aria-label={`${section.title} featured work`}>
           {feature}
-          {!["theatre", "digital"].includes(section.slug) && <aside className="section-note">
-            <span>{section.slug === "games" ? "game archive loaded" : "playable build loaded"}</span>
-            <p>{section.note}</p>
-          </aside>}
         </section>
       ) : !usesGalleryLayout ? (
         <section className="section-workbench" aria-label={`${section.title} work slots`}>
@@ -106,17 +99,6 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
               })}
             </div>
           )}
-
-          <aside className="section-note">
-            <span>
-              {showMainMediaGrid
-                ? `${mediaItems.length} asset${mediaItems.length === 1 ? "" : "s"} loaded`
-                : usesCompactBucketLibrary && hasMedia
-                  ? `${mediaItems.length} stage photos in compact screen`
-                  : "next upload"}
-            </span>
-            <p>{section.note}</p>
-          </aside>
         </section>
       ) : null}
 
