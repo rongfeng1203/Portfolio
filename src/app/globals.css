@@ -972,12 +972,6 @@ a {
   text-shadow: none;
 }
 
-.section-digital .section-intro {
-  padding-left: 1rem;
-  border-left: 3px solid var(--section-color);
-  color: var(--lime);
-}
-
 .section-page::after {
   content: "";
   position: fixed;
