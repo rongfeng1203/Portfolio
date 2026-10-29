@@ -2045,9 +2045,9 @@ video.photo-slideshow-image {
   border-right: 1px solid rgb(242 234 215 / 0.18);
   border-bottom: 1px solid rgb(242 234 215 / 0.18);
   background: rgb(5 5 9 / 0.42);
-  color: inherit;
+  color: var(--section-text);
   text-decoration: none;
-  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+  transition: background 180ms ease, transform 180ms ease;
 }
 
 .section-bucket-link:hover {
