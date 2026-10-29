@@ -103,6 +103,9 @@ export default function MakingArchive({ category }: { category?: MakingCategory 
           <h1 className={category && makingCategories[category].title.length > 9 ? "making-title-long" : undefined}>{category ? makingCategories[category].title : "Tech Design"}</h1>
           <p className="section-cn">制作</p>
         </div>
+        <p>
+          Did you know I wanna be a fashion designer until I discovered Arduino? Wow heatpress and lasercutting and woodworking are especially helpful for theatre, no explanation :)
+        </p>
       </section>
 
       <section className="making-slideshow-list" aria-label="Tech Design project PDF slideshows">

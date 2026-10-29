@@ -17,7 +17,6 @@ type Snapshot = {
 };
 
 const BOARD_SIZE = 19;
-const duckBreakerUrl = "https://rongfeng1203.itch.io/wacky-physics-duckbbreaker";
 const duckBreakerEmbedUrl = "https://itch.io/embed-upload/18665393?color=0a0a0f";
 
 const demoVideos: Array<{ title: string; id: string; meta: string; start?: number }> = [
@@ -127,9 +126,6 @@ function DuckBreakerEmbed() {
         <div>
           <h2 id="duck-breaker-title">Duck Breaker</h2>
         </div>
-        <a href={duckBreakerUrl} target="_blank" rel="noreferrer">
-          open build
-        </a>
       </header>
 
       <div className="game-web-stage">
@@ -271,7 +267,6 @@ function TextGoVisualization() {
         <div>
           <h2 id="text-go-title">Text-Go — ICS3U Project</h2>
         </div>
-        <p>19 × 19</p>
       </header>
 
       <div className="text-go-layout">

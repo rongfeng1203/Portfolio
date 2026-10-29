@@ -40,6 +40,14 @@ export default function SectionBuckets({ section }: { section: PortfolioSection 
   return (<>
       {section.buckets.length > 0 && <section className="section-buckets" aria-label={`${section.title} categories`}>
         {section.buckets.map((bucket, index) => {
+          const emphasisIndex = bucket.copyEmphasis ? bucket.copy.indexOf(bucket.copyEmphasis) : -1;
+          const copy = bucket.copyEmphasis && emphasisIndex >= 0 ? (
+            <>
+              {bucket.copy.slice(0, emphasisIndex)}
+              <em>{bucket.copyEmphasis}</em>
+              {bucket.copy.slice(emphasisIndex + bucket.copyEmphasis.length)}
+            </>
+          ) : bucket.copy;
           const previewItems = getBucketPreviewItems(section.slug, mediaItems, bucket, index);
           const preview = previewItems.length ? (
             <div className="bucket-preview" aria-hidden="true">
@@ -62,10 +70,12 @@ export default function SectionBuckets({ section }: { section: PortfolioSection 
               {preview}
 
               <h2>{bucket.title}</h2>
+              {bucket.copy && <p>{copy}</p>}
             </Link>
           ) : (
             <article key={bucket.title}>
               <h2>{bucket.title}</h2>
+              {bucket.copy && <p>{copy}</p>}
 
               {preview}
             </article>

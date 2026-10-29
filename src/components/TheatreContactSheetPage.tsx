@@ -43,6 +43,7 @@ export default function TheatreContactSheetPage({ category }: { category: Theatr
           <h1>{content.title}</h1>
           <p className="section-cn">戲劇</p>
         </div>
+        {content.intro && <p>{content.intro}</p>}
       </section>
 
       <section className="contact-sheet-grid" aria-label={`${content.title} contact sheet`}>

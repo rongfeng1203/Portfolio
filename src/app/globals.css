@@ -3057,7 +3057,7 @@ video.photo-slideshow-image {
 
 .writing-library-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1.4fr) minmax(22rem, 0.6fr);
   align-items: end;
   gap: clamp(3rem, 6vw, 7rem);
   padding: clamp(2.5rem, 6vw, 5rem) 0 2rem;
@@ -4515,7 +4515,7 @@ video.photo-slideshow-image {
 
 .making-archive-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
   align-items: end;
   gap: clamp(2rem, 6vw, 7rem);
   padding: clamp(1rem, 2vw, 1.6rem) 0 clamp(2.5rem, 6vw, 5.5rem);
@@ -5020,10 +5020,6 @@ video.photo-slideshow-image {
 @media (prefers-reduced-motion: reduce) { .portrait-resume-turn { transition: none; } }
 
 /* Keep the remaining controls legible without explanatory chrome. */
-.writing-translation-note {
-  font-size: 1rem;
-  line-height: 1.4;
-}
 .writing-reader-toolbar { grid-template-columns: 1fr auto; }
 .section-bucket-link h2 { display: flex; justify-content: space-between; gap: 1rem; }
 .section-bucket-link h2::after { content: "↗"; font-family: var(--font-body); }

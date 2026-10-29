@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 
-const starfallBuildUrl = "https://rongfeng1203.itch.io/starfall";
 const starfallEmbedUrl = "https://itch.io/embed-upload/18686937?color=0a0a0f";
 
 export default function UnityWebGLEmbed() {
@@ -14,9 +13,6 @@ export default function UnityWebGLEmbed() {
         <div>
           <h2>Starfall Build</h2>
         </div>
-        <a href={starfallBuildUrl} target="_blank" rel="noreferrer">
-          open build
-        </a>
       </header>
 
       <div className="unity-webgl-stage">

@@ -53,6 +53,7 @@ export default function PhotographyContactSheetPage({ category }: { category: Ph
           <h1>{content.title}</h1>
           <p className="section-cn">攝影</p>
         </div>
+        <p>{content.intro}</p>
       </section>
 
       <section className="contact-sheet-grid" aria-label={`${content.title} contact sheet`}>

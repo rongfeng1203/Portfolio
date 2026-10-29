@@ -45,11 +45,13 @@ export default function PortfolioSectionPage({ section, feature }: { section: Po
           <h1 className={section.title.length > 9 ? "section-title-long" : undefined}>{section.title}</h1>
           <p className="section-cn">{section.cn}</p>
         </div>
+        <p className="section-intro">{section.intro}</p>
       </section>
 
       {feature ? (
         <section className="section-workbench" aria-label={`${section.title} featured work`}>
           {feature}
+          {section.slug === "games" && <aside className="section-note"><p>{section.note}</p></aside>}
         </section>
       ) : !usesGalleryLayout ? (
         <section className="section-workbench" aria-label={`${section.title} work slots`}>

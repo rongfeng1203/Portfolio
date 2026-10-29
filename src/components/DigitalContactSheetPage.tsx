@@ -40,6 +40,7 @@ export default function DigitalContactSheetPage({ category }: { category: Digita
           <h1>{content.title}</h1>
           <p className="section-cn">媒体艺术</p>
         </div>
+        {content.intro && <p>{content.intro}</p>}
       </section>
 
       <section className={`contact-sheet-grid${category === "videos" ? " digital-video-grid" : ""}`} aria-label={`${content.title} contact sheet`}>

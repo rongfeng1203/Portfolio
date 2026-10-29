@@ -80,7 +80,7 @@ export default function WritingLibrary({ category }: { category?: "chinese" | "e
           <p className="section-cn">写作</p>
         </div>
         <div className="writing-library-intro">
-          <p className="writing-translation-note">Translations assisted by AI.</p>
+          <p>Just some weird ideas...ps it sounds weird cause the auto tranlation used chat;</p>
           <WritingLanguageSelector language={language} onChange={setLanguage} />
         </div>
       </section>
@@ -130,6 +130,7 @@ export default function WritingLibrary({ category }: { category?: "chinese" | "e
                         <FileText size={15} strokeWidth={1.5} />
                       </div>
                       <h3>{document.title}</h3>
+                      <p>{document.subtitle}</p>
                       <div className="writing-preview-lines">
                         <i />
                         <i />
