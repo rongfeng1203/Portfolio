@@ -36,6 +36,7 @@ export default function VisualSketchbookPage({ category }: { category: VisualCat
           <p className="section-cn">画画</p>
         </div>
         {category === "colors" && <p>My favorite medium no question.</p>}
+        {category === "charcoal" && <p>But i feel like black and white are colors</p>}
       </section>
 
       <section className="contact-sheet-grid" aria-label={`${title} contact sheet`}>

@@ -136,7 +136,7 @@ export const portfolioSections: PortfolioSection[] = [
     buckets: [
       { title: "Ideation", meta: "print / collage / material", copy: "Like I get the craze but I don’t.", href: "/visual/ideation", visualCategory: "ideation" },
       { title: "Colors", meta: "acrylic / watercolor / color", copy: "My favorite medium no question.", href: "/visual/colors", visualCategory: "colors" },
-      { title: "Charcoal", meta: "charcoal / drawing / study", copy: "", href: "/visual/charcoal", visualCategory: "charcoal" },
+      { title: "Charcoal", meta: "charcoal / drawing / study", copy: "But i feel like black and white are colors", href: "/visual/charcoal", visualCategory: "charcoal" },
     ],
     imageSlots: ["poster", "illustration", "sketch scan", "detail"],
     mediaItems: visualMedia,
