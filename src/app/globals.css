@@ -2051,9 +2051,17 @@ video.photo-slideshow-image {
 }
 
 .section-bucket-link:hover {
-  background: rgb(255 143 28 / 0.16);
-  color: var(--orange);
   transform: translateY(-0.18rem);
+}
+
+.section-page:not(.section-photography) .section-bucket-link:is(:hover, :focus-visible, :active) {
+  background: var(--section-color);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--section-color);
+}
+
+.section-page:not(.section-photography) .section-bucket-link:is(:hover, :focus-visible, :active) :is(h2, p, span) {
+  color: inherit;
 }
 
 .section-photography .section-bucket-link:hover,
