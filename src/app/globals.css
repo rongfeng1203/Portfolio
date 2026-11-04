@@ -1405,6 +1405,23 @@ a {
   gap: clamp(4rem, 8vw, 8rem);
 }
 
+.pentamania-document {
+  margin-top: 2rem;
+}
+
+.pentamania-document h3 {
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.game-pdf-viewer {
+  display: block;
+  width: 100%;
+  height: clamp(420px, 75vh, 900px);
+  border: 1px solid rgb(242 234 215 / 0.18);
+  background: var(--ink);
+}
+
 .game-module,
 .game-demo-section {
   display: grid;

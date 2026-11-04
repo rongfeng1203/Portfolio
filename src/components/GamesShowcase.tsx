@@ -364,6 +364,21 @@ function GameStoreLinks() {
           </article>
         ))}
       </div>
+      <section className="game-module pentamania-document" aria-labelledby="pentamania-document-title">
+        <header className="game-module-header">
+          <div>
+            <span>Pentamania: Alchemy Madness</span>
+            <h3 id="pentamania-document-title">Project PDF</h3>
+          </div>
+          <a href="/portfolio-assets/games/Pentamania.pdf" target="_blank" rel="noreferrer">open PDF ↗</a>
+        </header>
+        <iframe
+          className="game-pdf-viewer"
+          src="/portfolio-assets/games/Pentamania.pdf#view=FitH"
+          title="Pentamania project PDF"
+          loading="lazy"
+        />
+      </section>
     </section>
   );
 }
