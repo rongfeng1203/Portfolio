@@ -5,9 +5,9 @@ import { getPhotographyCategoryMedia, getTheatreCategoryMedia, getPortfolioSecti
 import banner from "../../assets/icon.png";
 
 const categoryCopy = {
-  dirtywork: { title: "Dirty Work", code: "THEATRE_DIRTYWORK", intro: "" },
-  paperwork: { title: "Paperwork", code: "THEATRE_PAPERWORK", intro: "" },
-  lx: { title: "LX", code: "THEATRE_LX", intro: "" },
+  dirtywork: { title: "Dirty Work", code: "THEATRE_DIRTYWORK", intro: "Leftover photos in my album." },
+  paperwork: { title: "Paperwork", code: "THEATRE_PAPERWORK", intro: "My most visited page for 3 months." },
+  lx: { title: "LX", code: "THEATRE_LX", intro: "Some design process." },
 } as const;
 
 export default function TheatreContactSheetPage({ category }: { category: TheatreCategory }) {

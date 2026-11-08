@@ -392,7 +392,7 @@ function GameDemoReels() {
         </div>
       </header>
 
-      <div className="game-demo-grid">
+      <div className="game-demo-grid" style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
         {demoVideos.map((video) => (
           <article key={video.id} className="game-demo-card">
             <div className="game-video-frame">
@@ -422,8 +422,9 @@ export default function GamesShowcase({ category }: { category?: "play" | "relea
   return (
     <div className="games-showcase">
       {(!category || category === "releases") && <GameStoreLinks />}
-      {(!category || category === "play") && <><UnityWebGLEmbed /><DuckBreakerEmbed /><TextGoVisualization /></>}
+      {(!category || category === "play") && <UnityWebGLEmbed />}
       {(!category || category === "demos") && <GameDemoReels />}
+      {(!category || category === "play") && <><DuckBreakerEmbed /><TextGoVisualization /></>}
     </div>
   );
 }

@@ -7,6 +7,11 @@ import PhotographySlideshow from "@/components/PhotographySlideshow";
 import type { PortfolioSection } from "@/lib/portfolioSections";
 
 const pageCount = 11;
+const theatreVideos = [
+  { id: "HEWFHyZanHk", title: "Chicago Show Reel 1" },
+  { id: "XmlhzrLPdno", title: "Chicago Show Reel 2" },
+  { id: "4Zo1QtEwXVc", title: "Chicago Show Reel 3" },
+];
 
 export default function TheatreShowcase({ photos, processItems }: { photos: NonNullable<PortfolioSection["mediaItems"]>; processItems: NonNullable<PortfolioSection["mediaItems"]> }) {
   const [page, setPage] = useState(0);
@@ -49,6 +54,33 @@ export default function TheatreShowcase({ photos, processItems }: { photos: NonN
           <span aria-live="polite">{String(page + 1).padStart(2, "0")} / {pageCount}</span>
         </div>
       </article>
+      <section id="theatre-videos" aria-labelledby="theatre-videos-title">
+        <header className="making-slideshow-heading">
+          <div><h2 id="theatre-videos-title">Show Reels</h2></div>
+        </header>
+        <div className="game-demo-grid" style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
+          {theatreVideos.map((video) => (
+            <article key={video.id} className="game-demo-card">
+              <div className="game-video-frame">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0`}
+                  title={video.title}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+              <div className="game-demo-caption">
+                <h3>{video.title}</h3>
+                <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noreferrer">
+                  watch on youtube ↗
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
       <section id="theatre-photos" aria-label="Theatre photos">
         <header className="making-slideshow-heading">
           <div><h2>Photos</h2></div>

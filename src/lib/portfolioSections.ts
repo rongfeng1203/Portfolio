@@ -172,9 +172,9 @@ export const portfolioSections: PortfolioSection[] = [
       "Performances, stage management, set and lighting concepts, and all the dirty work (literally) I have done for theatre.",
     note: "Stage photos live in a compact automatic screen for now. Cue sheets, light plots, and process documentation can be added when those assets arrive.",
     buckets: [
-      { title: "Dirty Work", meta: "", copy: "", href: "/theatre/dirtywork", theatreCategory: "dirtywork" },
-      { title: "Paperwork", meta: "", copy: "", href: "/theatre/paperwork", theatreCategory: "paperwork" },
-      { title: "LX", meta: "", copy: "", href: "/theatre/lx", theatreCategory: "lx" },
+      { title: "Dirty Work", meta: "", copy: "Leftover photos in my album.", href: "/theatre/dirtywork", theatreCategory: "dirtywork" },
+      { title: "Paperwork", meta: "", copy: "My most visited page for 3 months.", href: "/theatre/paperwork", theatreCategory: "paperwork" },
+      { title: "LX", meta: "", copy: "Some design process.", href: "/theatre/lx", theatreCategory: "lx" },
     ],
     imageSlots: ["stage photo", "cue sheet", "set sketch", "lighting test"],
     mediaItems: theatreStageMedia,
